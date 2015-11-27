@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:component-scan base-package="kosta.teamd.mvc" />
+	
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler/>
+<!-- 	<mvc:resources location="/resources/" mapping="/resources/**" /> -->
+	
+
+	
+	<!-- ViewResolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="1" />
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+<!-- 	<websocket:handlers> -->
+<!--     	 <websocket:mapping handler="sampleWebSocketHandler" path="/sample.do"/> -->
+<!--      	 <websocket:handshake-interceptors> -->
+<!--             <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/> -->
+<!--         </websocket:handshake-interceptors> -->
+<!-- 	</websocket:handlers> -->
+	
+	<!-- MultipartResolver -->
+<!-- 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" /> -->
+	
+	<!-- DataSource -->
+<!-- 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+<!-- 		<property name="jndiName" value="java:comp/env/jdbc/final" /> -->
+<!-- 	</bean> -->
+	
+	<!-- MyBatis -->
+	<bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:kosta/teamd/config/config.xml" />
+		<property name="mapperLocations" value="classpath*:kosta/teamd/mapper/*.xml" />
+	</bean>
+	
+	<!-- SqlSessionTemplate : Spring에서 제공하는 template -->
+	<bean id="template" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="factoryBean" />
+	</bean>
+	
+	<!-- Tiles3 -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles/tiles-definitions.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+		
+<!-- 		 ViewResolver보다 먼저 수행되도록 value 0으로 준다 -->
+		<property name="order" value="0" />
+	</bean>
+	
+	<!-- Transactional -->
+<!-- 	<bean id="transactionManager" -->
+<!-- 		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> -->
+<!-- 		<property name="dataSource" ref="dataSource" />	   -->
+<!-- 	</bean> -->
+	
+	<!-- transaction annotation 방식 설정 -->
+<!-- 	<tx:annotation-driven transaction-manager="transactionManager" /> -->
+
+</beans>

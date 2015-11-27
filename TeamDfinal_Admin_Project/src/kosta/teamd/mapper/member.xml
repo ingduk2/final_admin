@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="member">
+    
+    	<!-- 관리자 전체 다 뽑기 -->
+    	<!-- 가입일 추가하고 orderby desc로 뽑 -->
+    	<select id="selectallMember" resultType="mvo">
+    		select * from member
+    	</select>
+    	
+    	<!-- 아이디 존재유무 체크 -->
+    	<select id="midCntCheck" parameterType="String" resultType="int">
+    		select count(*) cnt from member where mid=#{mid}
+    	</select>
+    	
+    	<!-- 이메일 존재유무 체크 -->
+    	<select id="memailCntCheck" parameterType="String" resultType="int">
+    		select count(*) cnt from member where memail=#{memail}
+    	</select>
+    
+    	<!-- 회원 정보 등록 -->
+    	<insert id="insertMember" parameterType="mvo">
+    		insert into member values(
+    		#{mid}, #{mname}, #{memail}, #{mpwd}, #{mpwdkey}, #{mpwdval}, 
+    		#{mbirth}, #{mtel}, #{mpost}, #{mroad}, #{mjibun}, #{mimg}, 
+    		#{mintro}, 3, 0, sysdate, 1
+    		)
+    	</insert>
+    	
+    	<!-- 회원 권한 등록 -->
+    	<insert id="insertMemRoles" parameterType="mrvo">
+    		insert into memroles values(
+    		#{mid}, 'User'
+    		)
+    	</insert>
+    	
+    	<!-- 회원 정보 삭제 -->
+    	<delete id="deleteMember" parameterType="String">
+    		delete from member where mid=#{mid}
+    	</delete>
+    	
+    	<!-- 회원 권한 삭제 -->
+    	<delete id="deleteMemRoles" parameterType="String">
+    		delete from memroles where mid=#{mid}
+    	</delete>
+    	
+    	<!-- 회원 정보 검색 -->
+    	<select id="selectMember" parameterType="String" resultType="mvo">
+    		select * from member where mid=#{mid}
+    	</select>
+    	
+    	<!-- 회원 권한 검색 -->
+    	<select id="selectMemRoles" parameterType="String" resultType="mrvo">
+		    select * from memroles where mid=#{mid}
+    	</select>
+    	
+    	<!-- 회원 정보 수정 -->
+    	<update id="updateMember" parameterType="mvo">
+    		update member set
+    		memail=#{memail}, mpwd=#{mpwd}, mpwdkey=#{mpwdkey}, mpwdval=#{mpwdval}, mtel=#{mtel},
+    		mpost=#{mpost}, mroad=#{mroad}, mjibun=#{mjibun}, mimg=#{mimg}, mintro=#{mintro}
+    		where mid=#{mid}
+    	</update>
+    	
+    	<!-- 회원 제재 상태 풀리는 시간 검색 -->
+    	<select id="selectFreetime" parameterType="String" resultType="String">
+    		select to_char(mfreetime, 'yyyymmddhh24mi') mfreetime from member where mid=#{mid}
+    	</select>
+    	
+    	<!-- 회원 제재 상태 권한 복권 수정 -->
+    	<update id="updateRoleUp" parameterType="String">
+    		update memroles set role='User' where mid=#{mid}
+    	</update>
+    	
+    	<!-- 회원 아이디 찾기 -->
+    	<select id="findMid" parameterType="mvo" resultType="String">
+    		select mid from member where mname=#{mname} and memail=#{memail} and mtel=#{mtel}
+    	</select>
+    	
+    	<!-- 회원 비밀번호 찾기 질문 찾기 -->
+    	<select id="findMpwdKey" parameterType="mvo" resultType="String">
+    		select mpwdkey from member where mid=#{mid} and memail=#{memail}
+    	</select>
+    	
+    	<!-- 회원 비밀번호 찾기 -->
+    	<select id="findMpwd" parameterType="mvo" resultType="String">
+    		select mpwd from member where mid=#{mid} and memail=#{memail} and mpwdval=#{mpwdval}
+    	</select>
+    
+    </mapper>

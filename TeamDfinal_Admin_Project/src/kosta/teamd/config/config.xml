@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+  	<typeAliases>
+  	
+  		<!-- 입양 -->
+		<typeAlias type="kosta.teamd.vo.AdoptApplyVO" alias="adavo"/>
+  	
+  		<typeAlias type="kosta.teamd.vo.MemberVO" alias="mvo" />       <!-- member -->
+  		<typeAlias type="kosta.teamd.vo.MemRolesVO" alias="mrvo" />    <!-- memroles -->
+  		
+  		<typeAlias type="kosta.teamd.vo.AnimalVO" alias="anivo" />     <!-- animal -->
+  		
+  		<typeAlias type="kosta.teamd.vo.BoardVO" alias="bvo" />        <!-- board -->
+  		<typeAlias type="kosta.teamd.vo.CommBoardVO" alias="cbvo" />   <!-- commboard -->
+  		
+  		<typeAlias type="kosta.teamd.vo.AniBoardVO" alias="abvo"/>  <!-- 이미지게시판용.. -->
+  		
+  		
+  		<typeAlias type="kosta.teamd.vo.VolunteerVO" alias="vvo"/>
+		<typeAlias type="kosta.teamd.vo.VapplyVO" alias="vavo"/>
+		<typeAlias type="kosta.teamd.vo.VolunteerJoinVO" alias="vjvo"/> <!-- 봉사 join vo -->
+		<typeAlias type="kosta.teamd.vo.volFkVO" alias="fkvo"/> <!-- 외래키 지우는용 vo -->
+		
+		<typeAlias type="kosta.teamd.vo.CenterVO" alias="cvo"/>
+		
+		
+		<typeAlias type="kosta.teamd.vo.ChartVO" alias="chvo"/>
+		
+
+		<!-- 차트용 vo  -->
+		<typeAlias type="kosta.teamd.vo.AnimalsVO" alias="anvo"/> <!--  동물 차트용  -->
+		
+		
+		<!-- 차트 대량! -->
+		<!-- 차트 멤버 지역별 -->
+		<typeAlias type="kosta.teamd.vo.ChartMemberVO" alias="chmvo"/>
+		<!-- 차트 멤버 연령별 -->
+		<typeAlias type="kosta.teamd.vo.ChartMemAgeVO" alias="chmavo"/>
+		<typeAlias type="kosta.teamd.vo.ChartAniBreedVO" alias="cabvo"/>
+		
+		
+
+  	</typeAliases>
+  </configuration>

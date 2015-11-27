@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vapply"> <!-- vavo -->
+	<insert id="insert" parameterType="vavo">
+		insert into vapply values(vapply_seq.nextVal,#{memid},#{volunteerno},sysdate)
+	</insert>
+	
+	
+	<!-- 이 2개를 다이나믹 쿼리로 고쳐보자! -->
+	<!-- 봉사 전체가 지워졌을떄 신청한 것들을 같이 지워버려야함 -->
+	<delete id="delete" parameterType="int">
+		delete vapply where volunteerno=#{valunteerno}
+	</delete>
+	
+	<!-- 봉사 하나만 지웠을때 아이디와 no로 키값으로 구분한다. -->
+	<delete id="deleteone" parameterType="vavo">
+		delete vapply where volunteerno=#{volunteerno} and memid=#{memid}
+	</delete>
+	
+	<select id="cnt" parameterType="vavo" resultType="int">
+		select count(*) cnt from vapply where volunteerno=#{volunteerno} and memid=#{memid}
+	</select>
+</mapper>

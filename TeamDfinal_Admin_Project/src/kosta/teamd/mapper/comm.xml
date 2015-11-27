@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="commboard">
+    	<insert	id="commins" parameterType="cbvo">
+    	insert into commboard 
+    	values(commboard_seq.nextVal, #{bno}, #{cbcontent}, #{mid},
+    	#{cbip}, sysdate, 0)
+    	</insert>
+    	
+    	<select id="commlist" resultType="cbvo" parameterType="int">
+    		select 
+    		cbno, bno, cbcontent, mid, to_char(cbdate,'yy"년"mm"월"dd"일"') cbdate  
+    		from commboard where bno=#{bno} order by cbno desc
+    	</select>
+    	
+    	<delete id="commdelete" parameterType="int">
+    		delete commboard where cbno=#{cbno} 
+    	</delete>
+    	
+    	<select id="commdetail" resultType="cbvo" parameterType="int">
+    		select * from commboard where bno=#{bno} and cbno=#{cbno}
+    	</select>
+    	
+    	<update id="commupdate" parameterType="cbvo">
+    		update commboard set cbcontent=#{cbcontent} where cbno=#{cbno}
+    	</update>
+    	
+    </mapper>

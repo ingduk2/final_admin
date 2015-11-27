@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="animal">
+    
+    <insert id="imgins" parameterType="anivo">
+     insert into animal 
+     values(animal_seq.nextVal, #{anispecies}, #{anibreed}, #{aniname}, #{aniage},
+     	#{anisex}, #{anisize}, #{aniweight}, #{anifeature}, #{aniregion}, sysdate,
+     	#{aniimg})
+	<selectKey keyProperty="anino" resultType="int" order="AFTER">
+		SELECT animal_seq.currval FROM dual
+	</selectKey>
+    </insert>
+
+
+    
+    <select id="imglist" resultType="abvo" >
+     select a.anino anino, a.aniimg aniimg, a.anispecies anispecies, 
+     a.anibreed anibreed, a.aniname aniname, a.aniage aniage, a.anisex anisex,
+     a.aniregion aniregion, to_char(a.anidate,'yy-mm-dd') anidate, b.btitle btitle,  b.bno bno,
+     b.mid mid, b.bhit bhit, b.bdate bdate  from animal a, board b where a.anino = b.anino and a.anino!=0
+     order by anino desc
+     <!-- 다이나믹 쿼리 ... -->  
+    </select>
+    
+    
+    <select id="imgdetail" resultType="abvo" parameterType="int">
+    select a.anino anino, a.aniimg aniimg, a.anispecies anispecies, 
+     a.anibreed anibreed, a.aniname aniname, a.aniage aniage, a.anisex anisex, a.anisize anisize,
+     a.aniregion aniregion, a.anifeature anifeature, to_char(a.anidate,'yy-mm-dd') anidate, b.btitle btitle, 
+     b.bno bno, b.mid mid, b.bcontent bcontent,b.brpt brpt ,b.bhit bhit, b.bdate bdate  from animal a, board b where a.anino=#{anino} and b.anino=#{anino}
+    </select>
+    
+    
+    <delete id="imgdelete" parameterType="int">
+    	delete animal where anino=#{anino} 
+    </delete>
+    
+    <update id="imgupdate" parameterType="anivo">
+		update animal set aniimg=#{aniimg} where anino=#{anino}
+    </update>
+    
+    
+    <select id="imgcnt" resultType="int">
+    	select count(*) from animal
+    </select>
+    
+    <!-- 대분류 종류 카운트 -->
+    <select id="anispectes" resultType="anvo">
+    select ANISPECIES, count(ANISPECIES) cnt from animal where anino!=0 GROUP by ANISPECIES order by 1
+    </select>
+    
+    <!-- 소분류 종류 카운트 -->
+    <select id="anis" resultType="anvo">
+     select ANISPECIES, anibreed, count(anibreed) cnt  from animal GROUP by ANISPECIES, anibreed order by 1
+    </select>
+    
+    </mapper>

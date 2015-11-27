@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <!-- // board table vo
+			private int bcode;        // 분류코드
+			private int boricode;     // 원래 분류코드
+			private int bno;          // 글 번호
+			private String btitle;    // 제목
+			private String mid;       // 작성자(회원 아이디)
+			private String bcontent;  // 내용
+			private String bdate;     // 작성 일자
+			private int bhit;         // 조회수
+			private int anino;        // 연관 동물 번호
+			private int bref;         // 답글_원본 글 번호
+			private int bseq;         // 답글_답글 순서
+			private int blvl;         // 답글_트리 단계
+			private String bip;       // 작성자 IP
+			private String bfile;     // 첨부 파일 이름
+			private int brpt;         // 신고당한 횟수
+     -->
+    <mapper namespace="board">   <!-- bvo -->
+    <insert id="insert" parameterType="bvo">
+    	insert into board values(
+    	#{bcode}, #{bcode}, board_seq.nextVal, #{btitle}, #{mid}, #{bcontent}, 
+    	sysdate, 0, 0, board_seq.nextVal, 1, #{blvl}, #{bip}, #{bfile}, 0)
+    </insert>
+    
+    <select id="getlist" resultType="bvo" parameterType="bvo">
+    	select
+    	bcode, boricode, bno, btitle, mid, bcontent,
+    	to_char(bdate, 'yyyy/mm/dd') as	bdate,
+    	bhit, anino, bref, bseq, blvl, bip, bfile, brpt  
+    	from board 
+    		<if test="searchType!=null">
+    			<where>
+    				<choose>
+    					<when test="searchType==1">
+    						btitle like '%' || #{searchValue} || '%'
+    					</when>
+    					<when test="searchType==2">
+    						mid like '%' || #{searchValue} || '%'
+    					</when>
+    					<when test="searchType==3">
+    						bcontent like '%' || #{searchValue} || '%'
+    					</when>
+    				</choose>
+    			</where>
+    			and bcode=#{bcode} 
+    		</if>
+    		<if test="searchType==null">
+    			where bcode=#{bcode} 
+    		</if>
+    	order by bref desc, bseq asc
+    </select>
+    
+    
+    <!-- <![CDATA[replace(replace(bcontent,chr(10),'<br>') ]]>
+    	,chr(13),'') bcontent, 함수로 만듬--> 
+    <select id="detail" parameterType="int" resultType="bvo">
+    	select 
+    	bcode, boricode, bno, btitle, mid, 
+    	<![CDATA[replace(replace(bcontent, chr(10), '<br>'), chr(13), '')]]> as bcontent, 
+    	to_char(bdate, 'yyyy/mm/dd') as	bdate,
+    	bhit, anino, bref, bseq, blvl, bip, bfile, brpt 
+    	from board where bno=#{bno}
+    </select>
+    
+    <select id="updateform" parameterType="int" resultType="bvo">
+    	select 
+    	bcode, boricode, bno, btitle, mid, 
+    	bcontent,
+    	to_char(bdate, 'yyyy/mm/dd') as	bdate,
+    	bhit, anino, bref, bseq, blvl, bip, bfile, brpt 
+    	from board where bno=#{bno}
+    </select>
+    
+    <delete id="delete" parameterType="int">
+    	delete board where bno=#{bno}
+    </delete>
+    
+    <update id="update" parameterType="bvo">
+    	update board set btitle=#{btitle}, bcontent=#{bcontent} where bno=#{bno}
+    </update>
+    
+     <insert id="imgins" parameterType="bvo">
+    	insert into board 
+    	values(100, 100, board_seq.nextVal, #{btitle}, #{mid}, #{bcontent}, sysdate,
+    	 0, #{anino}, 1, 1, 1 , #{bip}, '테스트', 0)
+  	 </insert>
+  	 
+  	 <delete id="imgdelete" parameterType="int">
+  	 	delete board where anino=#{anino}
+  	 </delete>
+  	 
+  	 <update id="imgupdate" parameterType="bvo">
+  	 	update board set btitle=#{btitle}, bcontent=#{btitle} 
+		where anino=#{anino}	
+  	 </update>
+    
+    
+    <update id="hitBoard" parameterType="int">
+    	update board set bhit=bhit+1 where bno=#{bno}
+    </update>
+    
+    <insert id="insertreply" parameterType="bvo">
+     	insert into board values(
+    	#{bcode}, #{bcode}, board_seq.nextVal, #{btitle}, #{mid}, #{bcontent}, 
+    	sysdate, 0, 0, #{bref}, #{bseq}, #{blvl}, #{bip}, #{bfile}, 0)   	
+    </insert>
+    
+    <update id="replyupdate" parameterType="bvo">
+    	update board set bseq=bseq+1 where bseq >= #{bseq} and bref=#{bref}
+    </update>
+    
+    <select id="namecard" parameterType="String" resultType="mvo">
+    	select * from member where mid=#{mid}
+    </select>
+    
+    
+    <!-- 일반,이미지 공통 사용... 조회수, 신고수  -->
+<!--     <update id="cnt" parameterType="int"> -->
+<!--     	update board set hit=hit+1 where bno=#{bno} -->
+<!--     </update> -->
+  
+    <!-- 게시판 신고수 업데이트 -->
+    <update id="brpt" parameterType="int">
+    	update board set brpt=brpt+1 where bno=#{bno} 
+    </update>
+    
+    <!-- 사용자 신고당한 수 업데이트 -->
+    <update id="mrpt" parameterType="String">  
+    	update member set mrpt=mrpt+1 where mid=#{mid}
+    </update>
+
+	<select id="cntrpt" resultType="int" parameterType="String">
+		select mrpt from member where mid=#{mid}
+	</select>
+	
+<!-- 	<select> -->
+		
+<!-- 	</select> -->
+
+    </mapper>

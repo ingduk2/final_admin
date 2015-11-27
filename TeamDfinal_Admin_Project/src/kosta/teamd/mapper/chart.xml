@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chart">
+	<select id="selectall" resultType="chvo" parameterType="String">
+		select * from chart where to_char(cdate,'yyyy') = #{year} order by cdate
+	</select>
+	
+	<select id="selectallchartmember" resultType="chmvo">
+		select rtrim(substr(mroad,1,instr(mroad,' ',1,1))) city , count(mid) city_count from member 
+		group by substr(mroad,1,instr(mroad,' ',1,1))
+	</select>
+	
+	<select id="selectallmemage" resultType="chmavo">
+select count(CASE WHEN a.age between 1 and 9 then 1 end) a0
+,count(CASE WHEN a.age between 10 and 19 then 1 end) a10
+,count(CASE WHEN a.age between 20 and 28 then 1 end) a20
+,count(CASE WHEN a.age between 30 and 39 then 1 end) a30
+,count(CASE WHEN a.age between 40 and 49 then 1 end) a40
+,count(CASE WHEN a.age >=50 then 1 end) a50
+from (select trunc(months_between(sysdate,to_date(mbirth,'yyyy/mm/dd'))/12)+1 age from member) a
+	</select>
+	
+	<select id="selectallanibreed" resultType="cabvo">
+		select anispecies, count(anispecies) cnt, anibreed from animal where anino!=0 group by anispecies, anibreed order by 1
+	</select>
+	
+</mapper>

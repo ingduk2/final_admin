@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="center"> <!-- cvo -->
+	<insert id="insert" parameterType="cvo">
+		insert into center values(center_seq.nextVal,#{cname},#{caddr},#{cxy})
+	</insert>
+	
+	<select id="list" parameterType="bvo" resultType="cvo">
+		select * from center
+		<if test="searchType!=null">
+    			<where>
+    				<choose>
+    					<when test="searchType==1">
+    						cname like '%' || #{searchValue} || '%'
+    					</when>
+    					<when test="searchType==2">
+    						caddr like '%' || #{searchValue} || '%'
+    					</when>
+    				</choose>
+    			</where>
+    		</if>
+	</select>
+</mapper>

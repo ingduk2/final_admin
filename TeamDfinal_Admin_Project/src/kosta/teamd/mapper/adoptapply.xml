@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="adopt"> <!-- adavo -->
+    
+   <insert id="insertadopt" parameterType="adavo">
+   	insert into adoptapply values(adopt_seq.nextVal,#{mid},#{anino}
+   	,'직원',#{memage},#{score},#{qus1},#{qus1sup1},#{qus2},#{qus2sup1},#{qus3},
+   	#{qus4},#{qus5},#{qus6},#{qus6sup1},#{qus7},#{qus8},#{qus9},#{qus10})
+   </insert>
+    
+    <select id="selectalladopt" resultType="adavo">
+    select * from adoptapply
+    </select>
+    
+    </mapper>

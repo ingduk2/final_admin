@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+	<!-- 
+		// commboard table vo
+	private int cbno;          // 댓글 번호
+	private int bno;           // 원본 글 번호
+	private String cbcontent;  // 댓글 내용
+	private String mid;        // 댓글 작성자(회원 아이디)
+	private String cbip;       // 작성자 IP
+	private String cbdate;     // 댓글 작성 일자
+	private int cbrpt;         // 신고당한 횟수
+	 -->
+	
+    <mapper namespace="comm">   <!-- cbvo -->
+    	
+    <insert id="insertComm" parameterType="cbvo">
+    	insert into commboard values(
+    		commboard_seq.nextVal, #{bno}, #{cbcontent}, #{mid}, #{cbip}, sysdate, #{cbrpt} 
+    	)
+    </insert>
+
+	<select id="getCommlist" parameterType="int" resultType="cbvo">
+		select
+			cbno, bno, cbcontent, mid, cbip,
+			to_char(cbdate, 'yyyy/mm/dd') as cbdate
+		from commboard where bno=#{bno} order by cbno desc
+	</select>
+	
+	<delete id="deleteComm" parameterType="int">
+		delete commboard where cbno=#{cbno}
+	</delete>
+	
+    </mapper>

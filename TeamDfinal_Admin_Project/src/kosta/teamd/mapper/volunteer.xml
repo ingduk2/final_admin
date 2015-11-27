@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vol"> <!-- vvo 봉사관리-->
+	<!-- 날짜 먼저온순으로 뽑아버리면 calEvent.id를 사용 해 볼 수 있을듯 -->
+	<insert id="insertcal" parameterType="vvo">
+		insert into volunteer values(volunteer_seq.nextVal,#{volunteertitle},#{volunteerstart},#{volunteerend})
+		<selectKey keyProperty="volunteerno" resultType="int" order="AFTER">
+			select volunteer_seq.currval from dual
+		</selectKey>
+	</insert>
+	
+	<select id="selectcal" resultType="vvo">
+		select volunteerno, volunteertitle, to_char(volunteerstart,'yyyy-mm-dd') volunteerstart, to_char(volunteerend,'yyyy-mm-dd') volunteerend from volunteer
+	</select>
+	
+	<delete id="deletecal" parameterType="int">
+		delete from volunteer where volunteerno = #{volunteerno}
+	</delete>
+	
+	<!-- 
+	<td>${list.vapplyno }</td> 
+			<td>${list.memid }</td>
+			<td>${list.volunteerno }</td>
+			<td>${list.volunteertitle}</td>
+			<td>${list.vapplydate }</td> -->
+	<select id="selectjoin" resultType="vjvo">
+		select va.vapplyno vapplyno , va.memid memid, 
+		v.volunteerno volunteerno , v.volunteertitle volunteertitle,
+		va.vapplydate vapplydate from volunteer v, vapply va where v.volunteerno = va.volunteerno
+	</select>
+</mapper>
