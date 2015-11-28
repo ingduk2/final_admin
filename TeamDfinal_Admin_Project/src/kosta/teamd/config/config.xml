@@ -34,6 +34,11 @@
 		<!-- 차트용 vo  -->
 		<typeAlias type="kosta.teamd.vo.AnimalsVO" alias="anvo"/> <!--  동물 차트용  -->
 		
+		<!-- 동물관리 vo -->
+		<typeAlias type="kosta.teamd.vo.AnimalManageVO" alias="amvo"/> 
+		<!-- 직원 직급 연봉 vo -->
+		<typeAlias type="kosta.teamd.vo.EmployeeVO" alias="emvo"/>
+		
 		
 		<!-- 차트 대량! -->
 		<!-- 차트 멤버 지역별 -->

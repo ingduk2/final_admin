@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <style>
@@ -70,11 +70,11 @@ li { list-style: none}
  <div class="faq">
 
   <h4>
-   <a href="#none">회원 관리</a>
+   <a href="formMember">회원 관리</a>
   </h4>
   <div>
-  	 <a href="formMember">강제 탈퇴</a><br />
-  	 <a href="formChart?year=2012">강제 수정</a><br /> 
+<!--   	 <a href="formMember">강제 탈퇴</a><br /> -->
+<!--   	 <a href="formChart?year=2012">강제 수정</a><br />  -->
   </div>
 
   <h4>
@@ -88,34 +88,66 @@ li { list-style: none}
   </div>
   
   <h4>
-   <a href="#none">신청자 관리</a>
+   <a href="selectallAdopt">입양 신청 관리</a>
   </h4>
     <div>
-  	 <a href="selectallAdopt">입양 신청자</a><br />
-  	 <a href="formCal">봉사 신청자</a><br /> 
+<!--   	 <a href="selectallAdopt">입양 신청자</a><br /> -->
+<!--   	 <a href="formCal">봉사 신청자</a><br />  -->
   </div>
   
   <h4>
-   <a href="#none">센터 관리</a>
+   <a href="formCal">봉사 신청 관리</a>
   </h4>
     <div>
-  	 <a href="formCenter">센터 입력</a><br />
-  	 <a href="">센터 수정</a><br />
-  	 <a href="">센터 삭제</a><br />  
+<!--   	 <a href="selectallAdopt">입양 신청자</a><br /> -->
+<!--   	 <a href="formCal">봉사 신청자</a><br />  -->
+  </div>
+  
+  <h4>
+   <a href="formCenter">센터 관리</a>
+  </h4>
+    <div>
+<!--   	 <a href="formCenter">센터 입력</a><br /> -->
+<!--   	 <a href="">센터 수정</a><br /> -->
+<!--   	 <a href="">센터 삭제</a><br />   -->
   </div>
   
    <h4>
-   <a href="#none">밥 주기</a>
+   <a href="drag">밥 주기</a>
   </h4>
     <div>
-  	 <a href="drag">밥 주장</a><br />  
+<!--   	 <a href="drag">밥 주장</a><br />   -->
   </div>
 
 	<h4>
-   <a href="#none">동물 관리</a>
+   <a href="testani">동물 관리</a>
   </h4>
     <div>
-  	 <a href="testani">animal</a><br />  
+<!--   	 <a href="testani">animal</a><br />   -->
+  </div>
+  
+  	<h4>
+   <a href="selectallEmployee">직원 관리</a>
+  </h4>
+    <div>
+<!--   	 <a href="selectallEmployee">직원 관리</a><br />   -->
+  </div>
+  
+
+  
+  	<h4>
+  	
+<c:if test="${pageContext.request.userPrincipal.name == null}">
+		<a href="#">동물관리 현황</a>
+</c:if>
+					
+<c:if test="${pageContext.request.userPrincipal.name != null}">
+<a href="selectallanimalmanage/${pageContext.request.userPrincipal.name }">동물관리 현황</a>
+</c:if>
+   
+  </h4>
+    <div>
+<!--   	 <a href="selectallEmployee">직원 관리</a><br />   -->
   </div>
 
  </div>

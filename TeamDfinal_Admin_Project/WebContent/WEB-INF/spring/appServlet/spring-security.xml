@@ -17,10 +17,80 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-<beans:bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-	<beans:property name="jndiName" value="java:comp/env/jdbc/final"></beans:property>
-</beans:bean>
+<!-- 이름들 내가 커스터마이징 할 수 있게 해주는 설정 -->
+	<beans:bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter">
+		<beans:property name="rolePrefix" value="" />
+	</beans:bean>
+	
+	<beans:bean id="accessDecisionManager" 
+				class="org.springframework.security.access.vote.AffirmativeBased">
+		<beans:constructor-arg name="decisionVoters" ref="roleVoter" />
+	</beans:bean>
+	
+	<!-- dataSource -->
+	<beans:bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<beans:property name="jndiName" value="java:comp/env/jdbc/final" />
+	</beans:bean>
+	
+	<!-- 인증(users-by-username-query) / 권한(authorities-by-username-query) -->
+	<!-- authentication-manager id는 마음대로 설정 가능 -->
+	<authentication-manager id="jdbc-auth">
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"		
+				users-by-username-query="select mid, mpwd,enabled from member where mid=?"
+				authorities-by-username-query="select mid, role from memroles where mid=?"
+			/>
+		</authentication-provider>
+	</authentication-manager>
+	
+	
+	
+	<!-- 
+		authentication-manager-ref : 인증(허가권)을 관리하는 매니저가 참조하는 속성(설정)
+		access-decision-manager-ref : 기본 ACL을 사용자 정의로 변경하는 설정을 참조하는 설정
+	 -->
+	<http authentication-manager-ref="jdbc-auth"
+	 	  access-decision-manager-ref="accessDecisionManager">
+	 	  
+		<!-- 각 페이지 접근 권한 설정 -->
+		<!-- 회원 -->
+<!-- 		<intercept-url pattern="/selectoneMember" access="User, Admin" /> 회원 정보 보기 -->
+		
+		<!-- 게시판 -->
+<!-- 		<intercept-url pattern="/formBoard" access="User, Admin" /> 글 쓰기 폼 -->
+<!-- 		<intercept-url pattern="/formReply" access="User, Admin" /> 답글 쓰기 폼 -->
+<!-- 		<intercept-url pattern="/insertComm" access="User, Admin" /> 댓글 등록 -->
+	 	
+	 	<!-- login 처리 -->
+	 	<form-login
+	 		login-page="/login" authentication-failure-url="/denied"
+	 		username-parameter="mid"
+	 		password-parameter="mpwd"
+	 		default-target-url="/index"
+	 	/>
+	 	
+	 	<!-- logout 처리 -->
+	 	<!-- logout-url="/j_spring_security_logout" : 이렇게 써두면 알아서 찾아감 -->
+	 	<logout invalidate-session="true" logout-success-url="/index"
+	 		logout-url="/j_spring_security_logout"
+	 	/>
+	 	
+	 	<!-- 권한없는 접근 처리 -->
+	 	<access-denied-handler error-page="/denied" />
+	 	
+	 	<!-- 동시 login 설정 -->
+	 	<!--
+	 		invalid-session-url : 세션이 끊겼을 떄 이동할 페이지
+	 		max-sessions : 최대 허용 가능 세션 수 
+	 		expired-url : 중복 로그인이 일어났을 경우 이동할 페이지
+	 	 -->
+	 	<session-management invalid-session-url="/index">
+	 		<concurrency-control max-sessions="1" expired-url="/login" />
+	 	</session-management>
+	 	
+	 </http>
+
 
 </beans:beans>

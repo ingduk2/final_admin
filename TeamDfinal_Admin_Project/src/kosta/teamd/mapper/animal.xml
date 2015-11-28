@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    <mapper namespace="animal">
+    <mapper namespace="animal"> <!-- amvo (animalmanage) -->
     
     <insert id="imgins" parameterType="anivo">
      insert into animal 
@@ -19,8 +19,8 @@
     <select id="imglist" resultType="abvo" >
      select a.anino anino, a.aniimg aniimg, a.anispecies anispecies, 
      a.anibreed anibreed, a.aniname aniname, a.aniage aniage, a.anisex anisex,
-     a.aniregion aniregion, to_char(a.anidate,'yy-mm-dd') anidate, b.btitle btitle,  b.bno bno,
-     b.mid mid, b.bhit bhit, b.bdate bdate  from animal a, board b where a.anino = b.anino and a.anino!=0
+     a.aniregion aniregion, to_char(a.anidate,'yy-mm-dd') anidate, a.anireward anireward, a.anistate anistate,
+     b.btitle btitle,  b.bno bno, b.mid mid, b.bhit bhit, b.bdate bdate  from animal a, board b where a.anino = b.anino and a.anino!=0
      order by anino desc
      <!-- 다이나믹 쿼리 ... -->  
     </select>
@@ -55,6 +55,23 @@
     <!-- 소분류 종류 카운트 -->
     <select id="anis" resultType="anvo">
      select ANISPECIES, anibreed, count(anibreed) cnt  from animal GROUP by ANISPECIES, anibreed order by 1
+    </select>
+    
+    
+    <!-- 관리자 -->
+    <update id="updateAniState" parameterType="anivo">
+    	update animal set anistate=#{anistate} where anino=#{anino}
+    </update>
+    
+    <insert id="insertanimalmanage" parameterType="amvo">
+    	insert into animalmanage values(am_seq.nextVal,#{mid},#{anino},0,0,0)
+    </insert>
+    
+    <select id="selectallanimalmanage" parameterType="amvo" resultType="amvo">
+    	select * from animalmanage 
+    	<if test="mid != 'admin'">
+    	where mid=#{mid}	
+		</if>
     </select>
     
     </mapper>

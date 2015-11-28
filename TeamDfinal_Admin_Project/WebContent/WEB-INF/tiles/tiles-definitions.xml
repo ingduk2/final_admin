@@ -37,6 +37,9 @@
 	<definition name="animaltest/*" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/animaltest/{1}.jsp"/>
 	</definition>
+	<definition name="employee/*" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/employee/{1}.jsp"/>
+	</definition>
 	
 	
 </tiles-definitions>

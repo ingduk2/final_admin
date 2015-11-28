@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kosta.teamd.vo.AniBoardVO;
+import kosta.teamd.vo.AnimalManageVO;
 import kosta.teamd.vo.AnimalVO;
 import kosta.teamd.vo.BoardVO;
 
@@ -48,4 +49,18 @@ public class AnimalDao{
 	}
 	
 	
+	public void updateAniState(AnimalVO avo){
+		ss.update("animal.updateAniState",avo);
+		
+	}
+	
+	public void insertAnimalManage(AnimalManageVO amvo){
+		ss.insert("animal.insertanimalmanage",amvo);
+	}
+	
+	public List<AnimalManageVO> selectallanimalmanage(AnimalManageVO amvo){
+		System.out.println("Log");
+		return ss.selectList("animal.selectallanimalmanage", amvo);
+		
+	}
 }

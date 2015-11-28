@@ -14,9 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import kosta.teamd.mvc.dao.AnimalDao;
 import kosta.teamd.mvc.dao.AnimalsDao;
 import kosta.teamd.mvc.dao.ChartDao;
+import kosta.teamd.mvc.dao.EmployeeDao;
 import kosta.teamd.vo.AniBoardVO;
 import kosta.teamd.vo.AnimalsVO;
 import kosta.teamd.vo.ChartAniBreedVO;
+import kosta.teamd.vo.EmployeeJoinVO;
+import kosta.teamd.vo.MemberVO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -32,6 +35,9 @@ public class AnimalChart {
 	
 	@Autowired
 	private ChartDao cdao;
+	
+	@Autowired
+	private EmployeeDao edao;
 	
 	// 아작스 
 	@RequestMapping(value="animalcnt")
@@ -103,6 +109,11 @@ public class AnimalChart {
 		System.out.println(e.getCnt());
 		System.out.println(e.getAnispecies());
 		}
+		
+		List<MemberVO> listy= edao.selectyesEmployee();
+		
+		//option 채우기 위함. 가능한 직원들로!
+		mav.addObject("listy",listy);
 		return mav;
 	}
 }
