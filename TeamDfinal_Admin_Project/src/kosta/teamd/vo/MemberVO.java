@@ -22,8 +22,15 @@ public class MemberVO {
 	private int mrptlimit;     // 하루 신고 제한 횟수
 	private int mrpt;          // 신고당한 횟수
 	private String mfreetime;  // 제재 종료 시간
+	private int mstatus;		//상태 -- mstatus: 1-일반 회원 / 2-직원
 	private int enabled;       // 아이디 활성화 여부
 	
+	public int getMstatus() {
+		return mstatus;
+	}
+	public void setMstatus(int mstatus) {
+		this.mstatus = mstatus;
+	}
 	public String getMid() {
 		return mid;
 	}

@@ -16,10 +16,7 @@ import net.sf.json.JSONObject;
 @Controller
 public class TestController {
 	
-	@RequestMapping(value="/")
-	public String a(){
-		return "admin";
-	}
+	
 	
 	@RequestMapping(value="/main")
 	public String b(){

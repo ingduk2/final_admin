@@ -1,212 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-    <style>
-    Highcharts.createElement('link', {
-   href: '//fonts.googleapis.com/css?family=Unica+One',
-   rel: 'stylesheet',
-   type: 'text/css'
-}, null, document.getElementsByTagName('head')[0]);
-
-Highcharts.theme = {
-   colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
-      "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
-   chart: {
-      backgroundColor: {
-         linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-         stops: [
-            [0, '#2a2a2b'],
-            [1, '#3e3e40']
-         ]
-      },
-      style: {
-         fontFamily: "'Unica One', sans-serif"
-      },
-      plotBorderColor: '#606063'
-   },
-   title: {
-      style: {
-         color: '#E0E0E3',
-         textTransform: 'uppercase',
-         fontSize: '20px'
-      }
-   },
-   subtitle: {
-      style: {
-         color: '#E0E0E3',
-         textTransform: 'uppercase'
-      }
-   },
-   xAxis: {
-      gridLineColor: '#707073',
-      labels: {
-         style: {
-            color: '#E0E0E3'
-         }
-      },
-      lineColor: '#707073',
-      minorGridLineColor: '#505053',
-      tickColor: '#707073',
-      title: {
-         style: {
-            color: '#A0A0A3'
-
-         }
-      }
-   },
-   yAxis: {
-      gridLineColor: '#707073',
-      labels: {
-         style: {
-            color: '#E0E0E3'
-         }
-      },
-      lineColor: '#707073',
-      minorGridLineColor: '#505053',
-      tickColor: '#707073',
-      tickWidth: 1,
-      title: {
-         style: {
-            color: '#A0A0A3'
-         }
-      }
-   },
-   tooltip: {
-      backgroundColor: 'rgba(0, 0, 0, 0.85)',
-      style: {
-         color: '#F0F0F0'
-      }
-   },
-   plotOptions: {
-      series: {
-         dataLabels: {
-            color: '#B0B0B3'
-         },
-         marker: {
-            lineColor: '#333'
-         }
-      },
-      boxplot: {
-         fillColor: '#505053'
-      },
-      candlestick: {
-         lineColor: 'white'
-      },
-      errorbar: {
-         color: 'white'
-      }
-   },
-   legend: {
-      itemStyle: {
-         color: '#E0E0E3'
-      },
-      itemHoverStyle: {
-         color: '#FFF'
-      },
-      itemHiddenStyle: {
-         color: '#606063'
-      }
-   },
-   credits: {
-      style: {
-         color: '#666'
-      }
-   },
-   labels: {
-      style: {
-         color: '#707073'
-      }
-   },
-
-   drilldown: {
-      activeAxisLabelStyle: {
-         color: '#F0F0F3'
-      },
-      activeDataLabelStyle: {
-         color: '#F0F0F3'
-      }
-   },
-
-   navigation: {
-      buttonOptions: {
-         symbolStroke: '#DDDDDD',
-         theme: {
-            fill: '#505053'
-         }
-      }
-   },
-
-   // scroll charts
-   rangeSelector: {
-      buttonTheme: {
-         fill: '#505053',
-         stroke: '#000000',
-         style: {
-            color: '#CCC'
-         },
-         states: {
-            hover: {
-               fill: '#707073',
-               stroke: '#000000',
-               style: {
-                  color: 'white'
-               }
-            },
-            select: {
-               fill: '#000003',
-               stroke: '#000000',
-               style: {
-                  color: 'white'
-               }
-            }
-         }
-      },
-      inputBoxBorderColor: '#505053',
-      inputStyle: {
-         backgroundColor: '#333',
-         color: 'silver'
-      },
-      labelStyle: {
-         color: 'silver'
-      }
-   },
-
-   navigator: {
-      handles: {
-         backgroundColor: '#666',
-         borderColor: '#AAA'
-      },
-      outlineColor: '#CCC',
-      maskFill: 'rgba(255,255,255,0.1)',
-      series: {
-         color: '#7798BF',
-         lineColor: '#A6C7ED'
-      },
-      xAxis: {
-         gridLineColor: '#505053'
-      }
-   },
-
-   scrollbar: {
-      barBackgroundColor: '#808083',
-      barBorderColor: '#808083',
-      buttonArrowColor: '#CCC',
-      buttonBackgroundColor: '#606063',
-      buttonBorderColor: '#606063',
-      rifleColor: '#FFF',
-      trackBackgroundColor: '#404043',
-      trackBorderColor: '#404043'
-   },
-
-   // special colors for some of the
-   legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
-   background2: '#505053',
-   dataLabelsColor: '#B0B0B3',
-   textColor: '#C0C0C0',
-   contrastTextColor: '#F0F0F3',
-   maskColor: 'rgba(255,255,255,0.3)'
-};
-    </style>
     
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -215,9 +9,7 @@ Highcharts.theme = {
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/drilldown.js"></script>
 
-
  <script> 
-
     var anispecies;
     var anibreed;
     		$(function () {
@@ -225,14 +17,14 @@ Highcharts.theme = {
     		    	url: "animalcnt",
     		    	type: "GET",
     		    	success:function(res){
-    		    		alert(res);
+    		    		//alert(res);
     		    		var sp = res.split("/");
     		    		anispecies = JSON.parse(sp[0]);
     		    		anibreed = JSON.parse(sp[1]);
-    		    		alert(sp)    		    		
-    		    		alert(sp.length);
-    		    		alert(anispecies)
-    		    		alert(anibreed);
+    		    		//alert(sp)    		    		
+    		    		//alert(sp.length);
+    		    		//alert(anispecies)
+    		    		//alert(anibreed);
     		    		
     		    		
     		    		  $('#container').highcharts({
@@ -240,7 +32,7 @@ Highcharts.theme = {
     		    		            type: 'pie',
     		    		            	events: {
     		    		                    drillup: function (e) {
-    		    		                        alert('drill Up');
+    		    		                        //alert('drill Up');
     		    		                        console.log(this);
     		    		                        console.log(this.options.series[0].name);
     		    		                        console.log(this.options.series[0].data[0].name);
@@ -264,13 +56,13 @@ Highcharts.theme = {
     		    		                events:{
     		    		                	click: function (event, i){
     		    		                		var print="";
-    		    		                		alert(event.point.name);	
+    		    		                		//alert(event.point.name);	
     		    		                		$.each(anibreed,function(idx,item){
     	    		    	                    	if(item.name==event.point.name){
     	    		    	                    
     	    		    	             			print +="<h1>["+item.name+"]</h1></br><table><thead><tr><th>품종</th><th>수량</th></tr></thead><tbody>";
     	    		    	             			$.each(item.data, function(key, state){
-    	    		    	             				alert('key : '+key+'----'+state[0]+'----'+state[1]);
+    	    		    	             				//alert('key : '+key+'----'+state[0]+'----'+state[1]);
     	    		    	             				print += "<tr><td>"+state[0]+"</td><td align=\"right\">"+state[1]+"</td></tr>";
     	    		    	             			});
     	    		    	             			print += "</tbody></table>";
@@ -284,7 +76,6 @@ Highcharts.theme = {
     		    		        },
     		    		   
 	    		    	              
-
     		    		  
     		    		        tooltip: {
     		    		        	 headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
@@ -310,6 +101,78 @@ Highcharts.theme = {
     			alert("테스트");
     			$("#print").removeClass();
     		});
+    		
+$(function () {
+	$("[id='anistate']").change(function () {
+		alert($(this).val()); // 0/1
+		var v=$(this).val();
+		var datav=v.split("/");
+		//$(this option:selected).val();
+		//$('this option:selected').val()
+		$.ajax({
+	        url: "updateAniState", //"testAjax.jsp", 
+	        type: "POST",
+	        data:{
+	        	anino : datav[1],
+	        	anistate : datav[0]
+	        },
+	        success: function(msg) { //데이터 받는 부분.response
+	        //yes
+	        alert(msg);
+	        	
+	        	
+	        },
+	        error: function(a, b) {
+	            alert("Request: " + JSON.stringify(a));
+	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	        }
+	   
+	});
+	});
+});
+$(function() {
+	$("[id='mid']").change(function() {
+		alert($(this).val());
+		var vv=$(this).val();
+		var datavv=vv.split("/");
+		$.ajax({
+	        url: "insertAnimalManage", //"testAjax.jsp", 
+	        type: "POST",
+	        data:{
+	        	anino : datavv[1],
+	        	mid : datavv[0]
+	        },
+	        success: function(msg) { //데이터 받는 부분.response
+	        //yes
+	        alert(msg);
+	        	
+	        	
+	        },
+	        error: function(a, b) {
+	            alert("Request: " + JSON.stringify(a));
+	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	        }
+	   
+	});
+	});
+});
+// $(function () {
+// 	$.ajax({
+//         url: "selectpossibleEmployee", //"testAjax.jsp", 
+//         type: "POST",
+//         success: function(msg) { //데이터 받는 부분.response
+//         //yes
+//         alert(msg);
+//         $("#employee").html(msg);
+        	
+//         },
+//         error: function(a, b) {
+//             alert("Request: " + JSON.stringify(a));
+//             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//         }
+   
+// });
+// });
   
 </script>    
 
@@ -317,6 +180,7 @@ Highcharts.theme = {
 <div>
 <div id="container" ></div>&nbsp;<div id="print">-0-</div>
 
+<div id="animal_table">
 <table id='cal_table' class="table table-striped">
 	<thead class="table table-striped">
 <tr>
@@ -325,20 +189,66 @@ Highcharts.theme = {
 </thead>
 
 <tbody>
-<c:forEach items="${anisvo}" var="anisvo">
+<%-- <c:forEach items="${anisvo}" var="anisvo"> --%>
+<!-- <tr> -->
+<%-- <td>${anisvo.anispecies }</td> --%>
+<%-- <td>${anisvo.cnt }</td> --%>
+<!-- </tr> -->
+<%-- </c:forEach> --%>
+
+<c:forEach items="${ablilst }" var="anilist"  varStatus="i">
 <tr>
-<td>${anisvo.anispecies }</td>
-<td>${anisvo.cnt }</td>
+	<td>${i.count }</td>
+	<td>${anilist.anino }</td> 
+	<td><input type="hidden" id="anino+${i.count}" value="${anilist.anino }"/></td>
+	<td>${anilist.anispecies }</td>
+	<td>${anilist.anibreed }</td>
+	<td>${anilist.aniname }</td>
+	<td>${anilist.aniage }</td>
+	<td>${anilist.anisex }</td>
+	<td>${anilist.anistate }</td>
+	<td>
+	
+		<select disabled="disabled">
+			<c:if test="${anilist.anistate==0 }"><option selected="selected">보호중</option></c:if>
+			<c:if test="${anilist.anistate==1 }"><option selected="selected">입양대기</option></c:if>
+			<c:if test="${anilist.anistate==2 }"><option selected="selected">입양완료</option></c:if>
+			<c:if test="${anilist.anistate==3 }"><option selected="selected">실종</option></c:if>
+			<c:if test="${anilist.anistate==4 }"><option selected="selected">발견</option></c:if>
+			<c:if test="${anilist.anistate==5 }"><option selected="selected">개인 보호중</option></c:if>
+		</select>
+	</td>
+	<td>
+		<!-- 셀렉트 -->
+		<select name="anistate" id="anistate">
+			<option>--변경--</option>
+			<option value="0/${anilist.anino }">보호중</option>
+			<option value="1/${anilist.anino }">입양대기</option>
+			<option value="2/${anilist.anino }">입양완료</option>
+		</select>
+		
+	</td>
+	<td>
+		<select id="mid" name="mid">
+			<option>--선택--</option>
+			<c:forEach var="listyv" items="${listy }">
+			<option value="${listyv.mid}/${anilist.anino}">${listyv.mid}</option>
+			</c:forEach>
+		</select>
+	</td>
+	<!-- 기타 등등 -->
 </tr>
 </c:forEach>
 </tbody>
 
 <tfoot>
-<tfoot>
 		<tr>
 			<td><input type="button" value="무슨버튼!"/></td>
 		</tr>
 </tfoot>
+
 </table>
+</div>
+</div>
 <a href="anilistdown">동물 다운</a>
 </div>

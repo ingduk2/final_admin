@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="employee"> <!-- emvo -->
+    
+    <insert id="insertemployee" parameterType="emvo">
+    	insert into employee values(employee_seq.next_val,#{mid},#{emzic},#{emsalary})
+    </insert>
+    
+<!--     <select id="selectallemployee" resultType="emvo"> -->
+<!--     	select * from employee e, member m where e.mid=m.mid -->
+<!--     	and -->
+<!--     </select> -->
+
+	<update id="updateemployee" parameterType="emvo">
+		update employee set emzic=#{emzic} and emsalary=#{emsalary} where mid=#{mid}
+	</update>
+	
+	<select id="selectjoinemployee" resultType="emvo">
+    		select m.mid mid, m.mname mname, m.memail memail, e.emzic emzic, e.emsalary emsalary from member m, employee e 
+    		where e.mid=m.mid and  m.enabled=1 and m.mstatus=2 and m.mid!='admin'
+    	</select>
+    </mapper>

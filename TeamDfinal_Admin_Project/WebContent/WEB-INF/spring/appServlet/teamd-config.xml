@@ -17,7 +17,7 @@
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler/>
 <!-- 	<mvc:resources location="/resources/" mapping="/resources/**" /> -->
-	
+
 	<!-- ViewResolver -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="order" value="3" />
@@ -32,6 +32,25 @@
   	</bean>
 	
 	
+	
+	<!-- 스프링 메일 보내기 설정 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<property name="host" value="smtp.gmail.com"/>
+	<property name="port" value="587"/>
+	<property name="username" value="ggamagu100@gmail.com"/>
+	<property name="password" value="akekgk1357"/>
+	<property name="defaultEncoding" value="UTF-8"/>
+	<property name="javaMailProperties">
+	<props>
+	<prop key="mail.smtp.auth">true</prop>
+	<prop key="mail.smtp.starttls.enable">true</prop>
+	<prop key="mail.smtp.timeout">8500</prop>
+<!-- 	<prop key="mail.debug">true</prop> -->
+	</props>
+	</property>
+	</bean>
+	
+	
 		<!-- MultipartResolver -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	
@@ -44,7 +63,7 @@
 <!--             <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/> -->
 <!--         </websocket:handshake-interceptors> -->
 <!-- 	</websocket:handlers> -->
-	
+
 	<!-- MultipartResolver -->
 <!-- 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" /> -->
 	
@@ -81,13 +100,13 @@
 		<property name="order" value="2" />
 	</bean>
 	
-	<!-- Transactional -->
-<!-- 	<bean id="transactionManager" -->
-<!-- 		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> -->
-<!-- 		<property name="dataSource" ref="dataSource" />	   -->
-<!-- 	</bean> -->
+<!-- 	Transactional -->
+	<bean id="transactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />	  
+	</bean>
 	
-	<!-- transaction annotation 방식 설정 -->
-<!-- 	<tx:annotation-driven transaction-manager="transactionManager" /> -->
+<!-- 	transaction annotation 방식 설정 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>

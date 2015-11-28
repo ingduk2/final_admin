@@ -21,19 +21,18 @@
     		select count(*) cnt from member where memail=#{memail}
     	</select>
     
-    	<!-- 회원 정보 등록 -->
+    	<!-- 회원 정보 등록 2번 직원!-->
     	<insert id="insertMember" parameterType="mvo">
     		insert into member values(
     		#{mid}, #{mname}, #{memail}, #{mpwd}, #{mpwdkey}, #{mpwdval}, 
     		#{mbirth}, #{mtel}, #{mpost}, #{mroad}, #{mjibun}, #{mimg}, 
-    		#{mintro}, 3, 0, sysdate, 1
-    		)
+    		#{mintro}, 3, 0, sysdate, 2, 0) 
     	</insert>
     	
     	<!-- 회원 권한 등록 -->
     	<insert id="insertMemRoles" parameterType="mrvo">
     		insert into memroles values(
-    		#{mid}, 'User'
+    		#{mid}, 'Employee'
     		)
     	</insert>
     	
@@ -89,5 +88,27 @@
     	<select id="findMpwd" parameterType="mvo" resultType="String">
     		select mpwd from member where mid=#{mid} and memail=#{memail} and mpwdval=#{mpwdval}
     	</select>
+    
+    
+    	<!-- 다이나믹으로 변경 후에 -->
+    	<!-- 비승인직원 -->
+    	<select id="selectnoEmployee" resultType="mvo">
+    		select * from member where enabled=0 and mstatus=2 and mid!='admin'
+    	</select>
+    	<!-- 승인직원 -->
+    	<select id="selectyesEmployee" resultType="mvo">
+    		select * from member where enabled=1 and mstatus=2 and mid!='admin'
+    		
+    	</select>
+    
+    	<!-- update 0->1 -->
+    	<update id="updateyesEmployee">
+    		update member set enabled=1 where mid=#{mid}
+    	</update>
+    	
+    	<!-- update 1->0 -->
+    	<update id="updatenoEmployee">
+    		update member set enabled=0 where mid=#{mid}
+    	</update>
     
     </mapper>
