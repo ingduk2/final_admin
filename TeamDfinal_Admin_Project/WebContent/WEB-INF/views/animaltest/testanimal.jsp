@@ -339,7 +339,6 @@ Highcharts.theme = {
 			<td><input type="button" value="무슨버튼!"/></td>
 		</tr>
 </tfoot>
-
-
 </table>
+<a href="anilistdown">동물 다운</a>
 </div>
