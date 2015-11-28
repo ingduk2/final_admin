@@ -41,9 +41,9 @@ $(function () {
         url: "memberAge", //"testAjax.jsp", 
         type: "POST",
         success: function(msg1) { //데이터 받는 부분.response
-        	alert(msg1);
+        	//alert(msg1);
             var json1=JSON.parse(msg1);
-        	alert(json1);
+        	//alert(json1);
         	
         	 $('#member_chart_age').highcharts({
         	        chart: {
@@ -107,9 +107,9 @@ function memberchart(){
         url: "memberChart", //"testAjax.jsp", 
         type: "POST",
         success: function(msg) { //데이터 받는 부분.response
-        	alert(msg);
+        	//alert(msg);
             var json=JSON.parse(msg);
-        	alert(json);
+        	//alert(json);
 
         	
         	 $('#member_chart2').highcharts({

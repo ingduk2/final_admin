@@ -40,8 +40,12 @@ public class AnimalController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/selectallanimalmanage/{id}")
-	public ModelAndView selectallanimalmanage(@PathVariable("id") String mid){
+	//패스베리어블이삼함 ㅡㅡ
+//	@RequestMapping(value="/selectallanimalmanage/{id}")
+//	public ModelAndView selectallanimalmanage(@PathVariable("id") String mid){
+	@RequestMapping(value="/selectallanimalmanage")
+	public ModelAndView selectallanimalmanage(String mid){
+	
 		System.out.println("pathid : "+mid);
 		ModelAndView mav= new ModelAndView("animaltest/selectallanimalmanage");
 		

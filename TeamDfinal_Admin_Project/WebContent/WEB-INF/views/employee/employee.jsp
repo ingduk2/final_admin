@@ -92,7 +92,7 @@ $(function () {
 		<!-- select m.mid mid, m.mname mname, m.memail memail, e.emzic emzic, e.emsalary emsalary -->
 		<tbody id="yes">
 			<c:forEach var="listyv" items="${listy }">
-			<form method="post" action="updateEmployee">
+			
 				<tr>
 					<td>${listyv.mid }</td>
 					<td>${listyv.mname }</td>
@@ -101,11 +101,9 @@ $(function () {
 <%-- 					<td><input type="button" id="btny" value="${listyv.mid }"><td> --%>
 					<td><button id="btny" value="${listyv.mid }">탈퇴..</button></td>
 					
-					<td><input type="text" name="emzic"></td>
-					<td><input type="text" name="emsalary"></td>
-					<td><input type="submit" value="입력"></td>
+					
 				</tr>
-			</form>
+			
 			</c:forEach>
 		</tbody>
 		

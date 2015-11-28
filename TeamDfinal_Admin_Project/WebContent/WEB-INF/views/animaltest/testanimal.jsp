@@ -20,14 +20,14 @@
     		    	url: "animalcnt",
     		    	type: "GET",
     		    	success:function(res){
-    		    		alert(res);
+    		    		//alert(res);
     		    		var sp = res.split("/");
     		    		anispecies = JSON.parse(sp[0]);
     		    		anibreed = JSON.parse(sp[1]);
-    		    		alert(sp)    		    		
-    		    		alert(sp.length);
-    		    		alert(anispecies)
-    		    		alert(anibreed);
+    		    		//alert(sp)    		    		
+    		    		//alert(sp.length);
+    		    		//alert(anispecies)
+    		    		//alert(anibreed);
     		    		
     		    		
     		    		  $('#container').highcharts({
@@ -35,7 +35,7 @@
     		    		            type: 'pie',
     		    		            	events: {
     		    		                    drillup: function (e) {
-    		    		                        alert('drill Up');
+    		    		                        //alert('drill Up');
     		    		                        console.log(this);
     		    		                        console.log(this.options.series[0].name);
     		    		                        console.log(this.options.series[0].data[0].name);
@@ -59,13 +59,13 @@
     		    		                events:{
     		    		                	click: function (event, i){
     		    		                		var print="";
-    		    		                		alert(event.point.name);	
+    		    		                		//alert(event.point.name);	
     		    		                		$.each(anibreed,function(idx,item){
     	    		    	                    	if(item.name==event.point.name){
     	    		    	                    
     	    		    	             			print +="<h1>["+item.name+"]</h1></br><table><thead><tr><th>품종</th><th>수량</th></tr></thead><tbody>";
     	    		    	             			$.each(item.data, function(key, state){
-    	    		    	             				alert('key : '+key+'----'+state[0]+'----'+state[1]);
+    	    		    	             				//alert('key : '+key+'----'+state[0]+'----'+state[1]);
     	    		    	             				print += "<tr><td>"+state[0]+"</td><td align=\"right\">"+state[1]+"</td></tr>";
     	    		    	             			});
     	    		    	             			print += "</tbody></table>";
