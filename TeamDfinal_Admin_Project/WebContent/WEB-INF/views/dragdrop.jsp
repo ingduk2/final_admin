@@ -1,87 +1,280 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>
-			Drag and Drop Example
-		</title>
-<style type="text/css">
-	.img{
-		width:100px;
-		height:100px;
-	}
-	
-	#SourceNode{
-		float:left;
-	}
-	
-	#dropzone{
-		float:left;
-	}
-</style>
-<script type="text/javascript">
-// 	function dragstart(e) {
-// 		//드래그 시작 시 이벤트
-// 		alert("drag 시작");
-// 	}
-	
-// 	function drag(e) {
-// 		//드래그 중
-// 	}
-	
-// 	function dragenter(e) {
-// 		//진입
-// 		//alert("dropzone에 진입");
-// 	}
-	
-// 	function dragover(e) {
-// 		//안에 있음
-// 		//alert("dropzone에 있음");
-// 	}
-	
-// 	function dragleave(e) {
-// 		//벗어남
-// 		//alert("dropzone에서 벗어남");
-// 	}
-	
-	
-	
-	function allowDrop(e) {
-		e.preventDefault();
-	}
-	function dragstart(e) {
-		e.dataTransfer.setData("Text",e.target.id);
-		alert("시작");
-	}
-	function drop(e){
-		var id=e.target.getAttribute('id');
-		var data=e.dataTransfer.getData("Text");
-		
-		e.target.appendChild(document.getElementById(data));
-		if(id=='dropzone'){
-			alert("요리가 예약되었습니다.");
-		}else
-			alert("요리가 취소되었습니다.");	
-		e.preventDefault();
-	}
-</script>
-	</head>
-	
-	<body>
-	<h1>끌자</h1>
-	<div id="SourceNode"
-	style="background:yellow; border:1px solid; width:400px;height:400px"
-	ondrop="drop(event)" ondragover="allowDrop(event)">
-	<img id="dragImage1" class="img" src="img/mok.png" draggable="true"
-	ondragstart="dragstart(event)" >
-	<img id="dragImage2" class="img" src="img/bob.png" draggable="true"/>
-	<img id="dragImage3" class="img" src="img/spo.png" draggable="true"/>
-	</div>
-	<br/><br/>
+	pageEncoding="UTF-8"%>
 
-	<div id="dropzone"
-	style="background:beige;border:1px dotted; width:300px;height:300px"
-	ondrop="drop(event)" ></div>
-	</body>
-</html>
+
+<style>
+.d {
+	border: 1px solid #000;
+	width: 50px;
+	
+}
+
+.img{
+	border: 1px solid #000;
+	width: 50px;
+	
+}
+
+/* .form-group{ */
+/* 	width:10%; */
+/* } */
+#drag_wrap{
+	width: 20%;
+	
+}
+
+#img_wrap{
+	width:170px;
+}
+
+.aniimg{
+	width:160px;
+	height:160px;
+}
+</style>
+
+<script>
+	function drag(target, food) { //드래그 시작시 호출 할 함수
+		food.dataTransfer.setData('Text', target.id);
+
+	};
+	function drop(target, food) { //드롭시 호출 할 함수
+		var id = food.dataTransfer.getData('Text');
+		var data = food.dataTransfer.getData('Text');
+		var id2 = target.getAttribute('id');
+
+		alert(id);
+		alert(data);//rice
+		alert(id2);//trice
+
+		if (data == 'rice' && id2 == 'trice') {
+
+			target.appendChild(document.getElementById(id));
+			//food.dataTransfer.clearData("Text"); 
+		}
+
+		if (data == 'bath' && id2 == 'tbath') {
+
+			target.appendChild(document.getElementById(id));
+			//food.dataTransfer.clearData("Text"); 
+		}
+
+		if (data == 'spo' && id2 == 'tspo') {
+
+			target.appendChild(document.getElementById(id));
+			//food.dataTransfer.clearData("Text"); 
+		}
+		food.preventDefault();
+
+	};
+</script>
+
+
+<div class="form-inline center-block">
+
+
+
+<div id="drag_wrap" class="form-group">
+<div class="form-inline" ondragover="return false;" ondragenter="return false;"
+	ondrop="drop(this, event);">
+	<div class="img form-group">
+	<img ondragstart="drag(this, event)" id="rice" alt="밥"
+		src="http://biew.co.kr/script/powerEditor/pages/img/krfood1.jpg"
+		draggable="true"> 
+	</div>
+	<div class="img form-group">
+	<img ondragstart="drag(this, event)" id="bath"
+		alt="목욕"
+		src="http://biew.co.kr/script/powerEditor/pages/img/krfood2.jpg"
+		draggable="true"> 
+	</div>
+	<div class="img form-group">
+	<img ondragstart="drag(this, event)" id="spo"
+		alt="운동"
+		src="http://biew.co.kr/script/powerEditor/pages/img/krfood3.jpg"
+		draggable="true">
+	</div>
+</div>
+
+
+<div class="form-inline">
+<div class="d form-group" ondragover="return false;" id="trice"
+	ondragenter="return false;" class="fl" ondrop="drop(this, event);">
+	<h4>밥1</h4>
+</div>
+<div class="d form-group" ondragover="return false;" id="tbath"
+	ondragenter="return false;" class="fl" ondrop="drop(this, event);">
+	<h4>목욕</h4>
+</div>
+<div class="d form-group" ondragover="return false;" id="tspo"
+	ondragenter="return false;" class="fl" ondrop="drop(this, event);">
+	<h4>운동</h4>
+</div>
+</div>
+
+<div id="img_wrap">
+						<h5 class="tag">
+							<span class="label label-warning">${listjoin[i].anistate }</span>
+						</h5>
+					
+						<a href="selectoneAnimal?anino=${listjoin[i].anino }" >
+							<img src="img/${listjoin[i].aniimg}" class="aniimg">
+						</a>
+						
+						<table class="container">
+							<tr>
+								<th class="content">${listjoin[i].aniname}</th>
+							</tr>
+							<tr>
+								<th class="content">${listjoin[i].anispecies}</th>
+							</tr>
+							<tr>
+								<th class="content">${listjoin[i].anibreed}</th>
+							</tr>
+							<tr>
+								<th class="content">${listjoin[i].aniregion}</th>
+							</tr>
+						</table>
+					</div>
+
+
+
+</div>
+
+
+
+<div id="drag_wrap" class="form-group">
+<div class="form-inline" ondragover="return false;" ondragenter="return false;"
+	ondrop="drop(this, event);">
+	<div class="img form-group">
+	<img ondragstart="drag(this, event)" id="rice" alt="밥"
+		src="http://biew.co.kr/script/powerEditor/pages/img/krfood1.jpg"
+		draggable="true"> 
+	</div>
+	<div class="img form-group">
+	<img ondragstart="drag(this, event)" id="bath"
+		alt="목욕"
+		src="http://biew.co.kr/script/powerEditor/pages/img/krfood2.jpg"
+		draggable="true"> 
+	</div>
+	<div class="img form-group">
+	<img ondragstart="drag(this, event)" id="spo"
+		alt="운동"
+		src="http://biew.co.kr/script/powerEditor/pages/img/krfood3.jpg"
+		draggable="true">
+	</div>
+</div>
+
+<div class="form-inline">
+<div class="d form-group" ondragover="return false;" id="trice"
+	ondragenter="return false;" class="fl" ondrop="drop(this, event);">
+	<h4>밥2</h4>
+</div>
+<div class="d form-group" ondragover="return false;" id="tbath"
+	ondragenter="return false;" class="fl" ondrop="drop(this, event);">
+	<h4>목욕</h4>
+</div>
+<div class="d form-group" ondragover="return false;" id="tspo"
+	ondragenter="return false;" class="fl" ondrop="drop(this, event);">
+	<h4>운동</h4>
+</div>
+</div>
+
+
+<div id="img_wrap">
+						<h5 class="tag">
+							<span class="label label-warning">${listjoin[i].anistate }</span>
+						</h5>
+					
+						<a href="selectoneAnimal?anino=${listjoin[i].anino }" >
+							<img src="img/${listjoin[i].aniimg}" class="aniimg">
+						</a>
+						
+						<table class="container">
+							<tr>
+								<th class="content">${listjoin[i].aniname}</th>
+							</tr>
+							<tr>
+								<th class="content">${listjoin[i].anispecies}</th>
+							</tr>
+							<tr>
+								<th class="content">${listjoin[i].anibreed}</th>
+							</tr>
+							<tr>
+								<th class="content">${listjoin[i].aniregion}</th>
+							</tr>
+						</table>
+					</div>
+
+
+</div>
+
+<div id="drag_wrap" class="form-group">
+<div class="form-inline" ondragover="return false;" ondragenter="return false;"
+	ondrop="drop(this, event);">
+	<div class="img form-group">
+	<img ondragstart="drag(this, event)" id="rice" alt="밥"
+		src="http://biew.co.kr/script/powerEditor/pages/img/krfood1.jpg"
+		draggable="true"> 
+	</div>
+	<div class="img form-group">
+	<img ondragstart="drag(this, event)" id="bath"
+		alt="목욕"
+		src="http://biew.co.kr/script/powerEditor/pages/img/krfood2.jpg"
+		draggable="true"> 
+	</div>
+	<div class="img form-group">
+	<img ondragstart="drag(this, event)" id="spo"
+		alt="운동"
+		src="http://biew.co.kr/script/powerEditor/pages/img/krfood3.jpg"
+		draggable="true">
+	</div>
+</div>
+
+<div class="form-inline">
+<div class="d form-group" ondragover="return false;" id="trice"
+	ondragenter="return false;" class="fl" ondrop="drop(this, event);">
+	<h4>밥3</h4>
+</div>
+<div class="d form-group" ondragover="return false;" id="tbath"
+	ondragenter="return false;" class="fl" ondrop="drop(this, event);">
+	<h4>목욕</h4>
+</div>
+<div class="d form-group" ondragover="return false;" id="tspo"
+	ondragenter="return false;" class="fl" ondrop="drop(this, event);">
+	<h4>운동</h4>
+</div>
+</div>
+
+<div id="img_wrap">
+						<h5 class="tag">
+							<span class="label label-warning">${listjoin[i].anistate }</span>
+						</h5>
+					
+						<a href="selectoneAnimal?anino=${listjoin[i].anino }" >
+							<img src="img/${listjoin[i].aniimg}" class="aniimg">
+						</a>
+						
+						<table class="container">
+							<tr>
+								<th class="content">${listjoin[i].aniname}</th>
+							</tr>
+							<tr>
+								<th class="content">${listjoin[i].anispecies}</th>
+							</tr>
+							<tr>
+								<th class="content">${listjoin[i].anibreed}</th>
+							</tr>
+							<tr>
+								<th class="content">${listjoin[i].aniregion}</th>
+							</tr>
+						</table>
+					</div>
+
+
+
+</div>
+
+
+</div>
+

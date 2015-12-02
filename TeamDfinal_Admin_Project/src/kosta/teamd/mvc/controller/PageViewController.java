@@ -20,7 +20,7 @@ public class PageViewController {
 	public String a(){
 		return "index";
 	}
-	
+
 	// 디나이 페이지
 	@RequestMapping(value="/denied")
 	public String formDenied() {
@@ -29,7 +29,7 @@ public class PageViewController {
 	
 	//popup용 페이지들
 	@RequestMapping(value="/popup")
-	public String popup(){
+	public String popup(){	
 		return "checkpage/popup";
 	}
 	@RequestMapping(value="/popup2")

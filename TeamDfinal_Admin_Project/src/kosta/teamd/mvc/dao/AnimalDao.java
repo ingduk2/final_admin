@@ -28,6 +28,7 @@ public class AnimalDao{
 		return ss.selectList("animal.imglist");
 	}
 	
+	
 	// 이미지게시판 상세보기 출력
 	public AniBoardVO imgDetail(int anino){
 		return ss.selectOne("animal.imgdetail", anino);
@@ -49,6 +50,8 @@ public class AnimalDao{
 	}
 	
 	
+	
+	//관리자용
 	public void updateAniState(AnimalVO avo){
 		ss.update("animal.updateAniState",avo);
 		
@@ -63,4 +66,15 @@ public class AnimalDao{
 		return ss.selectList("animal.selectallanimalmanage", amvo);
 		
 	}
+	
+	//관리자용 동물 조인!!
+		
+		public List<AniBoardVO> getAnimalManageJoin(String mid){
+			return ss.selectList("animal.animalmanagejoin", mid);
+		}
+		
+		//동물 밥주기 업데이트!
+		public void updateAnimalManage(AnimalManageVO amvo){
+			ss.update("animal.updateAnimalManage",amvo);
+		}
 }

@@ -127,7 +127,7 @@ li { list-style: none}
   </div>
   
   	<h4>
-   <a href="selectallEmployee">직원 관리</a>
+   <a href="formEmployee">직원 관리</a>
   </h4>
     <div>
 <!--   	 <a href="selectallEmployee">직원 관리</a><br />   -->

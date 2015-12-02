@@ -199,7 +199,7 @@ function callendar(){
 											backgroundColor : 'green'
 										};
 
-										$('#calendar').fullCalendar('renderEvent',
+										$('#cal_detail').fullCalendar('renderEvent',
 												eventData, true); // stick? = true
 									}
 				              },
@@ -207,7 +207,7 @@ function callendar(){
 				                  alert("Request: " + JSON.stringify(a));
 				              }
 				          });
-						 $('#calendar').fullCalendar('unselect');
+						 $('#cal_detail').fullCalendar('unselect');
 						}
 					},
 					
