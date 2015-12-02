@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+.navbar-inverse{
+	background: black;
+}
+</style>
+
+
 <div class="header">
-
-
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="main">FinalProject</a>
+				<a class="navbar-brand" href="main"><img src="img/logo.png" width="130px"></a>
 			</div>
 			<div>
 				<ul class="nav navbar-nav">

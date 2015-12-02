@@ -6,8 +6,10 @@
 <style>
 li { list-style: none}
 .faq {
- padding: 20px 30px 0 20px;
- float: left;
+ width: 80%;
+ margin: auto;
+ height: 100%;
+ margin-top: 40px
 }
 
 .faq h4 {
@@ -15,22 +17,33 @@ li { list-style: none}
 }
 
 .faq h4 a {
-/*  display: inline-block; */
+  display: inline-block;
  padding: 15px;
  font-size: 14px;
- color: #555;
+ color: white;
  text-decoration: none
 }
 
 .faq h4 a:hover {
- color: #3273b3
+ color: white;
 }
 
 .faq div {
- padding: 0 15px 15px;
- line-height: 20px
+  padding: 0 15px 15px;
+ 	line-height: 20px
 }
-
+.subtabmenu{
+	width: 110px
+}
+.subtabmenu>a{
+	text-decoration:none;
+	color: white;
+}
+.subtabmenu>a:hover{
+	color: white;
+	font-weight: bold;
+	background-color: red;border-radius: 5px; width: 100px;
+}
 
 /*.on{ background: pink}*/
 </style>
@@ -53,14 +66,22 @@ li { list-style: none}
 					$this.addClass("on");
 					$this.next().eq(i).slideDown(300);
 				});
-			}else{ //no hidden
+			}
+			/* else{ //no hidden
 				$trigger2.click(function() {
 					var $this= $(this).parent(); //a의 부모 h4
 					$trigger2.parent().removeClass("on");
 					$content2.slideUp(300);
 				});
-			}
+			} */
 		})
+		
+		
+		var $trigger3 = $(".faq > div");
+		$trigger3.mouseleave(function(){
+			$content2.slideUp(300);
+		});
+		
 		
 				
 	});
@@ -72,66 +93,66 @@ li { list-style: none}
   <h4>
    <a href="formMember">회원 관리</a>
   </h4>
-  <div>
-<!--   	 <a href="formMember">강제 탈퇴</a><br /> -->
-<!--   	 <a href="formChart?year=2012">강제 수정</a><br />  -->
+  <div class="subtabmenu">
+  	 <a href="formMember">강제 탈퇴</a><br />
+  	 <a href="formChart?year=2012">강제 수정</a><br /> 
   </div>
 
   <h4>
    <a href="#none">게시물 관리</a>
   </h4>
-    <div>
-  	 <a href="">블록 게시물</a><br />
-  	 <a href="">게시물 복구</a><br /> 
-  	 <a href="">강제 삭제</a><br /> 
-  	 <a href="">강제 이동</a><br /> 
-  </div>
+    <div class="subtabmenu">
+	  	 <a href="">블록 게시물</a><br />
+	  	 <a href="">게시물 복구</a><br /> 
+	  	 <a href="">강제 삭제</a><br /> 
+	  	 <a href="">강제 이동</a><br /> 
+ 	 </div>
   
   <h4>
    <a href="selectallAdopt">입양 신청 관리</a>
   </h4>
-    <div>
+<!--     <div> -->
 <!--   	 <a href="selectallAdopt">입양 신청자</a><br /> -->
 <!--   	 <a href="formCal">봉사 신청자</a><br />  -->
-  </div>
+<!--   </div> -->
   
   <h4>
    <a href="formCal">봉사 신청 관리</a>
   </h4>
-    <div>
+<!--     <div> -->
 <!--   	 <a href="selectallAdopt">입양 신청자</a><br /> -->
 <!--   	 <a href="formCal">봉사 신청자</a><br />  -->
-  </div>
+<!--   </div> -->
   
   <h4>
    <a href="formCenter">센터 관리</a>
   </h4>
-    <div>
+<!--     <div> -->
 <!--   	 <a href="formCenter">센터 입력</a><br /> -->
 <!--   	 <a href="">센터 수정</a><br /> -->
 <!--   	 <a href="">센터 삭제</a><br />   -->
-  </div>
+<!--   </div> -->
   
    <h4>
    <a href="#">밥 주기</a>
   </h4>
-    <div>
+<!--     <div> -->
 <!--   	 <a href="drag">밥 주장</a><br />   -->
-  </div>
+<!--   </div> -->
 
 	<h4>
    <a href="testani">동물 관리</a>
   </h4>
-    <div>
+<!--     <div> -->
 <!--   	 <a href="testani">animal</a><br />   -->
-  </div>
+<!--   </div> -->
   
   	<h4>
    <a href="formEmployee">직원 관리</a>
   </h4>
-    <div>
+<!--     <div> -->
 <!--   	 <a href="selectallEmployee">직원 관리</a><br />   -->
-  </div>
+<!--   </div> -->
   
 
   
@@ -146,9 +167,9 @@ li { list-style: none}
 </c:if>
    
   </h4>
-    <div>
+<!--     <div> -->
 <!--   	 <a href="selectallEmployee">직원 관리</a><br />   -->
-  </div>
+<!--   </div> -->
 
  </div>
 

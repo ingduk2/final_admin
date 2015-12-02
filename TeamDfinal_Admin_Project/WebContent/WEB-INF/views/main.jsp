@@ -42,22 +42,7 @@ ol, ul{
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active" >
-    	<table><tr>
-			<td>a</td>
-			<td>a</td>
-			<td>a</td>
-			<td>a</td>
-		</tr>
-		</table>
       <img src="img/puppy.png" >
-      <table>
-      <tr>
-			<td>a</td>
-			<td>a</td>
-			<td>a</td>
-			<td>a</td>
-		</tr>
-		</table>
     </div>
     <div class="item">
       <img src="img/puppy2.png">
