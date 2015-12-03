@@ -74,17 +74,17 @@ public class EmployeeController {
 		
 	}
 	
-	@RequestMapping(value="updateEmployee")
-	public ModelAndView updateEmployee(EmployeeVO emvo, int code){
-		ModelAndView mav= new ModelAndView("redirect:/selectallEmployee");
-		//직급 월 업데이트!
-		if(code==0){
-			edao.insertEmployee(emvo);
-		}else{
-		edao.updateEmployee(emvo);
-		}
-		return mav;
-		
-	}
+//	@RequestMapping(value="updateEmployee")
+//	public ModelAndView updateEmployee(EmployeeVO emvo, int code){
+//		ModelAndView mav= new ModelAndView("redirect:/selectallEmployee");
+//		//직급 월 업데이트!
+//		if(code==0){
+//			edao.insertEmployee(emvo);
+//		}else{
+//		edao.updateEmployee(emvo);
+//		}
+//		return mav;
+//		
+//	}
 	
 }

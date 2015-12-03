@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+
     
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -9,7 +10,9 @@
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/drilldown.js"></script>
 
+
  <script> 
+
     var anispecies;
     var anibreed;
     		$(function () {
@@ -76,6 +79,7 @@
     		    		        },
     		    		   
 	    		    	              
+
     		    		  
     		    		        tooltip: {
     		    		        	 headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
@@ -130,6 +134,7 @@ $(function () {
 	});
 	});
 });
+
 $(function() {
 	$("[id='mid']").change(function() {
 		alert($(this).val());
@@ -156,6 +161,7 @@ $(function() {
 	});
 	});
 });
+
 // $(function () {
 // 	$.ajax({
 //         url: "selectpossibleEmployee", //"testAjax.jsp", 
@@ -248,7 +254,5 @@ $(function() {
 </tfoot>
 
 </table>
-</div>
-</div>
 <a href="anilistdown">동물 다운</a>
 </div>

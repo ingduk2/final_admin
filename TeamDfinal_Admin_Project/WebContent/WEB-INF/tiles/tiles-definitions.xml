@@ -40,6 +40,10 @@
 	<definition name="employee/*" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/employee/{1}.jsp"/>
 	</definition>
+	<!-- 메일보내기 -->
+	<definition name="email/*" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/email/{1}.jsp"/>
+	</definition>
 	
 	
 </tiles-definitions>

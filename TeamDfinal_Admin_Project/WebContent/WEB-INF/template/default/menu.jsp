@@ -113,7 +113,7 @@ li { list-style: none}
   </div>
   
    <h4>
-   <a href="drag">밥 주기</a>
+   <a href="#">밥 주기</a>
   </h4>
     <div>
 <!--   	 <a href="drag">밥 주장</a><br />   -->
@@ -142,7 +142,7 @@ li { list-style: none}
 </c:if>
 					
 <c:if test="${pageContext.request.userPrincipal.name != null}">
-<a href="selectallanimalmanage/${pageContext.request.userPrincipal.name }">동물관리 현황</a>
+<a href="selectallanimalmanage?mid=${pageContext.request.userPrincipal.name }">동물관리 현황</a>
 </c:if>
    
   </h4>
