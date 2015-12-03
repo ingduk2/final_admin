@@ -18,6 +18,13 @@ public class AnimalManageVO {
 	
 	private int amno, anino, amrice, amspo, ambath;
 	private String mid;
+	private String code;
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
 	public int getAmno() {
 		return amno;
 	}

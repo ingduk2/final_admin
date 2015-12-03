@@ -11,22 +11,52 @@ import kosta.teamd.mvc.dao.EmployeeDao;
 import kosta.teamd.vo.EmployeeJoinVO;
 import kosta.teamd.vo.EmployeeVO;
 import kosta.teamd.vo.MemberVO;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 @Controller
 public class EmployeeController {
 	@Autowired
 	private EmployeeDao edao;
 	
+	@RequestMapping(value="formEmployee")
+	public ModelAndView formEmployee(){
+		return new ModelAndView("employee/employee");
+	}
+	
 	@RequestMapping(value="selectallEmployee")
-	public ModelAndView selectallEmployee(){
-		ModelAndView mav= new ModelAndView("employee/employee");
-		List<MemberVO> listn= edao.selectnoEmployee();
-		List<MemberVO> listy= edao.selectyesEmployee();
+	public ModelAndView selectallEmployee(String code){
+		ModelAndView mav= new ModelAndView("/employee/listemployee");
 		
-		System.out.println(listn.size());
-		System.out.println(listy.size());
-		mav.addObject("listn",listn);
-		mav.addObject("listy",listy);
+		//승인
+		List<MemberVO> list=null;
+		if(code.equals("yes")){
+			list= edao.selectyesEmployee();
+			//mav.addObject("list",list);
+		}else{//비승인 no
+			list= edao.selectnoEmployee();
+			//mav.addObject("list",list);
+		}
+		
+		JSONArray ja= new JSONArray();
+		JSONObject jo= null;
+		for(MemberVO e : list){
+			jo=new JSONObject();
+			jo.put("mid", e.getMid());
+			jo.put("mname", e.getMname());
+			jo.put("memail", e.getMemail());
+			jo.put("mpwd", e.getMpwd());
+			jo.put("mbirth", e.getMbirth());
+			ja.add(jo);
+		}
+		
+//		System.out.println(listn.size());
+//		System.out.println(listy.size());
+		
+		//json변환.
+		System.out.println(ja);
+		mav.addObject("list",ja);
+		
 		return mav;
 	}
 	

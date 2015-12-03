@@ -182,15 +182,43 @@ $(function() {
   
 </script>    
 
+<style>
+	#container{
+		width:50%;
+		height:50%;
+		float:left;
+	}
+	
+	#animal_table{
+		width:50%;
+		height:50%;
+		margin:auto;
+	}
+	
+	#print{
+		
+	}
+</style>
 
-<div>
-<div id="container" ></div>&nbsp;<div id="print">-0-</div>
+
+<div id="container"  ></div>
+<div id="print"></div>
 
 <div id="animal_table">
 <table id='cal_table' class="table table-striped">
 	<thead class="table table-striped">
 <tr>
-<th>대분류</th><th>수량</th>
+<th colspan="11">대분류</th>
+</tr>
+<tr>
+<td>count</td>
+<td>no</td>
+<td>species</td>
+<td>breed</td>
+<td>name</td>
+<td>age</td>
+<td>sex</td>
+<td>state</td>
 </tr>
 </thead>
 

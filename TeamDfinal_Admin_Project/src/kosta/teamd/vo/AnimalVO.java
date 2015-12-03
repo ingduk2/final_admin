@@ -5,44 +5,22 @@ import org.springframework.web.multipart.MultipartFile;
 public class AnimalVO {
 
 	// animal table vo
-	
-	private int anino;          // 동물 등록 번호
-	private String anispecies;  // 동물 분류(동물종)
-	private String anibreed;    // 동물 분류(품종)
-	private String aniname;     // 이름
-	private int aniage;         // 나이
-	private String anisex;      // 성별 _ 남아, 여아
-	private String anisize;     // 크기 분류 _ 소, 중, 대
-	private int aniweight;      // 몸무게
-	private String anifeature;  // 특징
-	private String aniregion;   // (실종, 발견)지역
-	private String anidate;     // (실종, 발견)날짜
-	
-	//신규
-	private int anireward; 
-	private int anistate;
-	
-	public int getAnireward() {
-		return anireward;
-	}
-	public void setAnireward(int anireward) {
-		this.anireward = anireward;
-	}
-	public int getAnistate() {
-		return anistate;
-	}
-	public void setAnistate(int anistate) {
-		this.anistate = anistate;
-	}
-	private String aniimg;      // 동물 사진 파일 이름
-	private MultipartFile maniimg; //이미지 업로드용
-	
-	public MultipartFile getManiimg() {
-		return maniimg;
-	}
-	public void setManiimg(MultipartFile maniimg) {
-		this.maniimg = maniimg;
-	}
+	private int anino;              // 동물 등록 번호
+	private String anispecies;      // 동물 분류(동물종)
+	private String anibreed;        // 동물 분류(품종)
+	private String aniname;         // 이름
+	private int aniage;             // 나이
+	private String anisex;          // 성별 _ 남아, 여아
+	private int aniweight;          // 몸무게
+	private String anifeature;      // 특징
+	private String aniregion;       // (실종, 발견)지역
+	private String anidate;         // (실종, 발견)날짜
+	private int anireward;          // 사례금
+	private int anistate;           // 동물 등록 상태(실종, 발견, 개인 보호)
+	private String aniimg;          // 동물 사진 파일 이름
+	private MultipartFile maniimg;  // 이미지 업로드용
+
+
 	public int getAnino() {
 		return anino;
 	}
@@ -79,12 +57,6 @@ public class AnimalVO {
 	public void setAnisex(String anisex) {
 		this.anisex = anisex;
 	}
-	public String getAnisize() {
-		return anisize;
-	}
-	public void setAnisize(String anisize) {
-		this.anisize = anisize;
-	}
 	public int getAniweight() {
 		return aniweight;
 	}
@@ -109,10 +81,28 @@ public class AnimalVO {
 	public void setAnidate(String anidate) {
 		this.anidate = anidate;
 	}
+	public int getAnireward() {
+		return anireward;
+	}
+	public void setAnireward(int anireward) {
+		this.anireward = anireward;
+	}
+	public int getAnistate() {
+		return anistate;
+	}
+	public void setAnistate(int anistate) {
+		this.anistate = anistate;
+	}
 	public String getAniimg() {
 		return aniimg;
 	}
 	public void setAniimg(String aniimg) {
 		this.aniimg = aniimg;
+	}
+	public MultipartFile getManiimg() {
+		return maniimg;
+	}
+	public void setManiimg(MultipartFile maniimg) {
+		this.maniimg = maniimg;
 	}
 }

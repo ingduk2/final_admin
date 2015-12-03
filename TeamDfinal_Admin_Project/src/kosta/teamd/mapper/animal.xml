@@ -70,8 +70,37 @@
     <select id="selectallanimalmanage" parameterType="amvo" resultType="amvo">
     	select * from animalmanage 
     	<if test="mid != 'admin'">
-    	where mid=#{mid}	
+    	where mid=#{mid}
 		</if>
     </select>
+    
+    <select id="animalmanagejoin" parameterType="String" resultType="amjoinvo">
+    	 select a.anino anino, a.anispecies anispecies, a.anibreed anibreed,
+    	a.aniname aniname, a.aniage aniage , a.anisex anisex,
+     	a.aniregion aniregion, to_char(a.anidate,'yy-mm-dd') anidate, a.anireward anireward,
+     	 a.anistate anistate,
+     	 am.amno amno, am.mid mid, am.amrice amrice, am.amspo amspo, am.ambath ambath
+    	 from animal a, animalmanage am where a.anino=am.anino and mid=#{mid}
+    </select>
+    
+    <update id="updateAnimalManage" parameterType="amvo">
+    	update animalmanage set
+    	<choose>
+				<when test="code == 'rice'">
+					amrice=amrice+1
+					<!-- and (r_num between #{start} and #{end} ) -->
+				</when>
+				<when test="code=='bath'">
+					ambath=ambath+1
+					<!-- and (r_num between #{start} and #{end} ) -->
+				</when>
+				<when test="code=='spo'">
+					amspo=amspo+1 
+					<!-- and (r_num between #{start} and #{end} ) -->
+				</when>
+			</choose>		
+    	where anino=#{anino} and mid=#{mid}
+    </update>
+    
     
     </mapper>

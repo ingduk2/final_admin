@@ -20,8 +20,38 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <style>
 #cal_detail{width:300px; height:300px; }
-
-
+.animated { 
+    -webkit-animation-duration: 1s; 
+    animation-duration: 1s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    -webkit-animation-timing-function: ease-in; 
+    animation-timing-function: ease-in; 
+} 
+@-webkit-keyframes fadeInUp { 
+    0% { 
+        opacity: 0; 
+        -webkit-transform: translateY(20px); 
+    } 
+    100% { 
+        opacity: 1; 
+        -webkit-transform: translateY(0); 
+    } 
+} 
+@keyframes fadeInUp { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    } 
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
+.fadeInUp { 
+    -webkit-animation-name: fadeInUp; 
+    animation-name: fadeInUp; 
+}
 </style>
 <script>
 $(function () {
@@ -134,15 +164,23 @@ $(function () {
 
 
 $(function () {
-    $('#container2').highcharts({
+    $('#chart1').highcharts({
         chart: {
             type: 'column'
         },
         title: {
-            text: 'c'
+            text: '이게 무슨 chart일까',
+            align: 'right',
+            x: -100,
+            verticalAlign: 'bottom',
+            y: -120
         },
-        subtitle: {
-            text: 'c'
+	    legend: {
+	            align: 'right',
+	            verticalAlign: 'top',
+	            layout: 'vertical',
+	            x: 0,
+	            y: 30
         },
         xAxis: {
             categories: [
@@ -285,45 +323,112 @@ function callendar(){
 }
 </script>
 
-<div id="wrap" class="form-inline">
+<style>
+#chart1{
+	width: 100%;
+	height: 200px
+}
+</style>
+
+
+<div style="width: 100%; margin-top: 50px;"> <!-- 전ㅊㅔdiv-->
+	<div style="width: 100%; text-align: center;">	<!-- 첫단div -->
+		<div style="width: 50%; float: left;">
+			<div style="width: 100%; margin:auto;" class="form-inline">
+				<div id="animated-example" class="form-group animated fadeInUp">
+					<img src="img/alrams.png" width="170px">
+				</div>
+				<div id="animated-example" class="form-group animated fadeInUp">
+					<img src="img/newcontents.png" width="170px">
+				</div>
+				<div id="animated-example" class="form-group animated fadeInUp">
+					<img src="img/newmember.png" width="170px">
+				</div>
+			</div>
+			<div style="text-align: left; margin-left: 80px">
+				<span class="label label-danger" style="margin-left: 20px;">New!</span>001/100
+				<span class="label label-danger" style="margin-left: 75px;">New!</span>001/100
+				<span class="label label-danger" style="margin-left: 75px;">New!</span>001/100
+			</div>
+		</div>
+		<div style="width: 50%; float: left;">
+			<div class="chart" id="chart1"></div>
+		</div>
+	</div>
+	<div style="width: 100%; padding-left: 15px;"><!-- 두번째단 DIV  아마도 지우겠지...-->
+		<div style="width: 25%; float: left; margin-top:40px; margin-bottom: 20px">
+			<img src="img/adoption.png" width="100%">
+		</div>
+		<div style="width: 25%; float: left; margin-top:40px; margin-bottom: 20px">
+			<img src="img/blacklist.png" width="100%">
+		</div>
+		<div style="width: 25%;  float: left; margin-top:40px; margin-bottom: 20px">
+			<img src="img/employee.png" width="100%">
+		</div>
+		<div style="width: 25%;  float: left; margin-top:40px; margin-bottom: 20px">
+			<img src="img/animalcare.png" width="100%">
+		</div>
+	</div> <!-- 두번째단 DIV -->
+	<div style="width: 100%;"><!-- 세번째 DIV -->
+		<div style="width: 34%; float: left; padding: 3px">
+		    <table class="table table-hover">
+		        <thead>
+		            <tr>
+		                <th>Row</th>
+		                <th>First Name</th>
+		                <th>Last Name</th>
+		                <th>Email</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr>
+		                <td>1</td>
+		                <td>John</td>
+		                <td>Carter</td>
+		                <td>johncarter@mail.com</td>
+		            </tr>
+		            <tr>
+		                <td>2</td>
+		                <td>Peter</td>
+		                <td>Parker</td>
+		                <td>peterparker@mail.com</td>
+		            </tr>
+		            <tr>
+		                <td>3</td>
+		                <td>John</td>
+		                <td>Rambo</td>
+		                <td>johnrambo@mail.com</td>
+		            </tr>
+		            <tr>
+		                <td>4</td>
+		                <td>winni</td>
+		                <td>Cho</td>
+		                <td>whinewinni@mail.com</td>
+		            </tr>
+		            <tr>
+		                <td>5</td>
+		                <td>duck</td>
+		                <td>park</td>
+		                <td>duckduck@mail.com</td>
+		            </tr>
+		        </tbody>
+		    </table>
+		</div>
+		<div style="width: 42%; float: left;">
+			<div class="chart form-group" id="container" ></div>
+		</div>
+		<div style="width: 24%; float: left; margin: auto">
+<!-- 			<img src="img/puppy2.png" width="100%"> -->
+			<div id='cal_detail' ></div>
+		</div>
+	</div> <!-- 세번째 DIV -->
+</div><!-- 전ㅊㅔdiv-->
 
 
 
-<div class="chart form-group" id="container" ></div>
-<div class="chart form-group" id="container1"></div>
-<div class="chart form-group" id="container2"></div>
-<div class="form-group" id='cal_detail' ></div>
+
+<!-- <div id="wrap" class="form-inline" style="clear: both;">
+
+<div class="chart form-group" id="container1"></div> -->
+
 </div>
-<table id="list_table">
-	<tr>
-		<td><table>
-			<thead>
-				<tr>
-				<th colspan="4">test1</th>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<!-- 이터레위터 -->
-				<tr>
-					<td>배</td><td>고</td><td>프</td><td>다</td>
-				</tr>
-				<tr>
-					<td>배</td><td>고</td><td>프</td><td>다</td>
-				</tr>
-				<tr>
-					<td>배</td><td>고</td><td>프</td><td>다</td>
-				</tr>
-				<tr>
-					<td>배</td><td>고</td><td>프</td><td>다</td>
-				</tr>
-			</tbody>
-			
-			<tfoot>
-			</tfoot>
-		</table></td>
-		
-		<td></td>
-	</tr>
-</table>
-
