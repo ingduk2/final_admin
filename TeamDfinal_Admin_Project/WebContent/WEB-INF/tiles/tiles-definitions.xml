@@ -40,6 +40,9 @@
 	<definition name="employee/*" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/employee/{1}.jsp"/>
 	</definition>
+	<definition name="survey/*" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/survey/{1}.jsp"/>
+	</definition>
 	
 	
 </tiles-definitions>

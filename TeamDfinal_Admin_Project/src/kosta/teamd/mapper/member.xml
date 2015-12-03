@@ -8,7 +8,7 @@
     	<!-- 관리자 전체 다 뽑기 -->
     	<!-- 가입일 추가하고 orderby desc로 뽑 -->
     	<select id="selectallMember" resultType="mvo">
-    		select * from member
+    		select * from member where mstatus=1
     	</select>
     	
     	<!-- 아이디 존재유무 체크 -->
@@ -89,6 +89,21 @@
     		select mpwd from member where mid=#{mid} and memail=#{memail} and mpwdval=#{mpwdval}
     	</select>
     
+    <!-- ======== 아마 참조하는 테이블이 늘어날 수록 여기에 추가가 되어야 할 것이다!! ======== -->
+	    	<!-- 회원 탈퇴 시 게시물 처리 -->
+	    	<delete id="deleteBcont" parameterType="String">
+	    		delete from board where mid=#{mid}
+	    	</delete>
+	    	<!-- 회원 탈퇴 시 댓글 처리 -->
+	    	<delete id="deleteCBcont1" parameterType="String">
+	    		delete from commboard where bno in (select bno from board where mid=#{mid})
+	    	</delete>
+	    	<delete id="deleteCBcont2" parameterType="String">
+	    		delete from commboard where mid=#{mid}
+	    	</delete>
+	    	
+	    <!-- ======== 아마 참조하는 테이블이 늘어날 수록 여기에 추가가 되어야 할 것이다!! ======== -->
+    	
     
     	<!-- 다이나믹으로 변경 후에 -->
     	<!-- 비승인직원 -->

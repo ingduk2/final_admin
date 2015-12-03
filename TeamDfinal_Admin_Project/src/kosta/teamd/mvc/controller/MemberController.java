@@ -22,18 +22,55 @@ import kosta.teamd.mvc.inter.MemberUpdateInter;
 import kosta.teamd.vo.BoardVO;
 import kosta.teamd.vo.MemRolesVO;
 import kosta.teamd.vo.MemberVO;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 @Controller
 public class MemberController {
 
 	@Autowired
 	private MemberDao mdao;
-	
+	//관리자 멤버 불러오깅..
 	@RequestMapping(value="formMember")
 	public ModelAndView formMember(){
 		ModelAndView mav= new ModelAndView("member");
 		List<MemberVO> list= mdao.selectallMember();
 		mav.addObject("list", list);
+		return mav;
+	}
+	
+	@Autowired
+	private MemberDeleteInter mdelete2;
+	
+	@RequestMapping(value="deleteforceMem")
+	public ModelAndView deleteforceMem(String mid){
+		ModelAndView mav= new ModelAndView("redirect:/formMember");
+		try {
+			mdelete2.memberDelete(mid);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	//관리자 멤버부르기 비동기 귀차나서 때려침
+	public ModelAndView ajaxMember(){
+		ModelAndView mav= new ModelAndView("/member/ajaxmember");
+		List<MemberVO> list= mdao.selectallMember();
+		JSONArray ja= new JSONArray();
+		JSONObject jo= null;
+		for(MemberVO e : list){
+			jo=new JSONObject();
+			jo.put("mid", e.getMid());
+			jo.put("memail", e.getMemail());
+			jo.put("mpwd", e.getMpwd());
+			jo.put("mbirth", e.getMbirth());
+			jo.put("mtel", e.getMtel());
+			jo.put("mroad", e.getMroad());
+			jo.put("mrpt", e.getMrpt());
+			ja.add(jo);
+		}
+		mav.addObject("memjson", ja);
 		return mav;
 	}
 	
@@ -234,6 +271,13 @@ public class MemberController {
 		
 		ModelAndView mav = new ModelAndView("member/myactivity");
 		mav.addObject("mine", mine);
+		
+		return mav;
+	}
+	
+	public ModelAndView forcememdelete(){
+		ModelAndView mav= new ModelAndView("/member/forcememdelete");
+		
 		
 		return mav;
 	}
