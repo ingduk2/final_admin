@@ -12,7 +12,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="main"><img src="img/logo.png" width="130px"></a>
+				<a class="navbar-brand" href="main"><img src="img/logo.png" width="160px"></a>
 			</div>
 			<div>
 				<ul class="nav navbar-nav">

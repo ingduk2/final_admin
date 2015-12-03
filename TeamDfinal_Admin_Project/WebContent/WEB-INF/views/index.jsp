@@ -331,7 +331,7 @@ function callendar(){
 </style>
 
 
-<div style="width: 100%; margin-top: 80px"> <!-- 전ㅊㅔdiv-->
+<div style="width: 100%; margin-top: 50px;"> <!-- 전ㅊㅔdiv-->
 	<div style="width: 100%; text-align: center;">	<!-- 첫단div -->
 		<div style="width: 50%; float: left;">
 			<div style="width: 100%; margin:auto;" class="form-inline">
@@ -355,22 +355,22 @@ function callendar(){
 			<div class="chart" id="chart1"></div>
 		</div>
 	</div>
-	<div style="width: 100%;"><!-- 두번째단 DIV  아마도 지우겠지...-->
-		<div style="width: 25%; float: left;">
-			<img src="img/puppy.png" width="100%">
+	<div style="width: 100%; padding-left: 15px;"><!-- 두번째단 DIV  아마도 지우겠지...-->
+		<div style="width: 25%; float: left; margin-top:40px; margin-bottom: 20px">
+			<img src="img/adoption.png" width="100%">
 		</div>
-		<div style="width: 25%; float: left;">
-			<img src="img/puppy2.png" width="100%">
+		<div style="width: 25%; float: left; margin-top:40px; margin-bottom: 20px">
+			<img src="img/blacklist.png" width="100%">
 		</div>
-		<div style="width: 25%;  float: left;">
-			<img src="img/puppy3.png" width="100%">
+		<div style="width: 25%;  float: left; margin-top:40px; margin-bottom: 20px">
+			<img src="img/employee.png" width="100%">
 		</div>
-		<div style="width: 25%;   float: left;">
-			<img src="img/puppy4.png" width="100%">
+		<div style="width: 25%;  float: left; margin-top:40px; margin-bottom: 20px">
+			<img src="img/animalcare.png" width="100%">
 		</div>
 	</div> <!-- 두번째단 DIV -->
 	<div style="width: 100%;"><!-- 세번째 DIV -->
-		<div style="width: 50%;  border: 1px solid red; float: left;">
+		<div style="width: 34%; float: left; padding: 3px">
 		    <table class="table table-hover">
 		        <thead>
 		            <tr>
@@ -414,8 +414,12 @@ function callendar(){
 		        </tbody>
 		    </table>
 		</div>
-		<div style="width: 50%;  border: 1px solid green; float: left;">
-			<img src="img/puppy2.png" width="100%">
+		<div style="width: 42%; float: left;">
+			<div class="chart form-group" id="container" ></div>
+		</div>
+		<div style="width: 24%; float: left; margin: auto">
+<!-- 			<img src="img/puppy2.png" width="100%"> -->
+			<div id='cal_detail' ></div>
 		</div>
 	</div> <!-- 세번째 DIV -->
 </div><!-- 전ㅊㅔdiv-->
@@ -423,12 +427,8 @@ function callendar(){
 
 
 
-<div id="wrap" class="form-inline" style="clear: both;">
+<!-- <div id="wrap" class="form-inline" style="clear: both;">
 
+<div class="chart form-group" id="container1"></div> -->
 
-
-<div class="chart form-group" id="container" ></div>
-<div class="chart form-group" id="container1"></div>
-
-<div class="form-group" id='cal_detail' ></div>
 </div>
