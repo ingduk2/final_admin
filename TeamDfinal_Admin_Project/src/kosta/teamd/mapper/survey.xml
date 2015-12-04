@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="survey">
+	
+	<insert id="surveyAdd" parameterType="surVO">
+	insert into survey
+	<if test="code == 2">
+	(num,sub,code,surveychk,sub1,sub2) values(survey_seq.nextVal,#{sub},#{code},#{surveychk},#{sub1},#{sub2},sysdate)
+	</if>
+	<if test="code == 3">
+	(num,sub,code,surveychk,sub1,sub2,sub3) values(survey_seq.nextVal,#{sub},#{code},#{surveychk},#{sub1},#{sub2},#{sub3},sysdate)
+	</if>
+	</insert>
+	
+	<select id="surveyList" resultType="surVO">
+	select num,sub,code,surveychk,to_char(sdate,'yyyy-mm-dd') sdate from survey order by 1 asc
+	</select>
+	
+	<select id="surveyDetail" parameterType="int" resultType="surVO">
+	select num,content,sub,code,surveychk,sub1,sub2,sub3,sub1cnt,sub2cnt,sub3cnt,sdate from survey where num=#{num}
+	</select>
+	
+	<update id="surveyUpdate" parameterType="surVO">
+	update survey set
+	
+	<if test="surveychk==1"> sub1cnt= sub1cnt+1 </if>
+	<if test="surveychk==2"> sub2cnt= sub2cnt+1 </if>
+	<if test="surveychk==3"> sub3cnt= sub3cnt+1 </if>
+	
+	where num=#{num}
+	</update>
+
+
+	<update id="updateServey" parameterType="surVO">
+		update survey set content=#{content},
+		sub=#{sub}, sub1=#{sub1}, sub2=#{sub2}, sub3=#{sub3}  
+		where num=#{num}
+	</update>
+<!-- 	 아이피 체크 --> 
+<!-- 	<select id="ipCntCheck" parameterType="String" resultType="int"> -->
+<!-- 		select count(*) cnt from survey where ip=#{ip} -->
+<!-- 	</select> -->
+
+<!-- 	 설문 투표수 올림 --> 
+<!-- 	<update id="update" parameterType="int"> -->
+<!-- 		update survey set upnum=upnum+1 where num=#{num} -->
+<!-- 	</update> -->
+
+</mapper>  
