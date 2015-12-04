@@ -49,7 +49,8 @@
 		<typeAlias type="kosta.teamd.vo.ChartMemAgeVO" alias="chmavo"/>
 		<typeAlias type="kosta.teamd.vo.ChartAniBreedVO" alias="cabvo"/>
 		
-		
+		<!-- survey -->
+		<typeAlias type="kosta.teamd.vo.SurveyVO" alias="surVO"/>
 
   	</typeAliases>
   </configuration>

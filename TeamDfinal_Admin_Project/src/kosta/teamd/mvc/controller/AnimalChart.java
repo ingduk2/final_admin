@@ -98,6 +98,8 @@ public class AnimalChart {
 	//리스트 그냥 폼으로
 	@RequestMapping(value="testani")
 	public ModelAndView formaniChart(){
+		System.out.println("test aniani");
+		//게시글지워져서 동물수는0ㅢㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ
 		List<AniBoardVO> list = anidao.getImgList();
 		List<AnimalsVO> anisvo  = anisdao.selectallCnt();
 		System.out.println(list.size());
@@ -105,6 +107,7 @@ public class AnimalChart {
 		ModelAndView mav = new ModelAndView("animaltest/testanimal");
 		mav.addObject("ablilst",list);
 		mav.addObject("anisvo", anisvo);
+		
 		for(AnimalsVO e : anisvo){
 		System.out.println(e.getCnt());
 		System.out.println(e.getAnispecies());
