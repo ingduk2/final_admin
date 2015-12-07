@@ -13,6 +13,12 @@
 		group by substr(mroad,1,instr(mroad,' ',1,1))
 	</select>
 	
+	<select id="selectallchartaddr" resultType="chmvo">
+		select rtrim(substr(caddr,1,instr(caddr,' ',1,1))) city , count(cnum) city_count from center 
+		group by substr(caddr,1,instr(caddr,' ',1,1))
+	</select>
+	
+	
 	<select id="selectallmemage" resultType="chmavo">
 select count(CASE WHEN a.age between 1 and 9 then 1 end) a0
 ,count(CASE WHEN a.age between 10 and 19 then 1 end) a10
@@ -25,6 +31,10 @@ from (select trunc(months_between(sysdate,to_date(mbirth,'yyyy/mm/dd'))/12)+1 ag
 	
 	<select id="selectallanibreed" resultType="cabvo">
 		select anispecies, count(anispecies) cnt, anibreed from animal where anino!=0 group by anispecies, anibreed order by 1
+	</select>
+	
+	<select id="selectallsurvey" resultType="surVO">
+		select num , sub1cnt, sub2cnt, sub3cnt from survey order by 1 asc
 	</select>
 	
 </mapper>

@@ -80,6 +80,7 @@
 	}
 </style>
 
+
 <script>
 	// 다음 주소 찾기 api
 	function execDaumPostcode() {   
@@ -312,13 +313,18 @@
 	
 </script>
 
+<style>
+	#wrap_join{
+		width:40%;
+		margin:auto;
+	}
+</style>
 
 
-<form onsubmit="return checksubmit()" name="joinform" action="insertMember" method="post">
-	<div id="wrap_join">
+	<div id="wrap_join" class="center-block">
 		<!-- 공간 띄우기 용 -->
 <!-- 		<table><tr height="50px"><td></td></tr></table> -->
-		
+		<form onsubmit="return checksubmit()" name="joinform" action="insertMember" method="post">
 		<table id="formtable">
 			
 			<tr>
@@ -436,11 +442,19 @@
 		</table> 
 
 		<table><tr height="30px"><td></td></tr></table>
+<<<<<<< HEAD
 		<div style="text-align: left; margin-left: 10%">
 		<button type="button" class="btn btn-danger btn-sm" onclick="goUrl('index')">　취　　소　</button>
+=======
+		<button type="button"  onclick="location='index'">　취　　소　</button>
+>>>>>>> refs/remotes/origin/master
 		
 	
+<<<<<<< HEAD
 		<button type="submit" class="btn btn-danger btn-sm" >　가　　입　</button>
 		</div>
+=======
+		<button type="submit"  >　가　　입　</button>
+	</form>		
+>>>>>>> refs/remotes/origin/master
 	</div>
-</form>

@@ -37,9 +37,12 @@
 	
 	.wrapper {
 	    text-align: center;
+	    
 	}
 	.form-login{
+
 		background-color: #FFCCCE;
+
 		
 	}
 	
@@ -48,7 +51,9 @@
 		width: 600px
 	}
 	.modal-content{
+
 		background-color:#FFCCCE
+
 	}
 	
 	.col-md-offset-4 {

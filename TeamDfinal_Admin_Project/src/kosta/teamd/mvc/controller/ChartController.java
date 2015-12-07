@@ -11,7 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 import kosta.teamd.mvc.dao.ChartDao;
 import kosta.teamd.vo.ChartMemAgeVO;
 import kosta.teamd.vo.ChartMemberVO;
+import kosta.teamd.vo.ChartSurveyVO;
 import kosta.teamd.vo.ChartVO;
+import kosta.teamd.vo.SurveyVO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -85,6 +87,25 @@ public class ChartController {
 		return mav;
 	}
 	
+	@RequestMapping(value="addrChart")
+	public ModelAndView addrChart(){
+		ModelAndView mav= new ModelAndView("/chart/memberchart");
+		List<ChartMemberVO> list=cdao.selectallchartaddr();
+		
+		JSONArray arr= new JSONArray();
+		JSONArray ja= null;
+		for(ChartMemberVO e : list){
+			ja=new JSONArray();
+			ja.add(e.getCity());
+			ja.add(e.getCity_count());
+			arr.add(ja);
+		}
+		System.out.println(arr);
+		
+		mav.addObject("member",arr);
+		return mav;
+	}
+	
 	//멤버 연령대 별 뽑는 ajax
 	@RequestMapping(value="memberAge")
 	public ModelAndView memberAge(){
@@ -126,6 +147,56 @@ public class ChartController {
 		System.out.println(arr);
 		
 		mav.addObject("memage",arr);
+		return mav;
+	}
+	
+	@RequestMapping(value="surveyChart")
+	public ModelAndView surveyChart(){
+		ModelAndView mav= new ModelAndView("/survey/surveyupdate");
+		/*
+		 * [{
+	            name: '보기1',
+	            data: [5, 3, 4, 7]
+	        }, {
+	            name: '보기2',
+	            data: [2, 2, 3, 2]
+	        }, {
+	            name: '보기3',
+	            data: [3, 4, 4, 2]
+	        }]
+		 */
+		List<SurveyVO> list=cdao.selectallsurvey();
+		
+		
+		JSONArray ja= new JSONArray(); // [    ]
+		
+		JSONObject j1=new JSONObject();
+		JSONObject j2=new JSONObject();
+		JSONObject j3=new JSONObject();
+		j1.put("name", "보기1");
+		j2.put("name", "보기2");
+		j3.put("name", "보기2");
+		
+		JSONArray a1=new JSONArray();
+		JSONArray a2=new JSONArray();
+		JSONArray a3=new JSONArray();
+		
+		int size=list.size();
+		for(int i=0; i<size; i++){
+			
+				a1.add(list.get(i).getSub1cnt());
+				a2.add(list.get(i).getSub2cnt());
+				a3.add(list.get(i).getSub3cnt());
+			
+		}
+		j1.put("data", a1);
+		j2.put("data", a2);
+		j3.put("data", a3);
+		ja.add(j1);
+		ja.add(j2);
+		ja.add(j3);
+		System.out.println(ja);
+		mav.addObject("survey",ja);
 		return mav;
 	}
 }

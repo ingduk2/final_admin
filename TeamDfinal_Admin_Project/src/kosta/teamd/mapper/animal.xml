@@ -16,14 +16,16 @@
 
 
     
-    <select id="imglist" resultType="abvo" >
-     select a.anino anino, a.aniimg aniimg, a.anispecies anispecies, 
-     a.anibreed anibreed, a.aniname aniname, a.aniage aniage, a.anisex anisex,
-     a.aniregion aniregion, to_char(a.anidate,'yy-mm-dd') anidate, a.anireward anireward, a.anistate anistate,
-     b.btitle btitle,  b.bno bno, b.mid mid, b.bhit bhit, b.bdate bdate  from animal a, board b where a.anino = b.anino and a.anino!=0
-     order by anino desc
-     <!-- 다이나믹 쿼리 ... -->  
-    </select>
+<!--     <select id="imglist" resultType="abvo" > -->
+<!--      select a.anino anino, a.aniimg aniimg, a.anispecies anispecies,  -->
+<!--      a.anibreed anibreed, a.aniname aniname, a.aniage aniage, a.anisex anisex, -->
+<!--      a.aniregion aniregion, to_char(a.anidate,'yy-mm-dd') anidate, a.anireward anireward, a.anistate anistate, -->
+<!--      b.btitle btitle,  b.bno bno, b.mid mid, b.bhit bhit, b.bdate bdate  from animal a, board b where a.anino = b.anino and a.anino!=0 -->
+<!--      order by anino desc -->
+<!--     </select> -->
+	<select id="imglist" resultType="abvo">
+		select * from animal where anino!=0 order by anino desc
+	</select>
     
     
     <select id="imgdetail" resultType="abvo" parameterType="int">
