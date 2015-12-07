@@ -13,5 +13,9 @@
     <select id="selectalladopt" resultType="adavo">
     select * from adoptapply
     </select>
+    	
+    <select id="selectoneadopt" parameterType="int" resultType="adavo">
+    select * from adoptapply where adopno=#{adopno}
+    </select>
     
     </mapper>

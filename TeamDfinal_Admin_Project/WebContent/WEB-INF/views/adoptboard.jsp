@@ -10,116 +10,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<%
-	
-	String excelfile="/Users/ingduk2/Downloads/test3.xls";
-
-try{
-	POIFSFileSystem fs= new POIFSFileSystem(new FileInputStream(excelfile));
-	//워크북 생성
-	HSSFWorkbook workbook = new HSSFWorkbook(fs);
-	int sheetNum=workbook.getNumberOfSheets();
-	
-	for(int k=0; k<sheetNum; k++){
-		//시트 이름과 시트번호를 추출
-
-	
-%>
-<br>
-<br>
-Sheet Number
-<%=k %><br>
-Sheet Name
-<%=workbook.getSheetName(k) %><br>
-<table class="table table-striped">
-<thead class="table table-striped">입양 양식</thead>
-
-<tbody>
-<tr>
-<%
-	HSSFSheet sheet= workbook.getSheetAt(k);
-int rows=sheet.getPhysicalNumberOfRows();
-
-for(int r=0; r<rows; r++){
-	//시트에 대한 행을하나씩 추출
-	HSSFRow row= sheet.getRow(r);
-	if(row!=null){
-		int cells=row.getPhysicalNumberOfCells();
-%>
-Row
-<%=row.getRowNum() %>
-<%=cells %>
-
-
-
-
-<%
-	for(short c=0; c<cells; c++){
-		//행에 대한 셀을 하나씩 추출하여 셀 타입에 따라 처리
-		HSSFCell cell = row.getCell(c);
-		if(cell!=null){
-			String value=null;
-			
-			switch(cell.getCellType()){
-			
-			case HSSFCell.CELL_TYPE_FORMULA :
-				value=" "+cell.getCellFormula();
-				break;
-			case HSSFCell.CELL_TYPE_NUMERIC:
-				value=" "+cell.getNumericCellValue();
-				break;
-			case HSSFCell.CELL_TYPE_STRING:
-				value=cell.getStringCellValue();
-				break;
-			case HSSFCell.CELL_TYPE_BLANK:
-				value=null;
-				break;
-			case HSSFCell.CELL_TYPE_BOOLEAN:
-				value=" "+cell.getBooleanCellValue();
-				break;
-			case HSSFCell.CELL_TYPE_ERROR:
-				value="ERROR value="+cell.getErrorCellValue();
-				break;
-			default:
-			}
-%>
-
-<%if(cell.getCellNum()==0){ %><td><%=value%></td> <%} %>
-<%if(cell.getCellNum()==1){ %><td><%=value%></td> <%} %>
-<%if(cell.getCellNum()==2){ %><td id="test"><%=value%></td> <%} %>
-
-
-
-<%
-				}
-			}
-%>
-</tr>
-			<% }
-		}%>
-		
-
-</tbody>
-<tfoot>
-<tr><td><a href="" >다운로드</a></td></tr>
-</tfoot>
-</table>
-	<% }
-}catch(Exception e){
-%>
-Error occurred:
-<%=e.getMessage() %>
-<%
-	e.printStackTrace();
-}finally{
-	
-}
-%>
 
 <style>
 #wrap {
 	width: 100%;
 	margin: auto;
+	border: 1px;
 }
 
 table {
@@ -130,16 +26,23 @@ table {
 <script>
 	$(function() {
 		$('[id="adoptbtn"]').click(function() {
+			alert($(this).val());
+			$('#down').prop('href', 'downloadExcel?adopno='+$(this).val());
 			//버튼 클릭하면 위의 양식으로 옮겨주기!
-			$('[id="test"]').html("");
-			$('[id="test"]').append("11111111");
+			//ado1, adov1
+			//alert($(this).parent().parent().html());
+			console.log($(this).parent().parent().html());
+			//alert($(this).parent().parent().find("td").eq(5).html());
+			for(var i=0; i<15; i++){
+				$('#ado'+i).html($(this).parent().parent().find("td").eq(i+4).html());
+			}
 		});
 	});
 </script>
 
 <div id="wrap">
-	<table>
-		<thead>
+	<table class="table table-striped">
+		<thead class="table table-striped">
 			<tr>
 				<th>설문 조사 양식.</th>
 			</tr>
@@ -147,30 +50,85 @@ table {
 		
 		<tbody>
 			<tr>
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
+				<td></td>
+				<td>Age</td>
+				<td id="ado0"></td>
 			</tr>
 			<tr>
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
+				<td></td>
+				<td>Score</td>
+				<td id="ado1"></td>
 			</tr>
 			<tr>
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
+				<td>Q1</td>
+				<td>${vo.q1 }</td>
+				<td id="ado2"></td>
 			</tr>
 			<tr>
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
+				<td>Q1-1</td>
+				<td>${vo.q1_1 }</td>
+				<td id="ado3"></td>
+			</tr>
+			<tr>
+				<td>Q2</td>
+				<td>${vo.q2}</td>
+				<td id="ado4"></td>
+			</tr>
+			<tr>
+				<td>Q2-1</td>
+				<td>${vo.q2_1}</td>
+				<td id="ado5"></td>
+			</tr>
+			<tr>
+				<td>Q3</td>
+				<td>${vo.q3}</td>
+				<td id="ado6"></td>
+			</tr>
+			<tr>
+				<td>Q4</td>
+				<td>${vo.q4}</td>
+				<td id="ado7"></td>
+			</tr>
+			<tr>
+				<td>Q5</td>
+				<td>${vo.q5}</td>
+				<td id="ado8"></td>
+			</tr>
+			<tr>
+				<td>Q6</td>
+				<td>${vo.q6}</td>
+				<td id="ado9"></td>
+			</tr>
+			<tr>
+				<td>Q6-1</td>
+				<td>${vo.q6_1}</td>
+				<td id="ado10"></td>
+			</tr>
+			<tr>
+				<td>Q7</td>
+				<td>${vo.q7}</td>
+				<td id="ado11"></td>
+			</tr>
+			<tr>
+				<td>Q8</td>
+				<td>${vo.q8}</td>
+				<td id="ado12"></td>
+			</tr>
+			<tr>
+				<td>Q9</td>
+				<td>${vo.q9}</td>
+				<td id="ado13"></td>
+			</tr>
+			<tr>
+				<td>Q10</td>
+				<td>${vo.q10}</td>
+				<td id="ado14"></td>
 			</tr>
 		</tbody>
 		
 		<tfoot>
 			<tr>
-			<td><a href="">다운 로드!</a></td>
+			<td><a href="" id="down" >다운 로드!</a></td>
 			</tr>
 		</tfoot>
 	</table>
@@ -193,26 +151,26 @@ table {
 		<tbody>
 			<c:forEach var="listv" items="${list }">
 				<tr>
-					<td>${listv.adoptno }</td>
+					<td>${listv.adopno }</td>
 					<td>${listv.mid }</td>
 					<td>${listv.anino }</td>
 					<td>${listv.eid }</td>
-					<td>${listv.memage }</td>
-					<td>${listv.score }</td>
-					<td>${listv.qus1 }</td>
-					<td>${listv.qus1sup1 }</td>
-					<td>${listv.qus2 }</td>
-					<td>${listv.qus2sup1 }</td>
-					<td>${listv.qus3 }</td>
-					<td>${listv.qus4 }</td>
-					<td>${listv.qus5 }</td>
-					<td>${listv.qus6 }</td>
-					<td>${listv.qus6sup1 }</td>
-					<td>${listv.qus7 }</td>
-					<td>${listv.qus8 }</td>
-					<td>${listv.qus9 }</td>
-					<td>${listv.qus10 }</td>
-					<td><button type="button" id="adoptbtn">오왕</button>
+					<td id="adov1">${listv.memage }</td>
+					<td id="adov2">${listv.score }</td>
+					<td id="adov3">${listv.qus1 }</td>
+					<td id="adov4">${listv.qus1sup1 }</td>
+					<td id="adov5">${listv.qus2 }</td>
+					<td id="adov6">${listv.qus2sup1 }</td>
+					<td id="adov7">${listv.qus3 }</td>
+					<td id="adov8">${listv.qus4 }</td>
+					<td id="adov9">${listv.qus5 }</td>
+					<td id="adov10">${listv.qus6 }</td>
+					<td id="adov11">${listv.qus6sup1 }</td>
+					<td id="adov12">${listv.qus7 }</td>
+					<td id="adov13">${listv.qus8 }</td>
+					<td id="adov14">${listv.qus9 }</td>
+					<td id="adov15">${listv.qus10 }</td>
+					<td><button type="button" id="adoptbtn" value="${listv.adopno }">오왕</button>
 				</tr>
 			</c:forEach>
 

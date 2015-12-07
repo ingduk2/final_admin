@@ -15,52 +15,7 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 
-<style>
-/*
-	table th {
-		font-weight: bold;
-		color: black;
-		background-color: #90ee90;
-		opacity: 0.4;
-		font: bold;
-		text-align: center;
-		border-bottom: 1px solid #f0fff0;
-		width: 150px;
-	}
-	#wrap_join{
-		width:50%;
-	}
-	#formtable{
-		height: 400px
-	}
-	
-	.navbar {
-		background: #FFFFFF;
-	}
-	.navbar .navbar-center {
-		display: inline-block;
-		float: none;
-		vertical-align: top;
-		text-align: center;
-	}
-	#page_footer {
-		height: 60px;
-		background: #f5f5f5;
-	}
-	.footer_text {
-		margin: 20px 0;
-		color: #777;
-	}
-	.exit{
-		border-bottom: 1px solid transparent;
-	}
-	
-	#fsf{
-		color: red;
-	}
-	.ui-datepicker{z-index: 99 !important};
-	*/
-</style>
+
 
 <script>
 	// 다음 주소 찾기 api
@@ -294,13 +249,18 @@
 	
 </script>
 
+<style>
+	#wrap_join{
+		width:40%;
+		margin:auto;
+	}
+</style>
 
 
-<form onsubmit="return checksubmit()" name="joinform" action="insertMember" method="post">
-	<div id="wrap_join">
+	<div id="wrap_join" class="center-block">
 		<!-- 공간 띄우기 용 -->
 <!-- 		<table><tr height="50px"><td></td></tr></table> -->
-		
+		<form onsubmit="return checksubmit()" name="joinform" action="insertMember" method="post">
 		<table id="formtable">
 			
 			<tr>
@@ -418,10 +378,9 @@
 		</table> 
 
 		<table><tr height="30px"><td></td></tr></table>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('index')">　취　　소　</button>
+		<button type="button"  onclick="location='index'">　취　　소　</button>
 		
 	
-		<button type="submit" class="btn btn-success btn-sm" >　가　　입　</button>
-		
+		<button type="submit"  >　가　　입　</button>
+	</form>		
 	</div>
-</form>

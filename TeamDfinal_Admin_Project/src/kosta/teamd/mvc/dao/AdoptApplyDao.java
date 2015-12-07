@@ -21,4 +21,7 @@ public class AdoptApplyDao {
 	public List<AdoptApplyVO> selectallAdopt(){
 		return template.selectList("adopt.selectalladopt");
 	}
+	public AdoptApplyVO selectoneAdopt(int adopno){
+		return template.selectOne("adopt.selectoneadopt",adopno);
+	}
 }

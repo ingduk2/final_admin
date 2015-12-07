@@ -1,21 +1,22 @@
 package kosta.teamd.vo;
 
 public class AdoptVO {
-	private String Age;
-	private String Score;
+	private String age;
+	private String score;
 	private String q1, q1_1, q2, q2_1, q3, q4, q5, q6
 	,q6_1, q7, q8, q9, q10;
+	
 	public String getAge() {
-		return Age;
+		return age;
 	}
 	public void setAge(String age) {
-		Age = age;
+		this.age = age;
 	}
 	public String getScore() {
-		return Score;
+		return score;
 	}
 	public void setScore(String score) {
-		Score = score;
+		this.score = score;
 	}
 	public String getQ1() {
 		return q1;

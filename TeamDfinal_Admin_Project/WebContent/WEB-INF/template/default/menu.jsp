@@ -100,7 +100,7 @@ li { list-style: none}
 
 
   <h4>
-   <a href="#none">게시물 관리</a>
+   <a href="formBoard">게시물 관리</a>
   </h4>
     <div class="subtabmenu">
 	  	 <a href="">블록 게시물</a><br />
