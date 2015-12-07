@@ -58,8 +58,11 @@ public class MemberDao {
 			public void deleteBcont(String mid) {
 				template.delete("member.deleteBcont", mid);
 			}
-			public void deleteCBcont(String mid) {
-				template.delete("member.deleteCBcont", mid);
+			public void deleteCBcont1(String mid) {
+				template.delete("member.deleteCBcont1", mid);
+			}
+			public void deleteCBcont2(String mid){
+				template.delete("member.deleteCBcont2",mid);
 			}
 		// -------------------------------------- 회원 탈퇴 시, FK 항목 처리
 		

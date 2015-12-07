@@ -60,15 +60,23 @@ function callendar(){
 		$('#cal_detail').fullCalendar({
 					
 					//lang: currentLangCode,
-					dragable : false, //드래그앤 드랍 옵션
+					theme: true,
+					
 					timeFormat : 'hh:mm', //시간 포멧
 					// lang: 'ko',  //언어타입
 					header : {
 						left : 'prev,next today',
 						center : 'title',
-						right : 'month,agendaWeek,agendaDay'
+						right : 'month'
 					},
 					
+					
+					defaultView : 'month',//기본 뷰 - 옵션   //첫 페이지 기본 뷰 옵션
+					editable : false, //에디터 가능 옵션
+					selectable : true,
+					selectHelper : true,
+					editable : true,
+					eventLimit : true,
 					
 					// 클릭이벤트 - 삭제
 					//관리자용+사용자용
@@ -105,45 +113,106 @@ function callendar(){
 								    });
 								
 								
-								$('#calendar').fullCalendar('removeEvents',
+								$('#cal_detail').fullCalendar('removeEvents',
 										calEvent._id);
 							}
 						//사용자 나중에 분리할것임
 						//사용자 서비스임! 지우고 인서트하고 한번에 함
 						}else{
 							//신청했는지 아닌지 구분 한 후에 자바에서 구분하자.
-							$.ajax({
-								        url: "insertdeleteCal", //"testAjax.jsp", 
+// 							$.ajax({
+// 								        url: "insertdeleteCal", //"testAjax.jsp", 
+// 								        type: "POST",
+// 								        data: { //파라미터로 q
+// 							                 memid : username,
+// 							                 volunteerno : calEvent.title.split(".")[0]
+// 							                 //title start end 
+							                 
+// 							              },
+// 								        success: function(msg) { //데이터 받는 부분.response 
+// 								     		alert("--"+msg+"--");
+// 								        	if(msg=='delete'){
+// 								        		alert("detetetete");
+								 
+// 								        		$(this).css('background-color', 'green');
+// 								        	}else{
+// 								        		$(this).css('background-color', 'red');
+// 								        	}
+								        
+// 								        },
+// 								        error: function(a, b) {
+// 								            alert("Request: " + JSON.stringify(a));
+// 								        }
+// 								    });
+							
+							
+							
+// 							$(this).css('background-color', 'red');
+						}
+						
+						
+					},
+					
+					
+					
+					
+					eventDrop: function(event, delta, revertFunc) {
+
+				        alert(event.title + " was dropped on " + event.start.format());
+						//드래그 하면 원래 것 지워버리고.. 새롭게 집어넣으면 됨.
+						//지울 때 파라미터. seq
+						 $.ajax({
+								        url: "deleteCal", //"testAjax.jsp", 
 								        type: "POST",
 								        data: { //파라미터로 q
-							                 memid : username,
-							                 volunteerno : calEvent.title.split(".")[0]
+							                 //volunteertitle : calEvent.title,
+							                 seq : event.title.split(".")[0]
 							                 //title start end 
-							                 
 							              },
 								        success: function(msg) { //데이터 받는 부분.response 
-								     		alert("--"+msg+"--");
-								        	if(msg=='delete'){
-								        		alert("detetetete");
-								 
-								        		$(this).css('background-color', 'green');
-								        	}else{
-								        		$(this).css('background-color', 'red');
-								        	}
-								        
+								     		alert(msg);
 								        },
 								        error: function(a, b) {
 								            alert("Request: " + JSON.stringify(a));
 								        }
 								    });
-							
-							
-							
-							$(this).css('background-color', 'red');
-						}
+						
+						 $.ajax({
+				              url: "insertCal", //"testAjax.jsp", 
+				              type: "POST",
+				              data: { //파라미터로 q
+				            	  
+				                  volunteertitle : event.title,
+				                  volunteerstart : event.start.format(),
+				                  volunteerend : event.end.format()
+				                 //title start end 
+				              },
+				              dataType: "html",
+				              success: function(msg) { //데이터 받는 부분.response
+				                  alert(msg);
+				                  if (title) {
+										eventData = {
+											title : msg+'.'+title,
+											start : start,
+											end : end,
+											backgroundColor : 'green'
+										};
+
+										$('#cal_detail').fullCalendar('renderEvent',
+												eventData, true); // stick? = true
+									}
+				              },
+				              error: function(a, b) {
+				                  alert("Request: " + JSON.stringify(a));
+				              }
+				          });
 						
 						
-					},
+				        if (!confirm("Are you sure about this change?")) {
+				            revertFunc();
+				        }
+
+				    },
 					
 // 					eventMouseover: function( calEvent, jsEvent, view ) { 
 // 						alert('Event: ' + calEvent.title);
@@ -166,12 +235,9 @@ function callendar(){
 					
 					//관리자 기능.
 					//인서트
-					defaultView : 'month',//기본 뷰 - 옵션   //첫 페이지 기본 뷰 옵션
-					editable : false, //에디터 가능 옵션
-					selectable : true,
-					selectHelper : true,
+				
 					select : function(start, end, event) {// 캘린더 셀렉트 된 값을 컬럼에 표시...
-						
+					
 						var name= $('#name').val();
 						if(name=='admin'){
 						var title = prompt('Event Title:'); //값 입력.
@@ -209,6 +275,7 @@ function callendar(){
 				          });
 						 $('#cal_detail').fullCalendar('unselect');
 						}
+						
 					},
 					
 //					날짜 클릭
@@ -227,8 +294,7 @@ function callendar(){
 					
 					//둘다 필요한 부분.
 					//처음에 디비에서 끌어오는 부분
-				    editable : true,
-					eventLimit : true,
+				   
 					//load 하는 부분 ! , db에서 읽어오면 된다.
 // 					events : [
 // 					{

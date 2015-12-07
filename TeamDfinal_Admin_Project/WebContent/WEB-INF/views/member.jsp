@@ -148,6 +148,36 @@ function memberchart(){
    
 }
 
+//강제 탈퇴!
+$(function() {
+	//귀찮다 동적테일블 ajax안하고 걍 할거임 ㅜㅜ
+// 	$.ajax({
+// 		url:"ajaxMember",
+// 		type:"POST",
+		
+// 		success: function(msg) {
+// 			//확인 메세지
+// 			var json=JSON.parse(msg);
+			
+// 			$.each(json,function(idx,item){
+				
+// 			});
+// 		},
+// 		error: function(a, b) {
+// 			alert("Request: " + JSON.stringify(a));
+//             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+// 		}
+// 	});
+	
+	
+	$('[id="membtn"]').click(function() {
+		alert($(this).val());
+		var mid=$(this).val();
+		location.href='deleteforceMem?mid='+mid;
+		
+	});
+});
+
 </script>
 
 <div id=wrap_mem>
@@ -185,6 +215,8 @@ function memberchart(){
 				<td>${listv.mtel }</td>
 				<td>${listv.mroad }</td>
 				<td>${listv.mrpt }</td>
+				 
+				<td><button type="button" id="membtn" value="${listv.mid}">강제 탈퇴</button> </td>
 			</tr>
 			</c:forEach>
 		</tbody>

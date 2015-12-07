@@ -93,10 +93,11 @@ li { list-style: none}
   <h4>
    <a href="formMember">회원 관리</a>
   </h4>
+
   <div class="subtabmenu">
-  	 <a href="formMember">강제 탈퇴</a><br />
-  	 <a href="formChart?year=2012">강제 수정</a><br /> 
+  	 <a href="formMember">강제 탈퇴</a><br /> 
   </div>
+
 
   <h4>
    <a href="#none">게시물 관리</a>
@@ -115,18 +116,22 @@ li { list-style: none}
 <!--   	 <a href="selectallAdopt">입양 신청자</a><br /> -->
 <!--   	 <a href="formCal">봉사 신청자</a><br />  -->
 <!--   </div> -->
+
   
   <h4>
    <a href="formCal">봉사 신청 관리</a>
   </h4>
+
 <!--     <div> -->
 <!--   	 <a href="selectallAdopt">입양 신청자</a><br /> -->
 <!--   	 <a href="formCal">봉사 신청자</a><br />  -->
 <!--   </div> -->
+
   
   <h4>
    <a href="formCenter">센터 관리</a>
   </h4>
+
 <!--     <div> -->
 <!--   	 <a href="formCenter">센터 입력</a><br /> -->
 <!--   	 <a href="">센터 수정</a><br /> -->
@@ -140,20 +145,30 @@ li { list-style: none}
 <!--   	 <a href="drag">밥 주장</a><br />   -->
 <!--   </div> -->
 
+
 	<h4>
    <a href="testani">동물 관리</a>
   </h4>
+
 <!--     <div> -->
 <!--   	 <a href="testani">animal</a><br />   -->
 <!--   </div> -->
   
+
   	<h4>
    <a href="formEmployee">직원 관리</a>
   </h4>
+
 <!--     <div> -->
 <!--   	 <a href="selectallEmployee">직원 관리</a><br />   -->
 <!--   </div> -->
+
   
+  
+	<h4>
+   <a href="formSurvey">설문조사 관리</a>
+  </h4>
+
 
   
   	<h4>
@@ -167,6 +182,7 @@ li { list-style: none}
 </c:if>
    
   </h4>
+
 <!--     <div> -->
 <!--   	 <a href="selectallEmployee">직원 관리</a><br />   -->
 <!--   </div> -->

@@ -279,7 +279,7 @@ function callendar(){
 					header : {
 						left : 'prev,next today',
 						center : 'title',
-						right : 'month,agendaWeek,agendaDay'
+						right : 'month'
 					},
 					
 					
@@ -306,7 +306,7 @@ function callendar(){
 					
 					//둘다 필요한 부분.
 					//처음에 디비에서 끌어오는 부분
-				    editable : true,
+				  
 					eventLimit : true,
 					//load 하는 부분 ! , db에서 읽어오면 된다.
 // 					events : [
@@ -414,10 +414,10 @@ function callendar(){
 		        </tbody>
 		    </table>
 		</div>
-		<div style="width: 42%; float: left;">
+		<div style="width: 40%; float: left;">
 			<div class="chart form-group" id="container" ></div>
 		</div>
-		<div style="width: 24%; float: left; margin: auto">
+		<div style="width: 22%; float: left; margin: auto">
 <!-- 			<img src="img/puppy2.png" width="100%"> -->
 			<div id='cal_detail' ></div>
 		</div>

@@ -34,7 +34,8 @@ public class MemberImple
 	public void memberDelete(String mid) throws Exception {
 		
 		// -------------------------------------- 회원 탈퇴 시, FK 항목 처리
-			mdao.deleteCBcont(mid);
+			mdao.deleteCBcont1(mid);
+			mdao.deleteCBcont2(mid);
 			mdao.deleteBcont(mid);
 		// -------------------------------------- 회원 탈퇴 시, FK 항목 처리
 		
