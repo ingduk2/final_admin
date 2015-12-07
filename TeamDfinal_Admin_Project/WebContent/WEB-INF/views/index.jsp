@@ -363,10 +363,10 @@ function callendar(){
 			<img src="img/blacklist.png" width="100%">
 		</div>
 		<div style="width: 25%;  float: left; margin-top:40px; margin-bottom: 20px">
-			<img src="img/employee.png" width="100%">
+			<a href="formEmployee"><img src="img/employee.png" width="100%"></a>
 		</div>
 		<div style="width: 25%;  float: left; margin-top:40px; margin-bottom: 20px">
-			<img src="img/animalcare.png" width="100%">
+			<a href="testani"><img src="img/animalcare.png" width="100%"></a>
 		</div>
 	</div> <!-- 두번째단 DIV -->
 	<div style="width: 100%;"><!-- 세번째 DIV -->

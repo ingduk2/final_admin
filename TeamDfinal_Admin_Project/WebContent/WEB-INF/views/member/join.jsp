@@ -60,6 +60,24 @@
 	}
 	.ui-datepicker{z-index: 99 !important};
 	*/
+	
+	
+	#wrap_join{
+		margin: auto;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		width: auto;
+		margin-left: 30%
+	}
+	#formtable>tbody th{
+		font-weight: bold;
+		color: black;
+		background-color: silver;
+		font: bold;
+		text-align: center;
+		border-bottom: 1px solid gray;
+		width: 150px;
+	}
 </style>
 
 <script>
@@ -418,10 +436,11 @@
 		</table> 
 
 		<table><tr height="30px"><td></td></tr></table>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('index')">　昼　　社　</button>
+		<div style="text-align: left; margin-left: 10%">
+		<button type="button" class="btn btn-danger btn-sm" onclick="goUrl('index')">　昼　　社　</button>
 		
 	
-		<button type="submit" class="btn btn-success btn-sm" >　亜　　脊　</button>
-		
+		<button type="submit" class="btn btn-danger btn-sm" >　亜　　脊　</button>
+		</div>
 	</div>
 </form>

@@ -128,17 +128,17 @@
 	ondrop="drop(this, event);">
 	<div class="img form-group">
 	<img ondragstart="drag(this, event)" id="rice+${i}" alt="¹ä" name="${listjoin[i].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood1.jpg"
+		src="img/dogfood.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
 	<img ondragstart="drag(this, event)" id="bath+${i}" alt="¸ñ¿å" name="${listjoin[i].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood2.jpg"
+		src="img/shampoo.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
 	<img ondragstart="drag(this, event)" id="spo+${i}" alt="¿îµ¿" name="${listjoin[i].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood3.jpg"
+		src="img/doglead.png"
 		draggable="true">
 	</div>
 </div>
