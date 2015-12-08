@@ -164,7 +164,7 @@ $(function() {
 
 
 function popup(){
-	var specs = "left=10,top=10,width=697,height=800, location=no, realzable=no, scrollbars=no";
+	var specs = "left=10,top=10,width=500,height=640, location=no, realzable=no, scrollbars=no";
 	window.open("formAnimal", "popup", specs);
 }
 
@@ -191,6 +191,9 @@ function popup(){
 	}
 	#print{
 		
+	}
+	.form-inline .form-group{
+		vertical-align: top
 	}
 </style>
 
@@ -220,12 +223,6 @@ function popup(){
 </thead>
 
 <tbody>
-<%-- <c:forEach items="${anisvo}" var="anisvo"> --%>
-<!-- <tr> -->
-<%-- <td>${anisvo.anispecies }</td> --%>
-<%-- <td>${anisvo.cnt }</td> --%>
-<!-- </tr> -->
-<%-- </c:forEach> --%>
 
 <c:forEach items="${ablilst }" var="anilist"  varStatus="i">
 <input type="hidden" id="anino+${i.count}" value="${anilist.anino }"/>

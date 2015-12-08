@@ -122,7 +122,7 @@ $(function () {
             type: 'column'
         },
         title: {
-           
+            text:" ",
             align: 'right',
             x: -100,
             verticalAlign: 'bottom',
@@ -302,11 +302,6 @@ function callendar(){
 					<span class="label label-danger">New!</span>&nbsp;${mainanimalcnt}
 				</div>
 			</div>
-			<%-- <div style="text-align: left; margin-left: 80px">
-				<span class="label label-danger" style="margin-left: 20px;">New!</span>${mainmembercnt}
-				<span class="label label-danger" style="margin-left: 75px;">New!</span>${mainboardcnt}
-				<span class="label label-danger" style="margin-left: 75px;">New!</span>${mainanimalcnt}
-			</div> --%>
 		</div>
 		<div style="width: 50%; float: left;">
 			<div class="chart" id="chart1"></div>
@@ -348,7 +343,7 @@ function callendar(){
 		        </tbody>
 		    </table>
 		</div>
-		<div style="width: 40%; float: left;">
+		<div style="width: 35%; float: left;">
 			<div class="chart form-group" id="container" ></div>
 		</div>
 		<div style="width: 22%; float: left; margin: auto">

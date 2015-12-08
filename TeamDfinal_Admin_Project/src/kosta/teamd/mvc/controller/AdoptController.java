@@ -94,7 +94,7 @@ public class AdoptController {
 	AdoptVO advo=new AdoptVO();
 		
 		//자기 경로에 맞춰야함
-		String excelfile="/Users/ingduk2/git/final_admin/TeamDfinal_Admin_Project/WebContent/excel/test3.xls";
+		String excelfile="C:\\Users\\kosta\\git\\final_admin\\TeamDfinal_Admin_Project\\WebContent\\excel\\test3.xls";
 
 	try{
 		POIFSFileSystem fs= new POIFSFileSystem(new FileInputStream(excelfile));
