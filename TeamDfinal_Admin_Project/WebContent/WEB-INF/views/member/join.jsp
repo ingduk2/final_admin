@@ -15,6 +15,70 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 
+<style>
+/*
+	table th {
+		font-weight: bold;
+		color: black;
+		background-color: #90ee90;
+		opacity: 0.4;
+		font: bold;
+		text-align: center;
+		border-bottom: 1px solid #f0fff0;
+		width: 150px;
+	}
+	#wrap_join{
+		width:50%;
+	}
+	#formtable{
+		height: 400px
+	}
+	
+	.navbar {
+		background: #FFFFFF;
+	}
+	.navbar .navbar-center {
+		display: inline-block;
+		float: none;
+		vertical-align: top;
+		text-align: center;
+	}
+	#page_footer {
+		height: 60px;
+		background: #f5f5f5;
+	}
+	.footer_text {
+		margin: 20px 0;
+		color: #777;
+	}
+	.exit{
+		border-bottom: 1px solid transparent;
+	}
+	
+	#fsf{
+		color: red;
+	}
+	.ui-datepicker{z-index: 99 !important};
+	*/
+	
+	
+	#wrap_join{
+		margin: auto;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		width: auto;
+		margin-left: 30%
+	}
+	#formtable>tbody th{
+		font-weight: bold;
+		color: black;
+		background-color: silver;
+		font: bold;
+		text-align: center;
+		border-bottom: 1px solid gray;
+		width: 150px;
+	}
+</style>
 
 
 <script>
@@ -378,9 +442,19 @@
 		</table> 
 
 		<table><tr height="30px"><td></td></tr></table>
+<<<<<<< HEAD
+		<div style="text-align: left; margin-left: 10%">
+		<button type="button" class="btn btn-danger btn-sm" onclick="goUrl('index')">　昼　　社　</button>
+=======
 		<button type="button"  onclick="location='index'">　昼　　社　</button>
+>>>>>>> refs/remotes/origin/master
 		
 	
+<<<<<<< HEAD
+		<button type="submit" class="btn btn-danger btn-sm" >　亜　　脊　</button>
+		</div>
+=======
 		<button type="submit"  >　亜　　脊　</button>
 	</form>		
+>>>>>>> refs/remotes/origin/master
 	</div>

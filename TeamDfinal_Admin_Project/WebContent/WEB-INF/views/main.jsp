@@ -7,10 +7,10 @@
        height: 500px; 
    } 
   
-/*   .carousel-inner{ */
-/*   	width: 100%; */
-/*   	height:100%; */
-/*   } */
+   .carousel-inner{ 
+	 	width: 100%; 
+	 	height:100%; 
+   }
   
 #carousel-example-generic{ width:60%;
 	margin : auto;
