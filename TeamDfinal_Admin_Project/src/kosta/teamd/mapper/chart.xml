@@ -51,4 +51,9 @@ from adoptapply
 		select num , sub1cnt, sub2cnt, sub3cnt from survey order by 1 asc
 	</select>
 	
+	
+	<select id="selectanimalpay" resultType="apvo">
+	select sum(amrice) sum_amrice , sum(amspo) sum_amspo, sum(ambath) sum_ambath from animalmanage
+	</select>
+	
 </mapper>

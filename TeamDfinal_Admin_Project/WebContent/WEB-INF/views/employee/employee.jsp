@@ -7,7 +7,7 @@ $(function () {
 	//승인
 	//0->1
 	$("[id='btnn']").click(function() {
-		alert($(this).val());
+		//alert($(this).val());
 		
 			$.ajax({
 		        url: "updateyesEmployee", //"testAjax.jsp", 
@@ -17,13 +17,13 @@ $(function () {
 		        },
 		        success: function(msg) { //데이터 받는 부분.response
 		        //yes
-		        alert(msg);
+		        //alert(msg);
 		        	
 		        	
 		        },
 		        error: function(a, b) {
-		            alert("Request: " + JSON.stringify(a));
-		            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		           // alert("Request: " + JSON.stringify(a));
+		            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		        }
 		   
 		});
@@ -32,7 +32,7 @@ $(function () {
 	//탈퇴
 	//1->0
 	$("[id='btny']").click(function() {
-		alert($(this).val());
+		//alert($(this).val());
 		
 		$.ajax({
 	        url: "updatenoEmployee", //"testAjax.jsp", 
@@ -42,12 +42,12 @@ $(function () {
 	        },
 	        success: function(msg) { //데이터 받는 부분.response
 	        //no
-	        alert(msg);
+	        //alert(msg);
 	        	
 	        },
 	        error: function(a, b) {
-	            alert("Request: " + JSON.stringify(a));
-	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	            //alert("Request: " + JSON.stringify(a));
+	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	        }
 	   
 	});
@@ -93,7 +93,7 @@ $(function() {
             
             //승인을 눌러서 퇴사로 0->1
             $("#memberTable tr>td:last>button[id='no']").on('click', function(){
-               	alert($(this).val());
+               //	alert($(this).val());
                	
                	$.ajax({
     		        url: "updateyesEmployee", //"testAjax.jsp", 
@@ -103,13 +103,13 @@ $(function() {
     		        },
     		        success: function(msg) { //데이터 받는 부분.response
     		        //yes
-    		        alert(msg);
+    		        //alert(msg);
     		        	
     		        	
     		        },
     		        error: function(a, b) {
-    		            alert("Request: " + JSON.stringify(a));
-    		            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		            //alert("Request: " + JSON.stringify(a));
+    		            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
     		        }
     		   
     		});
@@ -120,7 +120,7 @@ $(function() {
              // clone
                 $.trClone = $(this).parent().parent().clone().html();
 //                 alert($.trClone);
-                alert($.trClone);
+              //  alert($.trClone);
                 $.newTr = $("<tr>"+$.trClone+"</tr>");
                 //$.newTr = $("<tr><td>1</td><td>2</td><td>3</td><td></td></tr>");
 
@@ -150,8 +150,8 @@ $(function() {
         	
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
-            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            //alert("Request: " + JSON.stringify(a));
+            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
 });
 	
@@ -202,7 +202,7 @@ $(function() {
 
     	//퇴사를 눌러서 승인으로 yes-> no
     	 $("#memberTable1 tr>td:last>button[id='yes']").on('click', function(){
-    		 alert($(this).val());
+    		// alert($(this).val());
     		 $.ajax({
     		        url: "updatenoEmployee", //"testAjax.jsp", 
     		        type: "POST",
@@ -211,12 +211,12 @@ $(function() {
     		        },
     		        success: function(msg) { //데이터 받는 부분.response
     		        //no
-    		        alert(msg);
+    		       // alert(msg);
     		        	
     		        },
     		        error: function(a, b) {
-    		            alert("Request: " + JSON.stringify(a));
-    		            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		            //alert("Request: " + JSON.stringify(a));
+    		            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
     		        }
     		   
     		});
@@ -229,7 +229,7 @@ $(function() {
              	$.trClone= $(this).parent().parent().clone().html();
                 //$.trClone = $("#memberTable1 tr:last").clone().html();
 //                 alert($.trClone);
-                alert($.trClone);
+               // alert($.trClone);
                 $.newTr = $("<tr>"+$.trClone+"</tr>");
                 //$.newTr = $("<tr><td>1</td><td>2</td><td>3</td><td></td></tr>");
 
@@ -264,8 +264,8 @@ $(function() {
         });
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
-            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            //alert("Request: " + JSON.stringify(a));
+            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
         
         
@@ -276,8 +276,8 @@ $(function() {
 	
 $(function () {
 	$('#btnAddRow').click(function() {
-		alert($('#memberTable').html());
-		alert($('#memberTable1').html());
+		//alert($('#memberTable').html());
+		//alert($('#memberTable1').html());
 	});
 
 });

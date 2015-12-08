@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- 
 	※ 변경 사항 ※
 	- 메뉴바와 폼 사이 공간 띄움
@@ -8,7 +10,7 @@
  -->
 
 <style>
-/*table th { 
+table th { 
 	font-weight: bold; 
 	color: black; 
 	background-color: #90ee90; 
@@ -40,10 +42,14 @@
 	input[readonly] {
 	  background-color: white !important;
 	  cursor: text !important;
-	}*/
+	}
 </style>
 
 <script>
+
+
+
+
 	// 파일 업로드용 스크립트
 	$(document).on('change', '.btn-file :file', function() {
 		  var input = $(this),
@@ -84,7 +90,7 @@
 	  {
 		document.forms['boardwriteform'].submit();
 	     opener.location.reload(true);
-	     self.close();
+	     
 	  }
 	
 	function fin(){
@@ -142,7 +148,7 @@
 	</table>				
 
 	<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
-	<button type="submit" class="btn btn-success btn-sm" onclick="CloseAndRefresh();">　완　　료　</button>
+	<button type="submit" class="btn btn-success btn-sm">　완　　료　</button>
 	<button type="button" class="btn btn-success btn-sm" onclick="fin()">　취　　소　</button>
 
 </form>

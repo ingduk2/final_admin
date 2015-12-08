@@ -68,8 +68,8 @@ $(function () {
         	
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
-            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+           // alert("Request: " + JSON.stringify(a));
+           // alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
     });
 	
@@ -123,7 +123,7 @@ $(function() {
 	                // 정상적으로 검색이 완료됐으면
 	                if (status === daum.maps.services.Status.OK) {
 	                    // 해당 주소에 대한 좌표를 받아서
-	                    alert(result.addr[0].lat+','+result.addr[0].lng);
+	                  //  alert(result.addr[0].lat+','+result.addr[0].lng);
 	                    $('#code').val(result.addr[0].lat+','+result.addr[0].lng);
 	                    var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
 	                    // 지도를 보여준다.

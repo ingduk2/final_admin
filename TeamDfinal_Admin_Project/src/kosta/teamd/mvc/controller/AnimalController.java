@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import kosta.teamd.mvc.dao.AnimalDao;
 import kosta.teamd.mvc.inter.ImgBoardInsertInter;
 import kosta.teamd.vo.AniBoardVO;
+import kosta.teamd.vo.AnimalManageJoinVO;
 import kosta.teamd.vo.AnimalManageVO;
 import kosta.teamd.vo.AnimalVO;
 import kosta.teamd.vo.AnimalsVO;
@@ -71,6 +73,15 @@ public class AnimalController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/selectallAdminam")
+	public ModelAndView selectallAdminam(String mid){
+		ModelAndView mav= new ModelAndView("animaltest/adminanimal");
+		List<AnimalManageJoinVO> list= adao.getAdminjoinanimalmanage(mid);
+		
+		mav.addObject("list",list);
+		return mav;
+	}
+	
 	//String a = "rice011"
 	@RequestMapping(value="/updateAnimalManage")
 	public ModelAndView updateAnimalManage(AnimalManageVO amvo){
@@ -95,8 +106,7 @@ public class AnimalController {
 	
 	@RequestMapping(value="formAnimal")
 	public ModelAndView formAnimal(){
-		ModelAndView mav= new ModelAndView("animaltest/imgboardwrite");
-		
+		ModelAndView mav= new ModelAndView("checkpage/imgboardwrite");
 		return mav;
 	}
 	
@@ -108,6 +118,7 @@ public class AnimalController {
 	public ModelAndView insertImgBoard(AnimalVO anivo, BoardVO bvo, HttpServletRequest req) throws Exception {
 		
 		//사진이 널이다..?
+		System.out.println(anivo.getAnisex());
 		System.out.println("asdfasdfasdf");
 		// 이미지 파일이 있으면 수행
 		if (anivo.getManiimg().getSize() > 0) {

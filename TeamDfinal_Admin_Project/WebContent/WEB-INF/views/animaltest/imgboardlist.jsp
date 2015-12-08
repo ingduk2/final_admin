@@ -8,7 +8,7 @@
 <script>
 	$(function() {
 		$('#sel1').change(function() {
-			alert($(this).val());
+			//alert($(this).val());
 		});
 	});
 </script>
@@ -31,6 +31,7 @@
 /* 	width:10%; */
 /* } */
 #drag_wrap{
+	margin-left:50px;
 	width: 20%;
 	
 }
@@ -47,6 +48,14 @@
 .am{
 	width:40px;
 	height:40px;
+}
+
+#wrapwrap{
+	width:70%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
 }
 </style>
 
@@ -68,14 +77,14 @@
 		//$("[id='bath']")
 		
 		//$("[id='spo']")
-		alert(id);
-		alert(data);//rice
-		alert(id2);//trice
+		//alert(id);
+		//alert(data);//rice
+		//alert(id2);//trice
 		
 		var len=id2.length;
 		var anino=document.getElementById(data).getAttribute("name");
 		var mid=$('#mid').val();
-		alert(mid);
+		//alert(mid);
 		if (data  == id2.substring(1,len)) {
 			
 			$.ajax({
@@ -88,19 +97,19 @@
 		        },
 		        success: function(msg) { //데이터 받는 부분.response
 		        //yes
-		        alert(msg);
+		        //alert(msg);
 		        	
 		        	
 		        },
 		        error: function(a, b) {
-		            alert("Request: " + JSON.stringify(a));
-		            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		            //alert("Request: " + JSON.stringify(a));
+		            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		        }
 		   
 		});
 // 			$('#item-id').draggable( "disable" )
 // 			$('#id').draggable('disable');
-			alert("anino : "+anino);
+			//alert("anino : "+anino);
 			target.appendChild(document.getElementById(id));
 			//food.dataTransfer.clearData("Text"); 
 		}
@@ -122,6 +131,7 @@
 </script>
 
 
+<div id="wrapwrap">
 	<c:if test="${size != 0}">
 		<c:set var="doneLoop" value="false" />
 		
@@ -358,6 +368,6 @@
 		</c:forEach>
 	</c:if>
 
-
+</div>
 
 

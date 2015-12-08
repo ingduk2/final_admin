@@ -50,7 +50,7 @@ function popup(){
 	margin-top: 50px;
 }
 </style>
-
+<body onLoad="opener.location.href=opener.location.href; window.close();">
 <div id="adminboard_wrap" class="form-inline">
 
 <div id="t1" class="form-group">
@@ -159,3 +159,4 @@ function popup(){
 </div>
 
 </div> 
+</body>

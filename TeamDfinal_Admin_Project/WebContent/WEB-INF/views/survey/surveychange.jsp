@@ -23,8 +23,8 @@ $('[id="surbtn"]').click(function () {
 			        	num : $(this).val()
 			        },
 			        success: function(msg) { //데이터 받는 부분.response
-			        alert('aaaa');
-	        		alert(msg);
+			       // alert('aaaa');
+	        	//	alert(msg);
 	
 			        var json=JSON.parse(msg);
 			        
@@ -37,8 +37,8 @@ $('[id="surbtn"]').click(function () {
 
 			        },
 			        error: function(a, b) {
-			            alert("Request: " + JSON.stringify(a));
-			            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			           // alert("Request: " + JSON.stringify(a));
+			           // alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			        }
 			   
 			});
@@ -107,8 +107,8 @@ $('[id="surbtn"]').click(function () {
         
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
-            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+           // alert("Request: " + JSON.stringify(a));
+           // alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
    	
 });

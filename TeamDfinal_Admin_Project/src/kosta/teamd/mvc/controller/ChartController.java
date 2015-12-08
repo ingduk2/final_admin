@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.teamd.mvc.dao.ChartDao;
+import kosta.teamd.vo.AnimalPayVO;
 import kosta.teamd.vo.ChartAdoptScore;
 import kosta.teamd.vo.ChartAnimalManage;
 import kosta.teamd.vo.ChartMemAgeVO;
@@ -254,6 +255,50 @@ public class ChartController {
 		ja.add(j3);
 		System.out.println(ja);
 		mav.addObject("survey",ja);
+		return mav;
+	}
+	
+	@RequestMapping(value="selectanimalpay")
+	public ModelAndView selectanimalpay(){
+		ModelAndView mav= new ModelAndView("/chart/chartdata");
+		AnimalPayVO vo=cdao.selectanimalpay();
+		
+		/*
+		 * [
+                ['Firefox',   10.38],
+                ['IE',       56.33],
+                ['Chrome', 24.03],
+                ['Safari',    4.77],
+                ['Opera',     0.91],
+                {
+                    name: 'Proprietary or Undetectable',
+                    y: 0.2,
+                    dataLabels: {
+                        enabled: false
+                    }
+                }
+            ]
+		 */
+		
+		JSONArray ja= new JSONArray();
+		
+		JSONArray ja1=new JSONArray();
+		ja1.add("식비");
+		ja1.add(vo.getSum_amrice());
+		ja.add(ja1);
+		
+		ja1=new JSONArray();
+		ja1.add("목욕비");
+		ja1.add(vo.getSum_ambath());
+		ja.add(ja1);
+		
+		ja1=new JSONArray();
+		ja1.add("운동비");
+		ja1.add(vo.getSum_amspo());
+		ja.add(ja1);
+		
+		System.out.println(ja);
+		mav.addObject("chdata",ja);
 		return mav;
 	}
 }

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kosta.teamd.vo.AnimalPayVO;
 import kosta.teamd.vo.ChartAdoptScore;
 import kosta.teamd.vo.ChartAniBreedVO;
 import kosta.teamd.vo.ChartAnimalManage;
@@ -52,5 +53,9 @@ public class ChartDao {
 	
 	public List<ChartAnimalManage> selectallam(){
 		return template.selectList("chart.selectallam");
+	}
+	
+	public AnimalPayVO selectanimalpay(){
+		return template.selectOne("chart.selectanimalpay");
 	}
 }

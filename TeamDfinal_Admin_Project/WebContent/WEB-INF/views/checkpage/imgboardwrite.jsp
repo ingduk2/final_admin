@@ -1,16 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- 
-	¡Ø º¯°æ »çÇ× ¡Ø
-	- °ÅÀÇ »õ·Î ÀÛ¼ºÇÔ
+	â€» ë³€ê²½ ì‚¬í•­ â€»
+	- ê±°ì˜ ìƒˆë¡œ ì‘ì„±í•¨
  -->
  
-<!-- ´ÙÀ½ ÁÖ¼Ò Ã£±â api µî·Ï -->
+<!-- ë‹¤ìŒ ì£¼ì†Œ ì°¾ê¸° api ë“±ë¡ -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     
-<!-- ´Ş·Â input api µî·Ï -->
+<!-- ë‹¬ë ¥ input api ë“±ë¡ -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -62,7 +64,7 @@
 </style>
 
 <script>
-	// ÆÄÀÏ ¾÷·Îµå¿ë ½ºÅ©¸³Æ® 
+	// íŒŒì¼ ì—…ë¡œë“œìš© ìŠ¤í¬ë¦½íŠ¸ 
 	$(document).on('change', '.btn-file :file', function() {
 		  var input = $(this),
 		      numFiles = input.get(0).files ? input.get(0).files.length : 1,
@@ -84,59 +86,59 @@
 	    });
 	});
 		
-	// ´Ş·Â input api
+	// ë‹¬ë ¥ input api
 	$(function() {
 		$( "#datepicker" ).datepicker({
 			changeMonth: true,
 			changeYear: true
 		});
-		// ³¯Â¥ Çü½Ä yyyy-mm-dd·Î º¯°æ
+		// ë‚ ì§œ í˜•ì‹ yyyy-mm-ddë¡œ ë³€ê²½
 		$( "#datepicker" ).datepicker({
 			dateFormat: "yy-mm-dd"
 		});
-		// ³¯Â¥ Çü½Ä getter
+		// ë‚ ì§œ í˜•ì‹ getter
 		var dateFormat = $( "#datepicker" ).datepicker( "option", "dateFormat" );
-		// ³¯Â¥ Çü½Ä setter
+		// ë‚ ì§œ í˜•ì‹ setter
 		$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 		
-		// ³âµµ ±â°£ getter
+		// ë…„ë„ ê¸°ê°„ getter
 		var yearRange = $( "#datepicker" ).datepicker( "option", "yearRange" );
-		// ³âµµ ±â°£ setter (50³â Àü ~ ÇöÀç)
+		// ë…„ë„ ê¸°ê°„ setter (50ë…„ ì „ ~ í˜„ì¬)
 		$( "#datepicker" ).datepicker( "option", "yearRange", "-50:c" );
-	});   //»ı³â¿ùÀÏ °¡Á®¿À´Â function
+	});   //ìƒë…„ì›”ì¼ ê°€ì ¸ì˜¤ëŠ” function
 
-	// ´ÙÀ½ ÁÖ¼Ò Ã£±â api
+	// ë‹¤ìŒ ì£¼ì†Œ ì°¾ê¸° api
 	function execDaumPostcode() {   
 		new daum.Postcode(
 				{
 					oncomplete : function(data) {
 						var addr = '';
 
-						// µµ/½Ã
+						// ë„/ì‹œ
 						if (data.sido !== '') {
 							addr = data.sido;
 						}
-						// ½Ã/±º/±¸
-						if (data.sigungu !== '' && /[½Ã|±º|±¸]$/g.test(data.sigungu)) {
+						// ì‹œ/êµ°/êµ¬
+						if (data.sigungu !== '' && /[ì‹œ|êµ°|êµ¬]$/g.test(data.sigungu)) {
 							addr += ' ' + data.sigungu;
 						}
-						// µ¿
-						if (data.bname !== '' && /[µ¿|·Î|°¡]$/g.test(data.bname)) {
+						// ë™
+						if (data.bname !== '' && /[ë™|ë¡œ|ê°€]$/g.test(data.bname)) {
 							addr += ' ' + data.bname;
 						}
 
 						document.getElementById('region').value = addr;
 					}
 				}).open();
-	} // ´ÙÀ½¿¡¼­ ¶óÀÌºê·¯¸®¸¦ °¡Á®¿À±â À§ÇÔ.
+	} // ë‹¤ìŒì—ì„œ ë¼ì´ë¸ŒëŸ¬ë¦¬ë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•¨.
 	
 	
 	//------------------------------------------------------------------------------------------------
-	//Ç°Á¾ - ´ëºĞ·ù, ¼ÒºĞ·ù Á¾·ù ¹è¿­¿¡ Ã³³ÖÃ³³Ö
-	var kindv=new Array(new Array("-- ¼±ÅÃ --"),
-			  new Array("-- ¼±ÅÃ --", "¿äÅ©¼ÅÅ×¸®¾î", "Çªµé", "Çã½ºÅ°", "¸»¶ó¹ÂÆ®", "ºñ±Û", "¸»Æ¼Áî", "½ÃÃò", "Áøµ¾°³", "¼¼ÆÛÆ®", "ÆÛ±×", "º£µé¸µÅÏÅ×¸®¾î","º¸´õÄİ¸®", "À£½ÃÄÚ±â", "ÄÚÄ«½ºÆÄ´Ï¿¤", "¾ÆÇÁ°£ÇÏ¿îµå", "½Ã¹ÙÀÌ´©", "¹Ù¼ÂÇÏ¿îµå", "ºñ¼õÇÁ¸®Á¦", "Á¦Æä´ÏÁîÃ¾", "ºí·¯µåÇÏ¿îµå", "Æ÷¸Ş¶óÀÌ¾ğ", "ºü»ß¿ë", "º¸½ºÅÏÅ×¸®¾î", "Ä¡¿Í¿Í", "Â÷¿ìÂ÷¿ì", "»şÆäÀÌ", " "),
-			  new Array("-- ¼±ÅÃ --", "Æä¸£½Ã¾È", "ÀÍ½ºÆ®¸²", "Æä¸£½Ã¾ÈÇÉÄ¥¶ó", "È÷¸»¶ó¾á", "ÅÍÅ°½¬¾Ó°í¶ó", "·¯½Ã¾Èºí·ç", "½ºÄİÆ¼½¬Æúµå", "ÄÚ¸®¾È¼ôÇì¾î", "¾Æ¸Ş¸®Ä­¼ôÇì¾î", "½ºÇÎÅ©½º", "·ºµ¹", "³ë¸£¿şÀÌ½£", "¿£ÁÒÆ½", "¹ö¸¸", "ºê¸®Æ¼½¬¼ôÇì¾î", "º½º£ÀÌ", "¸ŞÀÎÄï", "¶ó°¡¸ÓÇÉ", "¹ß¸®³×Áî", "¼¤", "¸ÕÄ¡Å²","¾Æºñ½Ã´Ï¾È", "¹ğ°¥", " "),
-			  new Array("-- ¼±ÅÃ --", "°í½¿µµÄ¡", "Åä³¢", "»õ", "°ÅºÏÀÌ", "Æä¸´", "¿ø¼şÀÌ", "»ç¸·¿©¿ì", "ÇÜ½ºÅÍ", "±â´ÏÇÇ±×", "¹Ì´ÏÇÇ±×", "±âÅ¸", " ")
+	//í’ˆì¢… - ëŒ€ë¶„ë¥˜, ì†Œë¶„ë¥˜ ì¢…ë¥˜ ë°°ì—´ì— ì²˜ë„£ì²˜ë„£
+	var kindv=new Array(new Array("-- ì„ íƒ --"),
+			  new Array("-- ì„ íƒ --", "ìš”í¬ì…”í…Œë¦¬ì–´", "í‘¸ë“¤", "í—ˆìŠ¤í‚¤", "ë§ë¼ë®¤íŠ¸", "ë¹„ê¸€", "ë§í‹°ì¦ˆ", "ì‹œì¸„", "ì§„ë—ê°œ", "ì„¸í¼íŠ¸", "í¼ê·¸", "ë² ë“¤ë§í„´í…Œë¦¬ì–´","ë³´ë”ì½œë¦¬", "ì›°ì‹œì½”ê¸°", "ì½”ì¹´ìŠ¤íŒŒë‹ˆì—˜", "ì•„í”„ê°„í•˜ìš´ë“œ", "ì‹œë°”ì´ëˆ„", "ë°”ì…‹í•˜ìš´ë“œ", "ë¹„ìˆ‘í”„ë¦¬ì œ", "ì œí˜ë‹ˆì¦ˆì²¸", "ë¸”ëŸ¬ë“œí•˜ìš´ë“œ", "í¬ë©”ë¼ì´ì–¸", "ë¹ ì‚ìš©", "ë³´ìŠ¤í„´í…Œë¦¬ì–´", "ì¹˜ì™€ì™€", "ì°¨ìš°ì°¨ìš°", "ìƒ¤í˜ì´", " "),
+			  new Array("-- ì„ íƒ --", "í˜ë¥´ì‹œì•ˆ", "ìµìŠ¤íŠ¸ë¦¼", "í˜ë¥´ì‹œì•ˆí•€ì¹ ë¼", "íˆë§ë¼ì–€", "í„°í‚¤ì‰¬ì•™ê³ ë¼", "ëŸ¬ì‹œì•ˆë¸”ë£¨", "ìŠ¤ì½œí‹°ì‰¬í´ë“œ", "ì½”ë¦¬ì•ˆìˆí—¤ì–´", "ì•„ë©”ë¦¬ì¹¸ìˆí—¤ì–´", "ìŠ¤í•‘í¬ìŠ¤", "ë ‰ëŒ", "ë…¸ë¥´ì›¨ì´ìˆ²", "ì—”ì£ í‹±", "ë²„ë§Œ", "ë¸Œë¦¬í‹°ì‰¬ìˆí—¤ì–´", "ë´„ë² ì´", "ë©”ì¸ì¿¤", "ë¼ê°€ë¨¸í•€", "ë°œë¦¬ë„¤ì¦ˆ", "ìƒ´", "ë¨¼ì¹˜í‚¨","ì•„ë¹„ì‹œë‹ˆì•ˆ", "ë±…ê°ˆ", " "),
+			  new Array("-- ì„ íƒ --", "ê³ ìŠ´ë„ì¹˜", "í† ë¼", "ìƒˆ", "ê±°ë¶ì´", "í˜ë¦¿", "ì›ìˆ­ì´", "ì‚¬ë§‰ì—¬ìš°", "í–„ìŠ¤í„°", "ê¸°ë‹ˆí”¼ê·¸", "ë¯¸ë‹ˆí”¼ê·¸", "ê¸°íƒ€", " ")
 	);
 	var temp;
 	var oSelect="";
@@ -145,9 +147,9 @@
 		temp=document.getElementById("smallkind");
 		var subCnt=temp.options.length;
 		console.log(subCnt);
-			console.log(kindv[item].length);  //¼±ÅÃÇÑ ¾Öµé »Ì¾Æ³»º¾½Ã´Ù.
+			console.log(kindv[item].length);  //ì„ íƒí•œ ì• ë“¤ ë½‘ì•„ë‚´ë´…ì‹œë‹¤.
 		
-		//ÃÊ±âÈ­
+		//ì´ˆê¸°í™”
 		for (var i = (subCnt-1); i > 0 ; i--) {
 			temp.options[i]=null;
 		}
@@ -165,71 +167,71 @@
 	};
 	//------------------------------------------------------------------------------------------------
 	
-	// bcode 5, 6 (¸ñ°İ, °³ÀÎ º¸È£)
+	// bcode 5, 6 (ëª©ê²©, ê°œì¸ ë³´í˜¸)
 	function checksubmit() {
 		
 		if (document.imgboardwriteform.btitle.value == "") {
-			alert("Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.btitle.focus()
 			return false
 		}
 		if (document.imgboardwriteform.anistate.value == "0") {
-			alert("ºĞ·ù¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä")
+			alert("ë¶„ë¥˜ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anistate.focus()
 			return false
 		}
 		if (document.imgboardwriteform.anispecies.value == "0") {
-			alert("µ¿¹°À» ¼±ÅÃÇØÁÖ¼¼¿ä")
+			alert("ë™ë¬¼ì„ ì„ íƒí•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anispecies.focus()
 			return false
 		}
 		if (document.imgboardwriteform.anidate.value == "") {
-			alert("³¯Â¥¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("ë‚ ì§œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anidate.focus()
 			return false
 		}
 		if (document.imgboardwriteform.aniregion.value == "") {
-			alert("Áö¿ªÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("ì§€ì—­ì„ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.regionbtn.focus()
 			return false
 		}
-		if (document.imgboardwriteform.anibreed.value == "-- ¼±ÅÃ --") {
-			// alert("Ç°Á¾¿¡ µğÆúÆ® °ªÀ» ³Ö´Â´Ù")
+		if (document.imgboardwriteform.anibreed.value == "-- ì„ íƒ --") {
+			// alert("í’ˆì¢…ì— ë””í´íŠ¸ ê°’ì„ ë„£ëŠ”ë‹¤")
 			document.imgboardwriteform.anibreed.value = " "
 			// return false
 		}
 		if (document.imgboardwriteform.aniname.value == "") {
-			// alert("ÀÌ¸§¿¡ µğÆúÆ® °ªÀ» ³Ö´Â´Ù")
+			// alert("ì´ë¦„ì— ë””í´íŠ¸ ê°’ì„ ë„£ëŠ”ë‹¤")
 			document.imgboardwriteform.aniname.value = " "
 			// return false
 		}
 		if (document.imgboardwriteform.anisex.value == "0") {
-			// alert("¼ºº°¿¡ µğÆúÆ® °ªÀ» ³Ö´Â´Ù")
-			document.imgboardwriteform.anisex.value = "¸ğ¸§"
+			// alert("ì„±ë³„ì— ë””í´íŠ¸ ê°’ì„ ë„£ëŠ”ë‹¤")
+			document.imgboardwriteform.anisex.value = "ëª¨ë¦„"
 			// return false
 		}
 		if (document.imgboardwriteform.anineutral.value == "0") {
-			// alert("Áß¼ºÈ­¿¡ µğÆúÆ® °ªÀ» ³Ö´Â´Ù")
-			document.imgboardwriteform.anineutral.value = "¸ğ¸§"
+			// alert("ì¤‘ì„±í™”ì— ë””í´íŠ¸ ê°’ì„ ë„£ëŠ”ë‹¤")
+			document.imgboardwriteform.anineutral.value = "ëª¨ë¦„"
 			// return false
 		}
 		if (document.imgboardwriteform.aniage.value == "") {
-			// alert("³ªÀÌ¿¡ µğÆúÆ® °ªÀ» ³Ö´Â´Ù")
+			// alert("ë‚˜ì´ì— ë””í´íŠ¸ ê°’ì„ ë„£ëŠ”ë‹¤")
 			document.imgboardwriteform.aniage.value = "0"
 			// return false
 		}
 		if (document.imgboardwriteform.aniweight.value == "") {
-			// alert("¸ö¹«°Ô¿¡ µğÆúÆ® °ªÀ» ³Ö´Â´Ù")
+			// alert("ëª¸ë¬´ê²Œì— ë””í´íŠ¸ ê°’ì„ ë„£ëŠ”ë‹¤")
 			document.imgboardwriteform.aniweight.value = "0"
 			// return false
 		}
 		if (document.imgboardwriteform.anifeature.value == "") {
-			// alert("Æ¯Â¡¿¡ µğÆúÆ® °ªÀ» ³Ö´Â´Ù")
+			// alert("íŠ¹ì§•ì— ë””í´íŠ¸ ê°’ì„ ë„£ëŠ”ë‹¤")
 			document.imgboardwriteform.anifeature.value = " "
 			// return false
 		}
 		if (document.imgboardwriteform.bcontent.value == "") {
-			// alert("³»¿ë¿¡ µğÆúÆ® °ªÀ» ³Ö´Â´Ù")
+			// alert("ë‚´ìš©ì— ë””í´íŠ¸ ê°’ì„ ë„£ëŠ”ë‹¤")
 			document.imgboardwriteform.bcontent.value = " "
 			// return false
 		}
@@ -237,76 +239,76 @@
 		return true;
 	}
 	
-	// bcode 4 (½ÇÁ¾ ½Å°í)
+	// bcode 4 (ì‹¤ì¢… ì‹ ê³ )
 	function checksubmit4() {
 		
 		if (document.imgboardwriteform.btitle.value == "") {
-			alert("Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.btitle.focus()
 			return false
 		}
-		if (document.imgboardwriteform.maniimg.value == "") {
-			alert("»çÁøÀ» µî·ÏÇØÁÖ¼¼¿ä")
-			document.imgboardwriteform.maniimg.focus()
-			return false
-		}
+// 		if (document.imgboardwriteform.maniimg.value == "") {
+// 			alert("ì‚¬ì§„ì„ ë“±ë¡í•´ì£¼ì„¸ìš”")
+// 			document.imgboardwriteform.maniimg.focus()
+// 			return false
+// 		}
 		if (document.imgboardwriteform.anistate.value == "0") {
-			alert("ºĞ·ù¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä")
+			alert("ë¶„ë¥˜ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anistate.focus()
 			return false
 		}
 		if (document.imgboardwriteform.anispecies.value == "0") {
-			alert("µ¿¹°À» ¼±ÅÃÇØÁÖ¼¼¿ä")
+			alert("ë™ë¬¼ì„ ì„ íƒí•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anispecies.focus()
 			return false
 		}
-		if (document.imgboardwriteform.anibreed.value == "-- ¼±ÅÃ --") {
-			alert("Ç°Á¾À» ¼±ÅÃÇØÁÖ¼¼¿ä")
+		if (document.imgboardwriteform.anibreed.value == "-- ì„ íƒ --") {
+			alert("í’ˆì¢…ì„ ì„ íƒí•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anibreed.focus()
 			return false
 		}
 		if (document.imgboardwriteform.aniname.value == "") {
-			alert("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.aniname.focus()
 			return false
 		}
 		if (document.imgboardwriteform.anisex.value == "0") {
-			alert("¼ºº°À» ¼±ÅÃÇØÁÖ¼¼¿ä")
+			alert("ì„±ë³„ì„ ì„ íƒí•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anisex.focus()
 			return false
 		}
 		if (document.imgboardwriteform.anineutral.value == "0") {
-			alert("Áß¼ºÈ­ ¿©ºÎ¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä")
+			alert("ì¤‘ì„±í™” ì—¬ë¶€ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anineutral.focus()
 			return false
 		}
 		if (document.imgboardwriteform.aniage.value == "") {
-			alert("³ªÀÌ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("ë‚˜ì´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.aniage.focus()
 			return false
 		}
 		if (document.imgboardwriteform.aniweight.value == "") {
-			alert("¸ö¹«°Ô¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("ëª¸ë¬´ê²Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.aniweight.focus()
 			return false
 		}
 		if (document.imgboardwriteform.anidate.value == "") {
-			alert("³¯Â¥¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("ë‚ ì§œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anidate.focus()
 			return false
 		}
 		if (document.imgboardwriteform.aniregion.value == "") {
-			alert("Áö¿ªÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("ì§€ì—­ì„ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.regionbtn.focus()
 			return false
 		}
 		if (document.imgboardwriteform.anireward.value == "") {
-			alert("»ç·Ê±İÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("ì‚¬ë¡€ê¸ˆì„ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anireward.focus()
 			return false
 		}
 		if (document.imgboardwriteform.anifeature.value == "") {
-			alert("Æ¯Â¡À» ÀÔ·ÂÇØÁÖ¼¼¿ä")
+			alert("íŠ¹ì§•ì„ ì…ë ¥í•´ì£¼ì„¸ìš”")
 			document.imgboardwriteform.anifeature.focus()
 			return false
 		}
@@ -320,7 +322,7 @@
 
 <div>
 
-	<!-- °ø°£ ¶ç¿ì±â ¿ë -->
+	<!-- ê³µê°„ ë„ìš°ê¸° ìš© -->
 	<table><tr height="50px"><td></td></tr></table>
 
 	
@@ -329,20 +331,20 @@
 		  name="imgboardwriteform" onsubmit="return checksubmit()">
 		<input type="hidden" name="bcode" value="6">
 		<table width="500px">				
-			<tr> <th colspan="2">¡¡</th> </tr>	
+			<tr> <th colspan="2">ã€€</th> </tr>	
 			
 			<tr>	
-				<th width="60px">Á¦¸ñ</th>	
+				<th width="60px">ì œëª©</th>	
 				<td align="left">
-					<input class="form-control input-sm" name="btitle" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä">
+					<input class="form-control input-sm" name="btitle" placeholder="ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”">
 				</td>
 			</tr>
 			
 			<tr>
-				<th>»çÁø</th>
+				<th>ì‚¬ì§„</th>
 				<td>
 					<div class="input-group">
-						<input type="text" class="form-control input-sm" placeholder="¾÷·Îµå ÇÒ ÆÄÀÏÀ» ¼±ÅÃÇÏ¼¼¿ä" readonly>
+						<input type="text" class="form-control input-sm" placeholder="ì—…ë¡œë“œ í•  íŒŒì¼ì„ ì„ íƒí•˜ì„¸ìš”" readonly>
 						<span class="input-group-btn">
 							<span class="btn btn-success btn-file btn-sm">
 								<span class="glyphicon glyphicon-folder-open"></span>
@@ -354,118 +356,118 @@
 			</tr>
 			
 			<tr>
-				<th colspan="2">¡¡</th>
+				<th colspan="2">ã€€</th>
 			</tr>
 			
 			<tr>
-				<th>Á¤º¸</th>
+				<th>ì •ë³´</th>
 				
 				<td align="left">
 					<table id="animalapplyform">
 					
 						
 							<tr>
-								<th>ºĞ·ù</th>
+								<th>ë¶„ë¥˜</th>
 								<td colspan="3">
 									<input type="text" class="form-control input-sm" 
-										   id="anistate" value="ÀÔ¾ç°Ô½ÃÆÇ" readonly="readonly">
+										   id="anistate" value="ì…ì–‘ê²Œì‹œíŒ" readonly="readonly">
 									<input type="hidden" name="anistate" value="0">
-									<!--º¸È£Áß -->
+									<!--ë³´í˜¸ì¤‘ -->
 								</td>
 							</tr>
 						
 					
 						<tr> 
-							<th style="width: 60px">µ¿¹°</th>
+							<th style="width: 60px">ë™ë¬¼</th>
 							<td style="width: 160px">
 		      					<select name="anispecies" id="bigkind" class="form-control input-sm">
-									<option value="0">-- ¼±ÅÃ --</option>
-								    <option value="°­¾ÆÁö">°­¾ÆÁö</option>
-								    <option value="°í¾çÀÌ">°í¾çÀÌ</option>
-								    <option value="±âÅ¸">±âÅ¸</option>
+									<option value="0">-- ì„ íƒ --</option>
+								    <option value="ê°•ì•„ì§€">ê°•ì•„ì§€</option>
+								    <option value="ê³ ì–‘ì´">ê³ ì–‘ì´</option>
+								    <option value="ê¸°íƒ€">ê¸°íƒ€</option>
 								</select>
 							</td>
 							
-							<th style="width: 60px">Ç°Á¾</th>
+							<th style="width: 60px">í’ˆì¢…</th>
 							<td style="width: 160px">
 		      					<select name="anibreed" id="smallkind" class="form-control input-sm">
-									<option>-- ¼±ÅÃ --</option>
+									<option>-- ì„ íƒ --</option>
 								</select>
 							</td>
 						</tr>
 						
 						<tr> 
-							<th>ÀÌ¸§</th>
+							<th>ì´ë¦„</th>
 							<td colspan="3">
-								<input type="text" name="aniname" class="form-control input-sm" placeholder="µ¿¹°ÀÇ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä" />
+								<input type="text" name="aniname" class="form-control input-sm" placeholder="ë™ë¬¼ì˜ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”" />
 							</td> 
 						</tr>
 
 						<tr> 
-							<th style="width: 60px">¼ºº°</th>
+							<th style="width: 60px">ì„±ë³„</th>
 							<td style="width: 160px">
 								<select name="anisex" class="form-control input-sm">
-									<option value="0">-- ¼±ÅÃ --</option>
-									<option value="³²¾Æ">³²¾Æ</option>
-									<option value="¿©¾Æ">¿©¾Æ</option>
-									<option hidden="¸ğ¸§">¸ğ¸§</option>
+									<option value="0">-- ì„ íƒ --</option>
+									<option value="ë‚¨ì•„">ë‚¨ì•„</option>
+									<option value="ì—¬ì•„">ì—¬ì•„</option>
+									<option hidden="ëª¨ë¦„">ëª¨ë¦„</option>
 								</select>
 							</td>
 							
-							<th style="width: 60px">Áß¼ºÈ­</th>
+							<th style="width: 60px">ì¤‘ì„±í™”</th>
 							<td style="width: 160px">
 								<select name="anineutral" class="form-control input-sm">
-									<option value="0">-- ¼±ÅÃ --</option>
+									<option value="0">-- ì„ íƒ --</option>
 									<option value="o">O</option>
 									<option value="x">X</option>
-									<option hidden="¸ğ¸§">¸ğ¸§</option>
+									<option hidden="ëª¨ë¦„">ëª¨ë¦„</option>
 								</select>
 							</td>
 						</tr>
 						
 						<tr>
-							<th style="width: 60px">³ªÀÌ</th>
+							<th style="width: 60px">ë‚˜ì´</th>
 							<td style="width: 160px">
 								<input type="number" name="aniage" class="form-control input-sm"
-									   placeholder="³ªÀÌ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä" min="1" />
+									   placeholder="ë‚˜ì´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”" min="1" />
 							</td>
 						 
-							<th style="width: 60px">¸ö¹«°Ô</th>
+							<th style="width: 60px">ëª¸ë¬´ê²Œ</th>
 							<td style="width: 160px">
 								<input type="number" name="aniweight" class="form-control input-sm"
-									   placeholder="¸ö¹«°Ô¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä" min="1" />
+									   placeholder="ëª¸ë¬´ê²Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”" min="1" />
 							</td>
 						</tr>
 						
 						<tr>
-							<th>³¯Â¥</th>
+							<th>ë‚ ì§œ</th>
 							<td colspan="3">
 								<c:if test="${bcode != 4}">
-									<input class="form-control input-sm" type="text" placeholder="¸ñ°İ, º¸È£ ³¯Â¥(¼±ÅÃ)"
+									<input class="form-control input-sm" type="text" placeholder="ëª©ê²©, ë³´í˜¸ ë‚ ì§œ(ì„ íƒ)"
 										   id="datepicker" name="anidate" readonly="readonly"  />
 								</c:if>
 								<c:if test="${bcode == 4}">
-									<input class="form-control input-sm" type="text" placeholder="ÀÒ¾î¹ö¸° ³¯Â¥(¼±ÅÃ)"
+									<input class="form-control input-sm" type="text" placeholder="ìƒì–´ë²„ë¦° ë‚ ì§œ(ì„ íƒ)"
 										   id="datepicker" name="anidate" readonly="readonly"  />
 								</c:if>
 							</td>
 						</tr>
 						
 						<tr> 
-							<th>Áö¿ª</th>
+							<th>ì§€ì—­</th>
 							<td colspan="3">
 								<div class="input-group" style="width: 100%">
 									<c:if test="${bcode != 4}">
 										<input id="region" name="aniregion" class="form-control input-sm"
-											   type="text" placeholder="¸ñ°İ, º¸È£ÁßÀÎ Áö¿ª (°Ë»ö)" readonly="readonly"/>
+											   type="text" placeholder="ëª©ê²©, ë³´í˜¸ì¤‘ì¸ ì§€ì—­ (ê²€ìƒ‰)" readonly="readonly"/>
 									</c:if>
 									<c:if test="${bcode == 4}">
 										<input id="region" name="aniregion" class="form-control input-sm"
-											   type="text" placeholder="ÀÒ¾î¹ö¸° Áö¿ª (°Ë»ö)" readonly="readonly"/>
+											   type="text" placeholder="ìƒì–´ë²„ë¦° ì§€ì—­ (ê²€ìƒ‰)" readonly="readonly"/>
 									</c:if>
 									
 									<span class="input-group-btn">
-										<button type="button" class="btn btn-default btn-sm" name="regionbtn" onclick="execDaumPostcode()">¡¡°Ë¡¡¡¡»ö¡¡</button>
+										<button type="button" class="btn btn-default btn-sm" name="regionbtn" onclick="execDaumPostcode()">ã€€ê²€ã€€ã€€ìƒ‰ã€€</button>
 									</span>
 								</div>
 							</td> 
@@ -473,10 +475,10 @@
 						
 						<c:if test="${bcode == 4}">
 							<tr>
-								<th>»ç·Ê±İ</th>
+								<th>ì‚¬ë¡€ê¸ˆ</th>
 								<td colspan="3">
 									<input type="number" class="form-control input-sm" name="anireward"
-										   placeholder="»ç·ÊÇÒ ±İ¾×À» ÀÔ·ÂÇØÁÖ¼¼¿ä" min="0" step="10000" />
+										   placeholder="ì‚¬ë¡€í•  ê¸ˆì•¡ì„ ì…ë ¥í•´ì£¼ì„¸ìš”" min="0" step="10000" />
 								</td>
 							</tr>
 						</c:if>
@@ -485,10 +487,10 @@
 						</c:if>
 						
 						<tr> 
-							<th>Æ¯Â¡</th>
+							<th>íŠ¹ì§•</th>
 							<td colspan="3">
 								<div class="form-group">
-     									<textarea class="form-control" name="anifeature" rows="3" placeholder="µ¿¹°ÀÇ Æ¯Â¡À» ÀÔ·ÂÇØÁÖ¼¼¿ä"></textarea>
+     									<textarea class="form-control" name="anifeature" rows="3" placeholder="ë™ë¬¼ì˜ íŠ¹ì§•ì„ ì…ë ¥í•´ì£¼ì„¸ìš”"></textarea>
    								</div>
 							</td> 
 						</tr>
@@ -498,12 +500,12 @@
 			</tr>
 			
 			<tr>
-				<th colspan="2">¡¡</th>
+				<th colspan="2">ã€€</th>
 			</tr>
 			
 			<tr>	
 				<td colspan="2"  height="500px">
-					<textarea class="form-control" name="bcontent" rows="10" id="comment" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä"></textarea>
+					<textarea class="form-control" name="bcontent" rows="10" id="comment" placeholder="ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”"></textarea>
 				</td>		
 			</tr>
 
@@ -513,9 +515,9 @@
 		<input type="hidden" name="mid" value="${pageContext.request.userPrincipal.name}">
 		<input type="hidden" name="bip" value="<%= request.getRemoteAddr() %>">
 
-		<table><tr height="30px"><!-- ³ôÀÌ Á¶Àı¿ë Ä­ ¶¼¿ì±â --><td></td></tr></table>
-		<button type="submit" class="btn btn-success btn-sm">¡¡¿Ï¡¡¡¡·á¡¡</button>
-		<button type="button" class="btn btn-success btn-sm" onclick="location='selectallAnimal?bcode=${bcode}'">¡¡Ãë¡¡¡¡¼Ò¡¡</button>
+		<table><tr height="30px"><!-- ë†’ì´ ì¡°ì ˆìš© ì¹¸ ë–¼ìš°ê¸° --><td></td></tr></table>
+		<button type="submit" class="btn btn-success btn-sm">ã€€ì™„ã€€ã€€ë£Œã€€</button>
+		<button type="button" class="btn btn-success btn-sm" onclick="location='selectallAnimal?bcode=${bcode}'">ã€€ì·¨ã€€ã€€ì†Œã€€</button>
 		
 	</form>
 </div>

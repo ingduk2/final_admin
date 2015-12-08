@@ -172,7 +172,12 @@ li { list-style: none}
 </c:if>
 					
 <c:if test="${pageContext.request.userPrincipal.name != null}">
+<c:if test="${pageContext.request.userPrincipal.name=='admin'}">
+<a href="selectallAdminam">동물관리 현황</a>
+</c:if>
+<c:if test="${pageContext.request.userPrincipal.name!='admin'}">
 <a href="selectallanimalmanage?mid=${pageContext.request.userPrincipal.name }">동물관리 현황</a>
+</c:if>
 </c:if>
    
   </h4>
