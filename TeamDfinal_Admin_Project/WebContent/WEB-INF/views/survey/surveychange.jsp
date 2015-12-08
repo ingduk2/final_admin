@@ -25,14 +25,8 @@ $('[id="surbtn"]').click(function () {
 			        success: function(msg) { //데이터 받는 부분.response
 			        alert('aaaa');
 	        		alert(msg);
-			        
+	
 			        var json=JSON.parse(msg);
-			        //alert(json);
-			        //alert(json[0].content);
-			        //alert(json[0].sub);
-			        //alert(json[0].sub1);
-			        //alert(json[0].sub2);
-			        //alert(json[0].sub3);
 			        
 			        CKEDITOR.instances.content.setData(json[0].content);
 

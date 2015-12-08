@@ -162,6 +162,33 @@ function sample5_execDaumPostcode() {
 }
 </script>
 
+<script>
+// 	$(function () {
+// 		$('#cbtn').click(function() {
+// 			alert($(this).val());
+			
+// 			$.ajax({
+// 		        url: "deleteCenter", //"testAjax.jsp", 
+// 		        type: "get",
+// 		        data:{
+// 		        	cnum : $(this).val()
+// 		        },
+// 		        success: function(msg) { //데이터 받는 부분.response
+// 		        	alert(msg);
+
+// 		        },
+// 		        error: function(a, b) {
+// 		            alert("Request: " + JSON.stringify(a));
+// 		            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+// 		        }
+// 		    });
+			
+// 		});
+// 	});
+
+</script>
+
+
 <div id="center_insert">
 <form method="post" action="insertCenter">
 	<table>
@@ -187,7 +214,7 @@ function sample5_execDaumPostcode() {
 		
 		<tfoot>
 			<tr>
-				<td><input type="text" id="code" name="cxy"></td>
+				<td><input type="hidden" id="code" name="cxy"></td>
 				<td colspan="2"><input type="submit" size="20" value="등록!"></td>
 			</tr>
 		</tfoot>
@@ -227,6 +254,7 @@ function sample5_execDaumPostcode() {
 					<td>${listv.cname }</td>
 					<td>${listv.caddr }</td>
 					<td>${listv.cxy }</td>
+					<td><button type="button" value="${listv.cnum }" id="cbtn" onclick="location='deleteCenter?cnum='+${listv.cnum}">삭 제</button>
 				</tr>
 			</c:forEach>
 		</tbody>

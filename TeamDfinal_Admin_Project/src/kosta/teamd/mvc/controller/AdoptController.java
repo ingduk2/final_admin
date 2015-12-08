@@ -36,7 +36,7 @@ public class AdoptController {
 
 	@RequestMapping(value="selectallAdopt")
 	public ModelAndView selectallAdopt(){
-		ModelAndView mav= new ModelAndView("adoptboard");
+		ModelAndView mav= new ModelAndView("adopt/adoptboard");
 		List<AdoptApplyVO> list = adadao.selectallAdopt();
 		System.out.println(list.size());
 
@@ -56,7 +56,7 @@ public class AdoptController {
 		
 		AdoptVO advo= getExcel();
 		AdoptApplyVO adavo= adadao.selectoneAdopt(adopno);
-		
+			
 		ExcelVO exvo=new ExcelVO();
 		exvo.setCel0_0("");exvo.setCel0_1("Age");exvo.setCel0_2(adavo.getMemage());
 		exvo.setCel1_0("");exvo.setCel1_1("Score");exvo.setCel1_2(Integer.toString(adavo.getScore()));

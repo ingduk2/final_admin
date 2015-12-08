@@ -346,9 +346,7 @@ function callendar(){
 	</tbody>
 	
 	<tfoot>
-		<tr>
-			<td colspan="4"><input type="button" value="무슨버튼!"/></td>
-		</tr>
+		
 	</tfoot>
 </table>
 </div>

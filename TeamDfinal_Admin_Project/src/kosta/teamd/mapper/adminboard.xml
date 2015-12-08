@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="adminboard"> <!-- bvo -->
+    
+    <select id="selectallboard2" resultType="bvo" parameterType="bvo"> 
+    	select bno, btitle, mid, to_char(bdate,'yyyy-mm-dd') bdate, boricode from board where 
+    	<if test="bcode==1">
+    		bcode=1
+    	</if>
+    	<if test="bcode==2">
+    		bcode=2
+    	</if>
+    	<if test="bcode==3">
+    		bcode=3
+    	</if>
+    	<if test="bcode==10">
+    		bcode=10
+    	</if>
+    </select>
+  
+    
+    <delete id="deleteBoard" parameterType="bvo">
+    	delete board where bno=#{bno}
+    </delete>
+    
+    <update id="updateBoard" parameterType="bvo">
+    	update board set bcode=#{boricode} where bno=#{bno}
+    </update>
+    
+    <insert id="insertBoard" parameterType="bvo">
+    	insert into board values(
+    	#{bcode}, #{bcode}, board_seq.nextVal, #{btitle}, #{mid}, #{bcontent}, 
+    	sysdate, 0, 0, board_seq.nextVal, 1, #{blvl}, #{bip}, #{bfile}, 0)
+    </insert>
+    </mapper>

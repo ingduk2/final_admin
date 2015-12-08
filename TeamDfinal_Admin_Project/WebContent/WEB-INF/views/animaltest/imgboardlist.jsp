@@ -92,7 +92,8 @@
 		        }
 		   
 		});
-			
+// 			$('#item-id').draggable( "disable" )
+// 			$('#id').draggable('disable');
 			alert("anino : "+anino);
 			target.appendChild(document.getElementById(id));
 			//food.dataTransfer.clearData("Text"); 

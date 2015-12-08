@@ -3,8 +3,8 @@
     <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 
     
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
@@ -276,9 +276,7 @@ $(function() {
 </tbody>
 
 <tfoot>
-		<tr>
-			<td><input type="button" value="¹«½¼¹öÆ°!"/></td>
-		</tr>
+	
 </tfoot>
 
 </table>

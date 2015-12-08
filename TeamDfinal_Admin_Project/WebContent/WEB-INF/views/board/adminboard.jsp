@@ -1,112 +1,161 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
-<link rel="stylesheet" href="https://cdn.rawgit.com/esvit/ng-table/v1.0.0/dist/ng-table.min.css">
-<script src="https://cdn.rawgit.com/esvit/ng-table/v1.0.0/dist/ng-table.js"></script>
-<style>
-	#board_wrap{
-		width: 100%;
-	}
-	.a{
-		width: 30%;
-	}
-</style>
-<div id="board_wrap"> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-	<div class="form-inline">
-    <div class="form-group a" ng-app="myApp" ng-controller="customersCtrl"> 
- 
-        <table class="table table-striped">
-        	<thead class="table table-striped">
-        		<tr>
-        			<th>angular table</th>
-        		</tr>
-          	<thead>
-          	<tbody>
-          		<tr ng-repeat="x in names | orderBy : 'Country'">
-          	<td>{{ $index + 1 }}</td>
-            <td>{{ x.Name }}</td>
-            <td>{{ x.Country | uppercase}}</td>
-          </tr>
-          	</tbody>
-        </table>
- 
-    </div>
-    
-    <div class="form-group a" ng-app="myApp" ng-controller="customersCtrl"> 
- 
-        <table class="table table-striped">
-        	<thead class="table table-striped">
-        		<tr>
-        			<th>angular table</th>
-        		</tr>
-          	<thead>
-          	<tbody>
-          		<tr ng-repeat="x in names | orderBy : 'Country'">
-          	<td>{{ $index + 1 }}</td>
-            <td>{{ x.Name }}</td>
-            <td>{{ x.Country | uppercase}}</td>
-          </tr>
-          	</tbody>
-        </table>
- 
-    </div>
-    </div>
-    
-    
-    <div ng-app="myApp" ng-controller="customersCtrl"> 
- 
-        <table class="table table-striped">
-        	<thead class="table table-striped">
-        		<tr>
-        			<th>angular table</th>
-        		</tr>
-          	<thead>
-          	<tbody>
-          		<tr ng-repeat="x in names | orderBy : 'Country'">
-          	<td>{{ $index + 1 }}</td>
-            <td>{{ x.Name }}</td>
-            <td>{{ x.Country | uppercase}}</td>
-          </tr>
-          	</tbody>
-        </table>
- 
-    </div>
-    
-    <div ng-app="myApp" ng-controller="customersCtrl"> 
- 
-        <table class="table table-striped">
-        	<thead class="table table-striped">
-        		<tr>
-        			<th>angular table</th>
-        		</tr>
-          	<thead>
-          	<tbody>
-          		<tr ng-repeat="x in names | orderBy : 'Country'">
-          	<td>{{ $index + 1 }}</td>
-            <td>{{ x.Name }}</td>
-            <td>{{ x.Country | uppercase}}</td>
-          </tr>
-          	</tbody>
-        </table>
- 
-    </div>
-</div>
-    <script>
-        var app = angular.module('myApp', []);
-        app.controller('customersCtrl', function($scope, $http) {
-            $http.get("http://www.w3schools.com/angular/customers.php")
-            .success(function (response) {
-            	alert(response);
-            	console.log(response);
-            	$scope.names = response.records;
-            	});
-        });
-        
-        
-       
-   </script>
- 
+
+
+
    
+
+<link rel="stylesheet" 
+href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" 
+src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
+
+ 
+<script>
+
+
+
+
+
+$(document).ready(function(){
+    $('#memberTable1').dataTable();
+    $('#memberTable2').dataTable();
+    $('#memberTable3').dataTable();
+    $('#memberTable10').dataTable();
+});
+
+
+
+function popup(){
+	var specs = "left=10,top=10,width=697,height=546, location=no, realzable=no, scrollbars=no";
+	window.open("formWrite", "popup", specs);
+}
+
+</script>
+
+<style>
+#adminboard_wrap{
+	width:100%;
+}
+
+#t1, #t2, #t3, #t4{
+	width:45%;
+	margin-left: 50px;
+}
+
+#t3, t4{
+	margin-top: 50px;
+}
+</style>
+
+<div id="adminboard_wrap" class="form-inline">
+
+<div id="t1" class="form-group">
+<h2>공지 사항</h2>
+<table class="table table-striped" id="memberTable1" >
+   <thead class="table table-striped">
+   		<tr>
+   		<th>bno</th>
+   		<th>btitle</th>
+   		<th>mid</th>
+   		<th>bdate</th>
+   		<th></th>
+   		</tr>
+   </thead>
+   <tbody>
+   <c:forEach var="listv1" items="${list1 }">
+    <tr>
+        <td>${listv1.bno }</td>
+        <td>${listv1.btitle }</td>
+        <td>${listv1.mid }</td>
+        <td>${listv1.bdate }</td>
+        <td><button type="button" id="btn1" value="${listv1.bno }" onclick="location='deleteBoard?bno=${listv1.bno}'">삭제</button></td>
+    </tr>
+    </c:forEach>
+    </tbody>
+</table>
+<button type="button" id="write" onclick="popup()">글 쓰기</button>
+</div>
+
+<div id="t2" class="form-group">
+<h2>자유 게시판</h2>
+<table class="table table-striped" id="memberTable2" >
+   <thead class="table table-striped">
+   		<tr>
+   		<th>bno</th>
+   		<th>btitle</th>
+   		<th>mid</th>
+   		<th>bdate</th>
+   		<th></th>
+   		</tr>
+   </thead>
+   <tbody>
+    <c:forEach var="listv2" items="${list2 }">
+    <tr>
+        <td>${listv2.bno }</td>
+        <td>${listv2.btitle }</td>
+        <td>${listv2.mid }</td>
+        <td>${listv2.bdate }</td>
+        <td><button type="button" id="btn2" value="${listv2.bno }" onclick="location='deleteBoard?bno=${listv2.bno}'">삭제</button></td>
+    </tr>
+    </c:forEach>
+    </tbody>
+</table>
+</div>
+
+<div id="t3" class="form-group">
+<h2>질문 게시판</h2>
+<table class="table table-striped" id="memberTable3" >
+   <thead class="table table-striped">
+   		<tr>
+   		<th>bno</th>
+   		<th>btitle</th>
+   		<th>mid</th>
+   		<th>bdate</th>
+   		<th></th>
+   		</tr>
+   </thead>
+   <tbody>
+    <c:forEach var="listv3" items="${list3}">
+    <tr>
+        <td>${listv3.bno }</td>
+        <td>${listv3.btitle }</td>
+        <td>${listv3.mid }</td>
+        <td>${listv3.bdate }</td>
+        <td><button type="button" id="btn3" value="${listv3.bno }" onclick="location='deleteBoard?bno=${listv3.bno}'">삭제</button></td>
+    </tr>
+    </c:forEach>
+    </tbody>
+</table>
+</div>
+
+<div id="t4" class="form-group">
+<h2>신고 글</h2>
+<table class="table table-striped" id="memberTable10" >
+   <thead class="table table-striped">
+   		<tr>
+   		<th>bno</th>
+   		<th>btitle</th>
+   		<th>mid</th>
+   		<th>bdate</th>
+   		<th></th>
+   		</tr>
+   </thead>
+   <tbody>
+    <c:forEach var="listv10" items="${list10 }">
+    <tr>
+        <td>${listv10.bno }</td>
+        <td>${listv10.btitle }</td>
+        <td>${listv10.mid }</td>
+        <td>${listv10.bdate }</td>
+        <td><button type="button" id="btn10" value="${listv10.bno }" onclick="location='updateBoard?bno=${listv10.bno}&boricode=${listv10.boricode}'">복구</button></td>
+    </tr>
+    </c:forEach>
+    </tbody>
+</table>
+</div>
+
+</div> 

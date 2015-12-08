@@ -22,4 +22,8 @@
     			</where>
     		</if>
 	</select>
+	
+	<delete id="deleteCenter" parameterType="int">
+		delete center where cnum=#{cnum}
+	</delete>
 </mapper>

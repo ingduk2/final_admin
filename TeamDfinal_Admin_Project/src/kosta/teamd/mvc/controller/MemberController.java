@@ -33,7 +33,7 @@ public class MemberController {
 	//관리자 멤버 불러오깅..
 	@RequestMapping(value="formMember")
 	public ModelAndView formMember(){
-		ModelAndView mav= new ModelAndView("member");
+		ModelAndView mav= new ModelAndView("member/member");
 		List<MemberVO> list= mdao.selectallMember();
 		mav.addObject("list", list);
 		return mav;

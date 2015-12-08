@@ -167,6 +167,9 @@ $(function() {
 	#member_chart2{
 		margin-left: 60px;
 	}
+	#member_chart_age{
+		margin-left: 40px;
+	}
 </style>
 
 <div id=wrap_mem class="form-inline">

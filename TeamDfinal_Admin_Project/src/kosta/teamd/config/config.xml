@@ -48,7 +48,12 @@
 		<!-- 차트 멤버 연령별 -->
 		<typeAlias type="kosta.teamd.vo.ChartMemAgeVO" alias="chmavo"/>
 		<typeAlias type="kosta.teamd.vo.ChartAniBreedVO" alias="cabvo"/>
+		<!-- 차트 입양점수별 -->
+		<typeAlias type="kosta.teamd.vo.ChartAdoptScore" alias="casvo"/>
 		
+		<!-- 차트 동물수 직원당 -->
+		
+		<typeAlias type="kosta.teamd.vo.ChartAnimalManage" alias="camvo"/>
 		<!-- survey -->
 		<typeAlias type="kosta.teamd.vo.SurveyVO" alias="surVO"/>
 

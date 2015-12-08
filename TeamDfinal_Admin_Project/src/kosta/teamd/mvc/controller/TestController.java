@@ -22,6 +22,14 @@ public class TestController {
 	public String b(){
 		return "main";
 	}
+	
+	@RequestMapping(value="testjson")
+	public ModelAndView testt(){
+		ModelAndView mav= new ModelAndView("/board/testjson");
+		
+		return mav;
+	}
+	
 	@RequestMapping(value="/adopt")
 	public String adopt(){
 		return "adoptboard";

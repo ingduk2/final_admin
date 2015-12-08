@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.teamd.mvc.dao.ChartDao;
+import kosta.teamd.vo.ChartAdoptScore;
+import kosta.teamd.vo.ChartAnimalManage;
 import kosta.teamd.vo.ChartMemAgeVO;
 import kosta.teamd.vo.ChartMemberVO;
 import kosta.teamd.vo.ChartSurveyVO;
@@ -147,6 +149,61 @@ public class ChartController {
 		System.out.println(arr);
 		
 		mav.addObject("memage",arr);
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="adoptScore")
+	public ModelAndView adoptScore(){
+		ModelAndView mav= new ModelAndView("/adopt/adoptchart");
+		//ChartMemAgeVO cmavo= cdao.selectallMemAge();
+		ChartAdoptScore casvo=cdao.selectallscore();
+		
+		JSONArray arr= new JSONArray();
+		
+		JSONObject jo= new JSONObject();
+		jo.put("name", "10점대");
+		jo.put("y", casvo.getC10());
+		arr.add(jo);
+		
+		jo= new JSONObject();
+		jo.put("name", "20점대");
+		jo.put("y", casvo.getC20());
+		arr.add(jo);
+		
+		jo= new JSONObject();
+		jo.put("name", "30점대");
+		jo.put("y", casvo.getC30());
+		arr.add(jo);
+		
+		jo= new JSONObject();
+		jo.put("name", "40점대");
+		jo.put("y", casvo.getC40());
+		arr.add(jo);
+		
+		
+		System.out.println(arr);
+		
+		mav.addObject("json",arr);
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="selectallam")
+	public ModelAndView selectallam(){
+		ModelAndView mav= new ModelAndView("/chart/chartdata");
+		List<ChartAnimalManage> list=cdao.selectallam();
+		
+		JSONArray ja= new JSONArray();
+		JSONObject jo= null;
+		for(ChartAnimalManage e : list){
+			jo=new JSONObject();
+			jo.put("name", e.getMid());
+			jo.put("y", e.getCnt());
+			ja.add(jo);
+		}
+		System.out.println(ja);
+		mav.addObject("chdata",ja);
 		return mav;
 	}
 	

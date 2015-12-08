@@ -289,16 +289,14 @@ $(function () {
 
 <style>
 #employee_wrap{
-	
+	width:100%;
 }
 
-/*얘내 퍼센트로 하면 안늘어나 ㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
-#memberTable{
-	width:400px;
+#table1{
+	width:45%;
 }
-
-#memberTable1{
-	width:400px;
+#table2{
+	width: 45%;
 }
 
 
@@ -307,65 +305,8 @@ $(function () {
 
 
 <div class="form-inline" id="employee_wrap">
-<!-- 	<div class="form-group"> -->
-<!-- 	<table class="table table-striped"> -->
-<!-- 		<thead class="table table-striped"> -->
-<!-- 			<tr><td><h1>비승인 직원</h1></td></tr> -->
-<!-- 		</thead> -->
-			
-<!-- 		<tbody id="no"> -->
-<%-- 			<c:forEach var="listnv" items="${listn }"> --%>
-<!-- 				<tr> -->
-<%-- 					<td>${listnv.mid }</td> --%>
-<%-- 					<td>${listnv.memail }</td> --%>
-<%-- <%-- 					<td><input type="button"  id="btnn" value="${listnv.mid }" ></td> --%> 
-<%-- 					<td><button id="btnn" value="${listnv.mid }">승인..</button></td> --%>
-<!-- 				</tr> -->
-<%-- 			</c:forEach> --%>
-<!-- 		</tbody> -->
-		
-<!-- 		<tfoot> -->
-<!-- 		</tfoot> -->
-<!-- 	</table> -->
-<!-- 	</div> -->
-	
-<!-- 	<div class="form-group"> -->
-<!-- 	<table class="table table-striped"> -->
-<!-- 		<thead class="table table-striped"> -->
-<!-- 			<tr><td><h1>승인 직원</h1></td></tr> -->
-<!-- 		</thead> -->
-		
-		
-<!-- 		<!-- select m.mid mid, m.mname mname, m.memail memail, e.emzic emzic, e.emsalary emsalary --> 
-<!-- 		<tbody id="yes"> -->
-<%-- 			<c:forEach var="listyv" items="${listy }"> --%>
-			
-<!-- 				<tr> -->
-<%-- 					<td>${listyv.mid }</td> --%>
-<%-- 					<td>${listyv.mname }</td> --%>
-					
-					
-<%-- 				<td><input type="button" id="btny" value="${listyv.mid }"><td> --%> 
-<%-- 					<td><button id="btny" value="${listyv.mid }">탈퇴..</button></td> --%>
-					
-					
-<!-- 				</tr> -->
-			
-<%-- 			</c:forEach> --%>
-<!-- 		</tbody> -->
-		
-<!-- 		<tfoot> -->
-<!-- 		</tfoot> -->
-<!-- 	</table> -->
-<!-- 	</div> -->
 
-<!-- 테스트용.. -->	
-<!-- <div style="width:500px;text-align:right;"> -->
-<!--     <input type="button" value="행추가"  id="btnAddRow" /> -->
-<!--     <input type="button" value="reset" id="tableReset"/> -->
-<!-- </div> -->
- 
-<div class="form-group">
+<div class="form-group" id="table1">
 <form method="post" id="frmTest">
 <table class="table table-striped" id="memberTable" >
    <thead class="table table-striped">
@@ -383,10 +324,10 @@ $(function () {
 </form>
 </div>
 	
-	
+
 
  
-<div class="form-group"> 
+<div class="form-group" id="table2"> 
 <form method="post" id="frmTest1">
 <table class="table table-striped" id="memberTable1" >
    <thead class="table table-striped">

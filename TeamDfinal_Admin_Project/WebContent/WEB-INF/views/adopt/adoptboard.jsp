@@ -9,21 +9,81 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 
-<style>
-#wrap {
-	width: 100%;
-	margin: auto;
-	border: 1px;
-}
-
-table {
-	width: 40%;
-}
-</style>
 
 <script>
+	$(function() {
+		$.ajax({
+	        url: "adoptScore", //"testAjax.jsp", 
+	        type: "POST",
+	        success: function(msg1) { //데이터 받는 부분.response
+	        	//alert(msg1);
+	            var json1=JSON.parse(msg1);
+	        	//alert(json1);
+	        	
+	        	 $('#score_chart').highcharts({
+	        	        chart: {
+	        	            type: 'column'
+	        	        },
+	        	        title: {
+	        	            text: '회원 점수대별'
+	        	        },
+	        	        subtitle: {
+	        	            text: 'Click the columns to view versions. Source: <a href="http://netmarketshare.com">netmarketshare.com</a>.'
+	        	        },
+	        	        xAxis: {
+	        	            type: 'category'
+	        	        },
+	        	        yAxis: {
+	        	            title: {
+	        	                text: 'Total percent'
+	        	            }
+
+	        	        },
+	        	        legend: {
+	        	            enabled: false
+	        	        },
+	        	        plotOptions: {
+	        	            series: {
+	        	                borderWidth: 0,
+	        	                dataLabels: {
+	        	                    enabled: true,
+	        	                    format: '{point.y:.1f}%'
+	        	                }
+	        	            }
+	        	        },
+
+	        	        tooltip: {
+	        	            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+	        	            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+	        	        },
+
+	        	        series: [{
+	        	            name: 'Brands',
+	        	            colorByPoint: true,
+	        	            data: json1
+	        	        }],
+	        	       
+	        	    });
+	        	
+	        
+	        	
+	        },
+	        error: function(a, b) {
+	            alert("Request: " + JSON.stringify(a));
+	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	        }
+	    });
+	});
+
+
 	$(function() {
 		$('[id="adoptbtn"]').click(function() {
 			alert($(this).val());
@@ -40,7 +100,30 @@ table {
 	});
 </script>
 
-<div id="wrap">
+<style>
+#wrap {
+	width: 100%;
+	margin: auto;
+	border: 1px;
+}
+
+#adopt_excel{
+	width:45%;
+}
+#score_chart{
+	margin-left : 50px;
+	width:45%
+	
+}
+
+
+
+</style>
+
+
+<div id="wrap" class="form-inline">
+
+	<div id="adopt_excel" class="form-group">
 	<table class="table table-striped">
 		<thead class="table table-striped">
 			<tr>
@@ -132,7 +215,11 @@ table {
 			</tr>
 		</tfoot>
 	</table>
-
+	</div>
+	
+	
+	<div id="score_chart" class="form-group"></div>
+</div>
 
 	<table class="table table-striped">
 		<thead class="table table-striped">
@@ -170,16 +257,14 @@ table {
 					<td id="adov13">${listv.qus8 }</td>
 					<td id="adov14">${listv.qus9 }</td>
 					<td id="adov15">${listv.qus10 }</td>
-					<td><button type="button" id="adoptbtn" value="${listv.adopno }">오왕</button>
+					<td><button type="button" id="adoptbtn" value="${listv.adopno }">불러오기</button>
 				</tr>
 			</c:forEach>
 
 		</tbody>
 
 		<tfoot>
-			<tr>
-				<td colspan="19"><input type="button" value="무슨버튼!" /></td>
-			</tr>
+			
 		</tfoot>
 	</table>
-</div>
+

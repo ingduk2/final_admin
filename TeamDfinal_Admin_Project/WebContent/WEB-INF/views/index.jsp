@@ -55,112 +55,65 @@
 </style>
 <script>
 $(function () {
-    $('#container').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'a'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+	
+	$.ajax({
+        url: "selectallam", //"testAjax.jsp", 
+        type: "POST",
+        success: function(msg1) { //데이터 받는 부분.response
+        	//alert(msg1);
+            var json1=JSON.parse(msg1);
+        	//alert(json1);
+            $('#container').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: '동물 배정 현황'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            }
+                        },
+                         events:{
+                          click: function (event, i) {
+                             alert(event.point.name);
+                             location.href='testani'
+                          }
+                      }
                     }
                 },
-                 events:{
-                  click: function (event, i) {
-                     alert(event.point.name);
-                     location.href='chart1.jsp'
-                  }
-              }
-            }
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: json1
+                }]
+            });
+        	
+        	
         },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: 'M',
-                y: 56.33
-            }, {
-                name: 'C',
-                y: 24.03,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'F',
-                y: 10.38
-            }, {
-                name: 'S',
-                y: 4.77
-            }, {
-                name: 'O',
-                y: 0.91
-            }, {
-                name: 'z',
-                y: 0.2
-            }]
-        }]
+        error: function(a, b) {
+            alert("Request: " + JSON.stringify(a));
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
     });
+	
+    
 });
 
-$(function () {
-    $('#container1').highcharts({
-        chart: {
-            type: 'pie',
-            options3d: {
-                enabled: true,
-                alpha: 45,
-                beta: 0
-            }
-        },
-        title: {
-            text: 'b'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                depth: 35,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.name}'
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Browser share',
-            data: [
-                ['Firefox', 45.0],
-                ['IE', 26.8],
-                {
-                    name: 'Chrome',
-                    y: 12.8,
-                    sliced: true,
-                    selected: true
-                },
-                ['Safari', 8.5],
-                ['Opera', 6.2],
-                ['Others', 0.7]
-            ]
-        }]
-    });
-});
+
 
 
 $(function () {
@@ -169,7 +122,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: '이게 무슨 chart일까',
+           
             align: 'right',
             x: -100,
             verticalAlign: 'bottom',
@@ -358,60 +311,37 @@ function callendar(){
 	</div>
 	<div style="width: 100%; padding-left: 15px;"><!-- 두번째단 DIV  아마도 지우겠지...-->
 		<div style="width: 25%; float: left; margin-top:40px; margin-bottom: 20px">
-			<img src="img/adoption.png" width="100%">
+			<a href="selectallAdopt"><img src="img/adoption.png" width="100%"></a>
 		</div>
 		<div style="width: 25%; float: left; margin-top:40px; margin-bottom: 20px">
-			<img src="img/blacklist.png" width="100%">
+			<a href="#"><img src="img/blacklist.png" width="100%"></a>
 		</div>
 		<div style="width: 25%;  float: left; margin-top:40px; margin-bottom: 20px">
-			<img src="img/employee.png" width="100%">
+			<a href="formEmployee"><img src="img/employee.png" width="100%"></a>
 		</div>
 		<div style="width: 25%;  float: left; margin-top:40px; margin-bottom: 20px">
-			<img src="img/animalcare.png" width="100%">
+			<a href="testani"><img src="img/animalcare.png" width="100%"></a>
 		</div>
 	</div> <!-- 두번째단 DIV -->
 	<div style="width: 100%;"><!-- 세번째 DIV -->
 		<div style="width: 34%; float: left; padding: 3px">
 		    <table class="table table-hover">
 		        <thead>
+		        	<tr><td><h2>신입 직원</h2></td></tr>
 		            <tr>
-		                <th>Row</th>
-		                <th>First Name</th>
-		                <th>Last Name</th>
+		                <th>ID</th>
+		                <th>Name</th>
 		                <th>Email</th>
 		            </tr>
 		        </thead>
 		        <tbody>
+		        <c:forEach var="listv" items="${list }">
 		            <tr>
-		                <td>1</td>
-		                <td>John</td>
-		                <td>Carter</td>
-		                <td>johncarter@mail.com</td>
+		                <td>${listv.mid }</td>
+		                <td>${listv.mname }</td>
+		                <td>${listv.memail }</td>      
 		            </tr>
-		            <tr>
-		                <td>2</td>
-		                <td>Peter</td>
-		                <td>Parker</td>
-		                <td>peterparker@mail.com</td>
-		            </tr>
-		            <tr>
-		                <td>3</td>
-		                <td>John</td>
-		                <td>Rambo</td>
-		                <td>johnrambo@mail.com</td>
-		            </tr>
-		            <tr>
-		                <td>4</td>
-		                <td>winni</td>
-		                <td>Cho</td>
-		                <td>whinewinni@mail.com</td>
-		            </tr>
-		            <tr>
-		                <td>5</td>
-		                <td>duck</td>
-		                <td>park</td>
-		                <td>duckduck@mail.com</td>
-		            </tr>
+		            </c:forEach>
 		        </tbody>
 		    </table>
 		</div>

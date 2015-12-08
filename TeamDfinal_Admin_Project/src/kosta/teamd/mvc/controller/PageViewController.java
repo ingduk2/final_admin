@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.teamd.mvc.dao.BoardDao;
+import kosta.teamd.mvc.dao.EmployeeDao;
 import kosta.teamd.mvc.dao.SurveyDao;
 import kosta.teamd.vo.BoardVO;
+import kosta.teamd.vo.EmployeeVO;
+import kosta.teamd.vo.MemberVO;
 import kosta.teamd.vo.SurveyVO;
 
 @Controller
@@ -21,9 +24,17 @@ public class PageViewController {
 	@Autowired
 	private SurveyDao sdao;
 	
+	@Autowired
+	private EmployeeDao edao;
+	
 	@RequestMapping(value={"/","index"})
-	public String a(){
-		return "index";
+	public ModelAndView a(){
+		ModelAndView mav= new ModelAndView("index");
+		List<MemberVO> list=edao.selectMainEmployee();
+		
+		mav.addObject("list",list);
+		
+		return mav;
 	}
 
 	// 디나이 페이지

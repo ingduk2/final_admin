@@ -88,7 +88,7 @@ public class AnimalChart {
 	System.out.println(arr2);
 	StringBuffer json = new StringBuffer();
 	json.append(arr.toString()).append("/").append(arr2.toString());
-	System.out.println("json" + json.toString() );
+	System.out.println("json : " + json.toString() );
 	mav.addObject("aniscnt", json.toString());
 	return mav;
 	}

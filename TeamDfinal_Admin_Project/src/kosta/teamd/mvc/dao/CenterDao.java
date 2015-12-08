@@ -25,4 +25,9 @@ public class CenterDao {
 		return template.selectList("center.list",bvo);
 	}
 	
+	public void deleteCenter(int cnum){
+		template.delete("center.deleteCenter",cnum);
+		
+	}
+	
 }

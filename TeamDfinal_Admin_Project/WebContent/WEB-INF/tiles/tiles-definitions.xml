@@ -9,7 +9,9 @@
 		<put-attribute name="footer" value="/WEB-INF/template/default/footer.jsp"/>
 	</definition>
 	
-	
+	<definition name="adopt/*" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/adopt/{1}.jsp"/>
+	</definition>
 <definition name="callendar/*" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/callendar/{1}.jsp"/>
 	</definition>
