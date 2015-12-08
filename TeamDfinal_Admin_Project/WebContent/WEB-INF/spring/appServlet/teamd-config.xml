@@ -34,7 +34,7 @@ class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 	
 
 	<!-- MultipartResolver -->
-<!-- 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" /> -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	
 	<!-- DataSource -->
 <!-- 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->

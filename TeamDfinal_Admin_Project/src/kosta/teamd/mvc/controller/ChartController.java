@@ -162,22 +162,22 @@ public class ChartController {
 		JSONArray arr= new JSONArray();
 		
 		JSONObject jo= new JSONObject();
-		jo.put("name", "10점대");
+		jo.put("name", "1~10");
 		jo.put("y", casvo.getC10());
 		arr.add(jo);
 		
 		jo= new JSONObject();
-		jo.put("name", "20점대");
+		jo.put("name", "11~20");
 		jo.put("y", casvo.getC20());
 		arr.add(jo);
 		
 		jo= new JSONObject();
-		jo.put("name", "30점대");
+		jo.put("name", "21~30");
 		jo.put("y", casvo.getC30());
 		arr.add(jo);
 		
 		jo= new JSONObject();
-		jo.put("name", "40점대");
+		jo.put("name", "31~40");
 		jo.put("y", casvo.getC40());
 		arr.add(jo);
 		

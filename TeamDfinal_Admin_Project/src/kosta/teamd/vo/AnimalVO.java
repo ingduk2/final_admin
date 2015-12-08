@@ -21,6 +21,14 @@ public class AnimalVO {
 	private MultipartFile maniimg;  // 이미지 업로드용
 
 
+	private String anineutral;
+	
+	public String getAnineutral() {
+		return anineutral;
+	}
+	public void setAnineutral(String anineutral) {
+		this.anineutral = anineutral;
+	}
 	public int getAnino() {
 		return anino;
 	}

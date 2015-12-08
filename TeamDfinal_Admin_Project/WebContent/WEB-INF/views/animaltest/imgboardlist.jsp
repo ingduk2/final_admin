@@ -24,6 +24,7 @@
 	border: 1px solid #000;
 	width: 50px;
 	
+	
 }
 
 /* .form-group{ */
@@ -41,6 +42,11 @@
 .aniimg{
 	width:160px;
 	height:160px;
+}
+
+.am{
+	width:40px;
+	height:40px;
 }
 </style>
 
@@ -128,17 +134,17 @@
 <div class="form-inline" ondragover="return false;" ondragenter="return false;"
 	ondrop="drop(this, event);">
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="rice+${i}" alt="¹ä" name="${listjoin[i].anino}"
+	<img class="am" ondragstart="drag(this, event)" id="rice+${i}" alt="¹ä" name="${listjoin[i].anino}"
 		src="img/dogfood.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="bath+${i}" alt="¸ñ¿å" name="${listjoin[i].anino}"
+	<img  class="am" ondragstart="drag(this, event)" id="bath+${i}" alt="¸ñ¿å" name="${listjoin[i].anino}"
 		src="img/shampoo.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="spo+${i}" alt="¿îµ¿" name="${listjoin[i].anino}"
+	<img class="am" ondragstart="drag(this, event)" id="spo+${i}" alt="¿îµ¿" name="${listjoin[i].anino}"
 		src="img/doglead.png"
 		draggable="true">
 	</div>
@@ -206,18 +212,18 @@
 <div class="form-inline" ondragover="return false;" ondragenter="return false;"
 	ondrop="drop(this, event);">
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="rice+${i+1}" alt="¹ä" name="${listjoin[i+1].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood1.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="rice+${i+1}" alt="¹ä" name="${listjoin[i+1].anino}"
+		src="img/dogfood.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="bath+${i+1}" alt="¸ñ¿å" name="${listjoin[i+1].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood2.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="bath+${i+1}" alt="¸ñ¿å" name="${listjoin[i+1].anino}"
+		src="img/shampoo.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="spo+${i+1}" alt="¿îµ¿" name="${listjoin[i+1].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood3.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="spo+${i+1}" alt="¿îµ¿" name="${listjoin[i+1].anino}"
+		src="img/doglead.png"
 		draggable="true">
 	</div>
 </div>
@@ -280,18 +286,18 @@
 <div class="form-inline" ondragover="return false;" ondragenter="return false;"
 	ondrop="drop(this, event);">
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="rice+${i+2}" alt="¹ä" name="${listjoin[i+2].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood1.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="rice+${i+2}" alt="¹ä" name="${listjoin[i+2].anino}"
+		src="img/dogfood.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="bath+${i+2}" alt="¸ñ¿å" name="${listjoin[i+2].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood2.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="bath+${i+2}" alt="¸ñ¿å" name="${listjoin[i+2].anino}"
+		src="img/shampoo.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="spo+${i+2}" alt="¿îµ¿" name="${listjoin[i+2].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood3.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="spo+${i+2}" alt="¿îµ¿" name="${listjoin[i+2].anino}"
+		src="img/doglead.png"
 		draggable="true">
 	</div>
 </div>

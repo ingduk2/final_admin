@@ -1,6 +1,11 @@
 package kosta.teamd.mvc.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -88,9 +93,30 @@ public class BoardController {
 	
 	
 	@RequestMapping(value="insertadBoard", method=RequestMethod.POST)
-	public ModelAndView insertBoard(BoardVO bvo){
+	public ModelAndView insertBoard(BoardVO bvo , HttpServletRequest request){
 		ModelAndView mav= new ModelAndView("redirect:/formBoard");
-		System.out.println(bvo.getBtitle());
+		System.out.println("btitle : " + bvo.getBtitle());
+		
+		HttpSession session=request.getSession();
+		String r_path=session.getServletContext().getRealPath("/");
+		
+		StringBuffer sb=new StringBuffer();
+		sb.append(r_path).append("\\img\\");
+		
+		String originalFile=bvo.getMfile().getOriginalFilename();
+		sb.append(originalFile);
+		
+		File file=new File(sb.toString());
+		
+		try {
+			bvo.getMfile().transferTo(file);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+		
+		bvo.setBfile(originalFile);
+		
+		
 		abdao.insertBoard(bvo);
 		return mav;
 	}

@@ -138,6 +138,13 @@
 		select mrpt from member where mid=#{mid}
 	</select>
 	
+	
+	 <insert id="imgBoardInsert" parameterType="bvo">
+    	insert into board values(
+    	#{bcode}, #{bcode}, board_seq.nextVal, #{btitle}, #{mid}, #{bcontent}, 
+    	sysdate, 0, #{anino}, board_seq.nextVal, 1, #{blvl}, #{bip}, 'nofile', 0
+    	)
+    </insert>
 <!-- 	<select> -->
 		
 <!-- 	</select> -->

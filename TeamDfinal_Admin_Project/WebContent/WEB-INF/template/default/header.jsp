@@ -37,8 +37,12 @@
 <!-- 					<li><a href="#">Page 3</a></li> -->
 <!-- 				</ul> -->
 				<ul class="nav navbar-nav navbar-right">
+					
+					
+					<c:if test="${pageContext.request.userPrincipal.name == null}">
 					<li><a href="formJoin"><span
 							class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					</c:if>
 					<!-- 로그 인 할때 -->
 					<c:if test="${pageContext.request.userPrincipal.name == null}">
 						<li><a href="login"><span

@@ -183,18 +183,24 @@ $(function() {
 </script>    
 
 <style>
+
+	#table_wrap{
+		width: 100%;
+	}
 	#container{
-		width:50%;
-		height:50%;
-		float:left;
+		width:100%;
+		
 	}
 	
 	#animal_table{
-		width:50%;
-		height:50%;
-		margin:auto;
+		width:40%;
+		
+		
 	}
-	
+	#animal_table2{
+		margin-left : 200px;
+		width:40%;
+	}
 	#print{
 		
 	}
@@ -204,11 +210,14 @@ $(function() {
 <div id="container"  ></div>
 <div id="print"></div>
 
-<div id="animal_table">
+<div id="table_wrap" class="form-inline">
+
+<div id="animal_table" class="form-group">
+<input type="button" value="센터 동물 글쓰기" onclick="location='formAnimal'">
 <table id='cal_table' class="table table-striped">
 	<thead class="table table-striped">
 <tr>
-<th colspan="11">대분류</th>
+<th colspan="11">센터 동물</th>
 </tr>
 <tr>
 <td>count</td>
@@ -231,10 +240,10 @@ $(function() {
 <%-- </c:forEach> --%>
 
 <c:forEach items="${ablilst }" var="anilist"  varStatus="i">
+<input type="hidden" id="anino+${i.count}" value="${anilist.anino }"/>
 <tr>
 	<td>${i.count }</td>
 	<td>${anilist.anino }</td> 
-	<td><input type="hidden" id="anino+${i.count}" value="${anilist.anino }"/></td>
 	<td>${anilist.anispecies }</td>
 	<td>${anilist.anibreed }</td>
 	<td>${anilist.aniname }</td>
@@ -280,4 +289,85 @@ $(function() {
 </tfoot>
 
 </table>
+</div>
+
+
+
+<div id="animal_table2" class="form-group">
+<table id='cal_table' class="table table-striped">
+	<thead class="table table-striped">
+<tr>
+<th colspan="11">유저 동물</th>
+</tr>
+<tr>
+<td>count</td>
+<td>no</td>
+<td>species</td>
+<td>breed</td>
+<td>name</td>
+<td>age</td>
+<td>sex</td>
+<td>state</td>
+</tr>
+</thead>
+
+<tbody>
+<%-- <c:forEach items="${anisvo}" var="anisvo"> --%>
+<!-- <tr> -->
+<%-- <td>${anisvo.anispecies }</td> --%>
+<%-- <td>${anisvo.cnt }</td> --%>
+<!-- </tr> -->
+<%-- </c:forEach> --%>
+
+<c:forEach items="${ablilst }" var="anilist"  varStatus="i">
+<input type="hidden" id="anino+${i.count}" value="${anilist.anino }"/>
+<tr>
+	<td>${i.count }</td>
+	<td>${anilist.anino }</td> 
+	<td>${anilist.anispecies }</td>
+	<td>${anilist.anibreed }</td>
+	<td>${anilist.aniname }</td>
+	<td>${anilist.aniage }</td>
+	<td>${anilist.anisex }</td>
+	<td>${anilist.anistate }</td>
+<!-- 	<td> -->
+	
+<!-- 		<select disabled="disabled"> -->
+<%-- 			<c:if test="${anilist.anistate==0 }"><option selected="selected">보호중</option></c:if> --%>
+<%-- 			<c:if test="${anilist.anistate==1 }"><option selected="selected">입양대기</option></c:if> --%>
+<%-- 			<c:if test="${anilist.anistate==2 }"><option selected="selected">입양완료</option></c:if> --%>
+<%-- 			<c:if test="${anilist.anistate==3 }"><option selected="selected">실종</option></c:if> --%>
+<%-- 			<c:if test="${anilist.anistate==4 }"><option selected="selected">발견</option></c:if> --%>
+<%-- 			<c:if test="${anilist.anistate==5 }"><option selected="selected">개인 보호중</option></c:if> --%>
+<!-- 		</select> -->
+<!-- 	</td> -->
+<!-- 	<td> -->
+<!-- 		<!-- 셀렉트 --> 
+<!-- 		<select name="anistate" id="anistate"> -->
+<!-- 			<option>--변경--</option> -->
+<%-- 			<option value="0/${anilist.anino }">보호중</option> --%>
+<%-- 			<option value="1/${anilist.anino }">입양대기</option> --%>
+<%-- 			<option value="2/${anilist.anino }">입양완료</option> --%>
+<!-- 		</select> -->
+		
+<!-- 	</td> -->
+<!-- 	<td> -->
+<!-- 		<select id="mid" name="mid"> -->
+<!-- 			<option>--선택--</option> -->
+<%-- 			<c:forEach var="listyv" items="${listy }"> --%>
+<%-- 			<option value="${listyv.mid}/${anilist.anino}">${listyv.mid}</option> --%>
+<%-- 			</c:forEach> --%>
+<!-- 		</select> -->
+<!-- 	</td> -->
+	<!-- 기타 등등 -->
+</tr>
+</c:forEach>
+</tbody>
+
+<tfoot>
+	
+</tfoot>
+
+</table>
+</div>
 </div>

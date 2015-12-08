@@ -77,6 +77,20 @@
 		return true;
 	}
 		
+	
+	
+	
+	function CloseAndRefresh()
+	  {
+		document.forms['boardwriteform'].submit();
+	     opener.location.reload(true);
+	     self.close();
+	  }
+	
+	function fin(){
+		window.close();
+		
+	}
 </script>
 
 <div>
@@ -85,7 +99,7 @@
 <table><tr height="50px"><td></td></tr></table>
 	
 <form action="insertadBoard" method="post" enctype="multipart/form-data"
-	  name="boardwriteform" onsubmit="return checksubmit()">
+	  name="boardwriteform" > <!-- onsubmit="return checksubmit()" -->
 	
 	<input type="hidden" name="bcode" value="1">
 	<input type="hidden" name="mid" value="${pageContext.request.userPrincipal.name}">
@@ -128,8 +142,8 @@
 	</table>				
 
 	<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
-	<button type="submit" class="btn btn-success btn-sm">　완　　료　</button>
-	<button type="button" class="btn btn-success btn-sm" onclick="location='selectallBoard?bcode=${bcode}&nowPage=${nowPage}&searchType='">　취　　소　</button>
+	<button type="submit" class="btn btn-success btn-sm" onclick="CloseAndRefresh();">　완　　료　</button>
+	<button type="button" class="btn btn-success btn-sm" onclick="fin()">　취　　소　</button>
 
 </form>
 	

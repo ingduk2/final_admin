@@ -68,6 +68,10 @@ public class BoardDao {
 		public void rpt(int bno){
 			template.update("board.brpt", bno);
 		}
+		
+		public void insertImgBoard(BoardVO bvo) {
+			template.insert("board.imgBoardInsert", bvo);
+		}
 			
 		
 		

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="imgboard">
+    
+    	<!-- 동물 정보 등록 -->
+    	<insert id="animalInsert" parameterType="anivo">
+    		insert into animal values(
+    		animal_seq.nextVal, #{anispecies}, #{anibreed}, #{aniname}, #{aniage}, #{anisex}, 
+    		#{aniweight}, #{anifeature}, #{aniregion}, #{anidate}, #{anireward},
+    		#{anistate}, #{aniimg}, #{anineutral}
+    		)
+    		<selectKey keyProperty="anino" resultType="int" order="AFTER">
+    			select animal_seq.currval from dual
+    		</selectKey>
+    	</insert>
+    	
+    	
+    
+    </mapper>

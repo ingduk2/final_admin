@@ -94,20 +94,20 @@ li { list-style: none}
    <a href="formMember">회원 관리</a>
   </h4>
 
-  <div class="subtabmenu">
-  	 <a href="formMember">강제 탈퇴</a><br /> 
-  </div>
+<!--   <div class="subtabmenu"> -->
+<!--   	 <a href="formMember">강제 탈퇴</a><br />  -->
+<!--   </div> -->
 
 
   <h4>
    <a href="formBoard">게시물 관리</a>
   </h4>
-    <div class="subtabmenu">
-	  	 <a href="">블록 게시물</a><br />
-	  	 <a href="">게시물 복구</a><br /> 
-	  	 <a href="">강제 삭제</a><br /> 
-	  	 <a href="">강제 이동</a><br /> 
- 	 </div>
+<!--     <div class="subtabmenu"> -->
+<!-- 	  	 <a href="">블록 게시물</a><br /> -->
+<!-- 	  	 <a href="">게시물 복구</a><br />  -->
+<!-- 	  	 <a href="">강제 삭제</a><br />  -->
+<!-- 	  	 <a href="">강제 이동</a><br />  -->
+<!--  	 </div> -->
   
   <h4>
    <a href="selectallAdopt">입양 신청 관리</a>

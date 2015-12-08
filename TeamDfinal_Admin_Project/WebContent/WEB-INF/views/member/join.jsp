@@ -442,19 +442,16 @@
 		</table> 
 
 		<table><tr height="30px"><td></td></tr></table>
-<<<<<<< HEAD
+
 		<div style="text-align: left; margin-left: 10%">
 		<button type="button" class="btn btn-danger btn-sm" onclick="goUrl('index')">　昼　　社　</button>
-=======
-		<button type="button"  onclick="location='index'">　昼　　社　</button>
->>>>>>> refs/remotes/origin/master
+
 		
 	
-<<<<<<< HEAD
+
 		<button type="submit" class="btn btn-danger btn-sm" >　亜　　脊　</button>
 		</div>
-=======
-		<button type="submit"  >　亜　　脊　</button>
+
 	</form>		
->>>>>>> refs/remotes/origin/master
+
 	</div>
