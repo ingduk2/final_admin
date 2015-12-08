@@ -290,20 +290,23 @@ function callendar(){
 		<div style="width: 50%; float: left;">
 			<div style="width: 100%; margin:auto;" class="form-inline">
 				<div id="animated-example" class="form-group animated fadeInUp">
-					<img src="img/alrams.png" width="170px">
+					<img src="img/alrams.png" width="170px"><p>
+					<span class="label label-danger">New!</span>&nbsp;${mainmembercnt}
 				</div>
 				<div id="animated-example" class="form-group animated fadeInUp">
-					<img src="img/newcontents.png" width="170px">
+					<img src="img/newcontents.png" width="170px"><p>
+					<span class="label label-danger">New!</span>&nbsp;${mainboardcnt}
 				</div>
 				<div id="animated-example" class="form-group animated fadeInUp">
-					<img src="img/newmember.png" width="170px">
+					<img src="img/newmember.png" width="170px"><p>
+					<span class="label label-danger">New!</span>&nbsp;${mainanimalcnt}
 				</div>
 			</div>
-			<div style="text-align: left; margin-left: 80px">
-				<span class="label label-danger" style="margin-left: 20px;">New!</span>001/100
-				<span class="label label-danger" style="margin-left: 75px;">New!</span>001/100
-				<span class="label label-danger" style="margin-left: 75px;">New!</span>001/100
-			</div>
+			<%-- <div style="text-align: left; margin-left: 80px">
+				<span class="label label-danger" style="margin-left: 20px;">New!</span>${mainmembercnt}
+				<span class="label label-danger" style="margin-left: 75px;">New!</span>${mainboardcnt}
+				<span class="label label-danger" style="margin-left: 75px;">New!</span>${mainanimalcnt}
+			</div> --%>
 		</div>
 		<div style="width: 50%; float: left;">
 			<div class="chart" id="chart1"></div>

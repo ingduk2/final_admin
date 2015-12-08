@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kosta.teamd.mvc.dao.BoardDao;
 import kosta.teamd.mvc.dao.EmployeeDao;
+import kosta.teamd.mvc.dao.MainDao;
 import kosta.teamd.mvc.dao.SurveyDao;
 import kosta.teamd.vo.BoardVO;
 import kosta.teamd.vo.EmployeeVO;
@@ -27,12 +28,21 @@ public class PageViewController {
 	@Autowired
 	private EmployeeDao edao;
 	
+	@Autowired
+	private MainDao maindao;
+	
 	@RequestMapping(value={"/","index"})
 	public ModelAndView a(){
 		ModelAndView mav= new ModelAndView("index");
 		List<MemberVO> list=edao.selectMainEmployee();
 		
-		mav.addObject("list",list);
+		int mainmembercnt=maindao.mainMemberCnt();
+		int mainboardcnt=maindao.mainBoardCnt();
+		int mainanimalcnt=maindao.mainAniamlrCnt();
+		
+		mav.addObject("mainmembercnt", mainmembercnt);
+		mav.addObject("mainboardcnt", mainboardcnt);
+		mav.addObject("mainanimalcnt", mainanimalcnt);
 		
 		return mav;
 	}
@@ -42,6 +52,5 @@ public class PageViewController {
 	public String formDenied() {
 		return "denied";
 	}
-	
 	
 }
