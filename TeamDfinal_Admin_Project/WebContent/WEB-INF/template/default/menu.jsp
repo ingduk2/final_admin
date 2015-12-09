@@ -3,6 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
 <style>
 li { list-style: none}
 .faq {
@@ -181,6 +183,8 @@ li { list-style: none}
 </c:if>
    
   </h4>
+  
+  <div id="container"></div>
 
 <!--     <div> -->
 <!--   	 <a href="selectallEmployee">직원 관리</a><br />   -->

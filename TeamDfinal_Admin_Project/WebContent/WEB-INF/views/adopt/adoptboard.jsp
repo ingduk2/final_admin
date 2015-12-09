@@ -127,7 +127,7 @@
 	<table class="table table-striped">
 		<thead class="table table-striped">
 			<tr>
-				<th>설문 조사 양식.</th>
+				<th>입양 양식</th>
 			</tr>
 		</thead>
 		

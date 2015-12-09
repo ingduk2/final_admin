@@ -18,6 +18,7 @@
     	<if test="bcode==10">
     		bcode=10
     	</if>
+    	order by 1 desc
     </select>
   
     

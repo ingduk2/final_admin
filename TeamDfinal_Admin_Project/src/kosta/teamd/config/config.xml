@@ -53,7 +53,7 @@
 		<!-- 차트 동물지출 -->
 		<typeAlias type="kosta.teamd.vo.AnimalPayVO" alias="apvo"/>
 		
-		
+		<typeAlias type="kosta.teamd.vo.MonthVO" alias="monthvo"/>
 		
 		<!-- 차트 동물수 직원당 -->
 		<typeAlias type="kosta.teamd.vo.ChartAnimalManage" alias="camvo"/>
