@@ -58,8 +58,9 @@
 	#fsf{
 		color: red;
 	}
-	.ui-datepicker{z-index: 99 !important};
 	*/
+	.ui-datepicker{z-index: 99 !important};
+	
 </style>
 
 <script>
