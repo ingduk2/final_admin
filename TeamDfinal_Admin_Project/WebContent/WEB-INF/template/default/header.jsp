@@ -61,14 +61,8 @@
 						<a href="${logout }"><span
 								class="glyphicon glyphicon-log-in"></span>logout</a></li>
 					</c:if>
-					
-					
-					
-
-					
-					
-					
-
+					<!-- 메일 추가 -->
+					<a href="mailsend">메일쓰기</a>
 				</ul>
 			</div>
 		</div>

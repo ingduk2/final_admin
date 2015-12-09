@@ -5,6 +5,7 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -16,22 +17,53 @@
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler/>
 <!-- 	<mvc:resources location="/resources/" mapping="/resources/**" /> -->
-	
+
   
-  <bean
-class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
-	<property name="order" value="0"></property>
-	<property name="basename" value="views"></property>
-</bean>
+<!--   <bean -->
+<!-- class="org.springframework.web.servlet.view.ResourceBundleViewResolver"> -->
+<!-- 	<property name="order" value="0"></property> -->
+<!-- 	<property name="basename" value="views"></property> -->
+<!-- </bean> -->
   
-	
 	<!-- ViewResolver -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="order" value="2" />
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+		
+ 	<!-- 포이 사용을 위한  -->
+	  	<bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+  		<property name="order" value="1"/>
+  		<property name="basename" value="views"/>
+  	</bean>
 	
+	
+	
+	<!-- 스프링 메일 보내기 설정 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<property name="host" value="smtp.gmail.com"/>
+	<property name="port" value="587"/>
+	<property name="username" value="ggamagu100@gmail.com"/>
+	<property name="password" value="akekgk1357"/>
+	<property name="defaultEncoding" value="UTF-8"/>
+	<property name="javaMailProperties">
+	<props>
+	<prop key="mail.smtp.auth">true</prop>
+	<prop key="mail.smtp.starttls.enable">true</prop>
+	<prop key="mail.smtp.timeout">8500</prop>
+<!-- 	<prop key="mail.debug">true</prop> -->
+	</props>
+	</property>
+	</bean>
+	
+	 
+<!-- 	<websocket:handlers> -->
+<!--     	 <websocket:mapping handler="sampleWebSocketHandler" path="/sample.do"/> -->
+<!--      	 <websocket:handshake-interceptors> -->
+<!--             <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/> -->
+<!--         </websocket:handshake-interceptors> -->
+<!-- 	</websocket:handlers> -->
 
 	<!-- MultipartResolver -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
@@ -64,9 +96,8 @@ class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 	
 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
-		
 <!-- 		 ViewResolver보다 먼저 수행되도록 value 0으로 준다 -->
-		<property name="order" value="1" />
+		<property name="order" value="0" />
 	</bean>
 	
 <!-- 	Transactional -->

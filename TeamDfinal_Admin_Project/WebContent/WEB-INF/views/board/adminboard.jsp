@@ -30,7 +30,7 @@ $(document).ready(function(){
 
 
 function popup(){
-	var specs = "left=10,top=10,width=697,height=546, location=no, realzable=no, scrollbars=no";
+	var specs = "left=10,top=10,width=465,height=350, location=no, realzable=no, scrollbars=no";
 	window.open("formWrite", "popup", specs);
 }
 
@@ -48,6 +48,10 @@ function popup(){
 
 #t3, t4{
 	margin-top: 50px;
+}
+
+.form-inline .form-group{
+	vertical-align: top
 }
 </style>
 <body onLoad="opener.location.href=opener.location.href; window.close();">

@@ -43,7 +43,7 @@ select * from animal where anino!=0 and anistate between 3 and 5 order by anino 
     
     <select id="imgdetail" resultType="abvo" parameterType="int">
     select a.anino anino, a.aniimg aniimg, a.anispecies anispecies, 
-     a.anibreed anibreed, a.aniname aniname, a.aniage aniage, a.anisex anisex, a.anisize anisize,
+     a.anibreed anibreed, a.aniname aniname, a.aniage aniage, a.anisex anisex,
      a.aniregion aniregion, a.anifeature anifeature, to_char(a.anidate,'yy-mm-dd') anidate, b.btitle btitle, 
      b.bno bno, b.mid mid, b.bcontent bcontent,b.brpt brpt ,b.bhit bhit, b.bdate bdate  from animal a, board b where a.anino=#{anino} and b.anino=#{anino}
     </select>

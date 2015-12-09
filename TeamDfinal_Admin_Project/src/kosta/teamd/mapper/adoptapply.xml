@@ -18,4 +18,5 @@
     select * from adoptapply where adopno=#{adopno}
     </select>
     
+    
     </mapper>

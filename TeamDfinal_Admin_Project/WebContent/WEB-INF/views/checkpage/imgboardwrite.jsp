@@ -18,15 +18,14 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <style>
-
 	table th {
 		font-weight: bold;
 		color: black;
-		background-color: #90ee90;
+		background-color: #FFCCCE;
 		opacity: 0.4;
 		font: bold;
 		text-align: center;
-		border-bottom: 1px solid #f0fff0;
+		border-bottom: 1px solid white;
 	}
 	.btn-file {
 	  position: relative;
@@ -57,7 +56,7 @@
 		width: 100%
 	}
 	#animalapplyform th{
-		background-color: #e0ffff
+		background-color: #FDE9E9
 	}
 	.ui-datepicker{z-index: 99 !important};
 	
@@ -321,12 +320,6 @@
 
 
 <div>
-
-	<!-- 공간 띄우기 용 -->
-	<table><tr height="50px"><td></td></tr></table>
-
-	
-	
 	<form action="insertImgBoard" method="post" enctype="multipart/form-data"
 		  name="imgboardwriteform" onsubmit="return checksubmit()">
 		<input type="hidden" name="bcode" value="6">
@@ -346,7 +339,7 @@
 					<div class="input-group">
 						<input type="text" class="form-control input-sm" placeholder="업로드 할 파일을 선택하세요" readonly>
 						<span class="input-group-btn">
-							<span class="btn btn-success btn-file btn-sm">
+							<span class="btn btn-danger btn-file btn-sm">
 								<span class="glyphicon glyphicon-folder-open"></span>
 								&nbsp;ImageUpload<input name="maniimg" type="file" multiple="multiple">
 							</span>
@@ -504,20 +497,20 @@
 			</tr>
 			
 			<tr>	
-				<td colspan="2"  height="500px">
+				<td colspan="2">  <!-- height="500px" -->
 					<textarea class="form-control" name="bcontent" rows="10" id="comment" placeholder="내용을 입력하세요"></textarea>
 				</td>		
 			</tr>
-
 		</table>				
 
 		
 		<input type="hidden" name="mid" value="${pageContext.request.userPrincipal.name}">
 		<input type="hidden" name="bip" value="<%= request.getRemoteAddr() %>">
 
-		<table><tr height="30px"><!-- 높이 조절용 칸 떼우기 --><td></td></tr></table>
-		<button type="submit" class="btn btn-success btn-sm">　완　　료　</button>
-		<button type="button" class="btn btn-success btn-sm" onclick="location='selectallAnimal?bcode=${bcode}'">　취　　소　</button>
-		
+
+		<div style="text-align: center;">
+		<button type="submit" class="btn btn-danger btn-sm">　완　　료　</button>
+		<button type="button" class="btn btn-danger btn-sm" onclick="location='selectallAnimal?bcode=${bcode}'">　취　　소　</button>
+		</div>
 	</form>
 </div>

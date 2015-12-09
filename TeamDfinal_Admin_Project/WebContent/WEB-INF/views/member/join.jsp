@@ -58,8 +58,11 @@
 	#fsf{
 		color: red;
 	}
-	.ui-datepicker{z-index: 99 !important};
 	*/
+
+	.ui-datepicker{z-index: 99 !important};
+	
+
 	
 	
 	#wrap_join{
@@ -67,15 +70,17 @@
 		margin-top: 100px;
 		margin-bottom: 100px;
 		width: auto;
-		margin-left: 30%
+		margin-left: 30%;
+		margin-top: 20px;
+		margin-bottom: 20px
 	}
 	#formtable>tbody th{
 		font-weight: bold;
 		color: black;
-		background-color: silver;
+		background-color: #FFCCCE;
 		font: bold;
 		text-align: center;
-		border-bottom: 1px solid gray;
+		border-bottom: 1px solid white;
 		width: 150px;
 	}
 </style>
