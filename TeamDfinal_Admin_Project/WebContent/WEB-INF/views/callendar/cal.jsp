@@ -182,7 +182,7 @@ function callendar(){
 				              type: "POST",
 				              data: { //파라미터로 q
 				            	  
-				                  volunteertitle : event.title,
+				                  volunteertitle : event.title.split(".")[1],
 				                  volunteerstart : event.start.format(),
 				                  volunteerend : event.end.format()
 				                 //title start end 

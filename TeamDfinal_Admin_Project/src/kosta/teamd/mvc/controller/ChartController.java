@@ -297,8 +297,12 @@ public class ChartController {
 		ja1.add(vo.getSum_amspo());
 		ja.add(ja1);
 		
-		System.out.println(ja);
-		mav.addObject("chdata",ja);
+		int total=vo.getSum_ambath()*5000+vo.getSum_amrice()*4000+vo.getSum_amspo()*3000;
+		System.out.println(total);
+		StringBuffer sb= new StringBuffer();
+		sb.append(ja.toString()).append("/").append(total);
+		System.out.println(sb.toString());
+		mav.addObject("chdata",sb.toString());
 		return mav;
 	}
 }

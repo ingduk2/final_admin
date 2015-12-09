@@ -56,4 +56,6 @@ from adoptapply
 	select sum(amrice) sum_amrice , sum(amspo) sum_amspo, sum(ambath) sum_ambath from animalmanage
 	</select>
 	
+	
+	
 </mapper>

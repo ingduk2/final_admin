@@ -16,8 +16,10 @@ $(function () {
 		        
 		        success: function(msg) { //데이터 받는 부분.response
 		        //yes
+		        var val=msg.split("/");
 		       // alert(msg);
-		        var json=JSON.parse(msg);
+		        var json=JSON.parse(val[0]);
+		        var total=val[1];
 		       // alert(json);
 		        $('#container').highcharts({
 		            chart: {
@@ -26,7 +28,7 @@ $(function () {
 		                plotShadow: false
 		            },
 		            title: {
-		                text: '동물<br>식 비<br>',
+		                text: '총액<br>'+total,
 		                align: 'center',
 		                verticalAlign: 'middle',
 		                y: 40

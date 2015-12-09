@@ -10,8 +10,8 @@
 	rel='stylesheet' media='print' />
 <script
 	src='http://fullcalendar.io/js/fullcalendar-2.3.1/lib/moment.min.js'></script>
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 <script
 	src='http://fullcalendar.io/js/fullcalendar-2.3.1/fullcalendar.min.js'></script>
 <script src='http://fullcalendar.io/js/fullcalendar-2.3.1/lang-all.js'></script>
@@ -89,7 +89,7 @@ $(function () {
                         },
                          events:{
                           click: function (event, i) {
-                             alert(event.point.name);
+                            // alert(event.point.name);
                              location.href='testani'
                           }
                       }
@@ -105,8 +105,8 @@ $(function () {
         	
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
-            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+           // alert("Request: " + JSON.stringify(a));
+            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
     });
 	
@@ -117,79 +117,109 @@ $(function () {
 
 
 $(function () {
-    $('#chart1').highcharts({
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text:" ",
-            align: 'right',
-            x: -100,
-            verticalAlign: 'bottom',
-            y: -120
-        },
-	    legend: {
-	            align: 'right',
-	            verticalAlign: 'top',
-	            layout: 'vertical',
-	            x: 0,
-	            y: 30
-        },
-        xAxis: {
-            categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
-            ],
-            crosshair: true
-        },
-        yAxis: {
-            min: 0,
+	
+	$.ajax({
+        url: "monthajax", //"testAjax.jsp", 
+        type: "POST",
+        success: function(json) { //데이터 받는 부분.response 
+          
+       // alert(json);
+     	var a=json.split("/");
+        var month0=JSON.parse(a[0]);
+        var month3=JSON.parse(a[1]);
+        //alert('aa');
+        var month4=JSON.parse(a[2]);
+        var month5=JSON.parse(a[3]);
+//         alert(month0);
+//         alert(month3);
+//         alert(month4);
+//         alert(month5);
+        
+        
+        $('#chart1').highcharts({
+            chart: {
+                type: 'column'
+            },
+
             title: {
-                text: 'Rainfall (mm)'
-            }
+               	text : " ",
+                align: 'right',
+                x: -100,
+                verticalAlign: 'bottom',
+                y: -120
+            },
+    	    legend: {
+    	            align: 'right',
+    	            verticalAlign: 'top',
+    	            layout: 'vertical',
+    	            x: 0,
+    	            y: 30
+            },
+            xAxis: {
+                categories: [
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Rainfall (mm)'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: '보호',
+//                 data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+    			data: month0
+            }, {
+                name: '실종',
+//                 data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+                data: month3
+            }, {
+                name: '목격',
+//                 data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+                data: month4
+            }, {
+                name: '개인보호',
+//                 data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+                data: month5
+            }]
+        });
+        
+        
         },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        series: [{
-            name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-        }, {
-            name: 'New York',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-        }, {
-            name: 'London',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-        }, {
-            name: 'Berlin',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
-        }]
+        error: function(a, b) {
+           // alert("Request: " + JSON.stringify(a));
+            
+        }
     });
+	
+
 });
 
 
@@ -211,7 +241,7 @@ $(function(){
      		callendar();
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
+            //alert("Request: " + JSON.stringify(a));
             
         }
     });
