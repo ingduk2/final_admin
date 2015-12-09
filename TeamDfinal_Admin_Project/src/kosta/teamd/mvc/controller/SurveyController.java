@@ -45,6 +45,7 @@ public class SurveyController {
 		return mav;
 		
 	}
+	
 	@RequestMapping(value="updateSurvey" ,method=RequestMethod.POST)
 	public ModelAndView updateSurvey(SurveyVO svo){
 		ModelAndView mav= new ModelAndView("redirect:/formSurvey");

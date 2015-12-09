@@ -23,50 +23,58 @@
 <script>
 
 $(function () {
-    $('#center_chart').highcharts({
-        chart: {
-            type: 'pie',
-            options3d: {
-                enabled: true,
-                alpha: 45,
-                beta: 0
-            }
-        },
-        title: {
-            text: 'Browser market shares at a specific website, 2014'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                depth: 35,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.name}'
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Browser share',
-            data: [
-                ['Firefox', 45.0],
-                ['IE', 26.8],
-                {
-                    name: 'Chrome',
-                    y: 12.8,
-                    sliced: true,
-                    selected: true
+	
+	$.ajax({
+        url: "addrChart", //"testAjax.jsp", 
+        type: "POST",
+        success: function(msg) { //데이터 받는 부분.response
+        	//alert(msg);
+            var json=JSON.parse(msg);
+        	//alert(json);
+
+        	
+            $('#center_chart').highcharts({
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 45,
+                        beta: 0
+                    }
                 },
-                ['Safari', 8.5],
-                ['Opera', 6.2],
-                ['Others', 0.7]
-            ]
-        }]
+                title: {
+                    text: 'Browser market shares at a specific website, 2014'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        depth: 35,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}'
+                        }
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Browser share',
+                    data: json
+                }]
+            });
+        	
+        },
+        error: function(a, b) {
+           // alert("Request: " + JSON.stringify(a));
+           // alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
     });
+	
+	
+    
 });
 
 $(function() {
@@ -115,7 +123,7 @@ $(function() {
 	                // 정상적으로 검색이 완료됐으면
 	                if (status === daum.maps.services.Status.OK) {
 	                    // 해당 주소에 대한 좌표를 받아서
-	                    alert(result.addr[0].lat+','+result.addr[0].lng);
+	                  //  alert(result.addr[0].lat+','+result.addr[0].lng);
 	                    $('#code').val(result.addr[0].lat+','+result.addr[0].lng);
 	                    var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
 	                    // 지도를 보여준다.
@@ -154,6 +162,33 @@ function sample5_execDaumPostcode() {
 }
 </script>
 
+<script>
+// 	$(function () {
+// 		$('#cbtn').click(function() {
+// 			alert($(this).val());
+			
+// 			$.ajax({
+// 		        url: "deleteCenter", //"testAjax.jsp", 
+// 		        type: "get",
+// 		        data:{
+// 		        	cnum : $(this).val()
+// 		        },
+// 		        success: function(msg) { //데이터 받는 부분.response
+// 		        	alert(msg);
+
+// 		        },
+// 		        error: function(a, b) {
+// 		            alert("Request: " + JSON.stringify(a));
+// 		            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+// 		        }
+// 		    });
+			
+// 		});
+// 	});
+
+</script>
+
+
 <div id="center_insert">
 <form method="post" action="insertCenter">
 	<table>
@@ -179,7 +214,7 @@ function sample5_execDaumPostcode() {
 		
 		<tfoot>
 			<tr>
-				<td><input type="text" id="code" name="cxy"></td>
+				<td><input type="hidden" id="code" name="cxy"></td>
 				<td colspan="2"><input type="submit" size="20" value="등록!"></td>
 			</tr>
 		</tfoot>
@@ -219,6 +254,7 @@ function sample5_execDaumPostcode() {
 					<td>${listv.cname }</td>
 					<td>${listv.caddr }</td>
 					<td>${listv.cxy }</td>
+					<td><button type="button" value="${listv.cnum }" id="cbtn" onclick="location='deleteCenter?cnum='+${listv.cnum}">삭 제</button>
 				</tr>
 			</c:forEach>
 		</tbody>

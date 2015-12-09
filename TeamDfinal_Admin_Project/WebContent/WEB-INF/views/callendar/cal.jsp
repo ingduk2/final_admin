@@ -45,7 +45,7 @@ $(function(){
      		callendar();
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
+            //alert("Request: " + JSON.stringify(a));
         }
     });
 	 
@@ -83,7 +83,7 @@ function callendar(){
 					eventClick : function(calEvent, jsEvent, view) {
 						
 						var username=$('#name').val();
-						alert("username -- "+username);
+						//alert("username -- "+username);
 						
 						if(username=='admin'){
 							
@@ -105,10 +105,10 @@ function callendar(){
 							                 //title start end 
 							              },
 								        success: function(msg) { //데이터 받는 부분.response 
-								     		alert(msg);
+								     		//alert(msg);
 								        },
 								        error: function(a, b) {
-								            alert("Request: " + JSON.stringify(a));
+								            //alert("Request: " + JSON.stringify(a));
 								        }
 								    });
 								
@@ -158,7 +158,7 @@ function callendar(){
 					
 					eventDrop: function(event, delta, revertFunc) {
 
-				        alert(event.title + " was dropped on " + event.start.format());
+				       // alert(event.title + " was dropped on " + event.start.format());
 						//드래그 하면 원래 것 지워버리고.. 새롭게 집어넣으면 됨.
 						//지울 때 파라미터. seq
 						 $.ajax({
@@ -170,10 +170,10 @@ function callendar(){
 							                 //title start end 
 							              },
 								        success: function(msg) { //데이터 받는 부분.response 
-								     		alert(msg);
+								     		//alert(msg);
 								        },
 								        error: function(a, b) {
-								            alert("Request: " + JSON.stringify(a));
+								            //alert("Request: " + JSON.stringify(a));
 								        }
 								    });
 						
@@ -189,7 +189,7 @@ function callendar(){
 				              },
 				              dataType: "html",
 				              success: function(msg) { //데이터 받는 부분.response
-				                  alert(msg);
+				                 // alert(msg);
 				                  if (title) {
 										eventData = {
 											title : msg+'.'+title,
@@ -203,7 +203,7 @@ function callendar(){
 									}
 				              },
 				              error: function(a, b) {
-				                  alert("Request: " + JSON.stringify(a));
+				                 // alert("Request: " + JSON.stringify(a));
 				              }
 				          });
 						
@@ -256,7 +256,7 @@ function callendar(){
 				              },
 				              dataType: "html",
 				              success: function(msg) { //데이터 받는 부분.response
-				                  alert(msg);
+				                  //alert(msg);
 				                  if (title) {
 										eventData = {
 											title : msg+'.'+title,
@@ -270,7 +270,7 @@ function callendar(){
 									}
 				              },
 				              error: function(a, b) {
-				                  alert("Request: " + JSON.stringify(a));
+				                 // alert("Request: " + JSON.stringify(a));
 				              }
 				          });
 						 $('#cal_detail').fullCalendar('unselect');
@@ -346,9 +346,7 @@ function callendar(){
 	</tbody>
 	
 	<tfoot>
-		<tr>
-			<td colspan="4"><input type="button" value="무슨버튼!"/></td>
-		</tr>
+		
 	</tfoot>
 </table>
 </div>

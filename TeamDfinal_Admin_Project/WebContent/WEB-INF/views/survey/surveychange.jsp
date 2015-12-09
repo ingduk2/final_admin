@@ -2,11 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="//cdn.ckeditor.com/4.5.5/standard/ckeditor.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 
 <script>
+$(function () {
 
-$(function() {
-	$('[id="surbtn"]').click(function () {
+	
+$('[id="surbtn"]').click(function () {
 		
 		//alert($(this).val()); //시퀀스
 		$('#num').val($(this).val());
@@ -17,58 +23,125 @@ $(function() {
 			        	num : $(this).val()
 			        },
 			        success: function(msg) { //데이터 받는 부분.response
-			        //yes
-			        //json으로 받을까?
-			        //alert(msg);
-			        
-// 			        	CKEDITOR.instances.content.setData("");
-// //	 			        $('#content').html(json[0].content);
-// 				        $('#sub').val("");
-// 				        $('#sub1').val("");
-// 				        $('#sub2').val("");
-// 				        $('#sub3').val("");
-			        
-			        
+			       // alert('aaaa');
+	        	//	alert(msg);
+	
 			        var json=JSON.parse(msg);
-			        //alert(json);
-			        //alert(json[0].content);
-			        //alert(json[0].sub);
-			        //alert(json[0].sub1);
-			        //alert(json[0].sub2);
-			        //alert(json[0].sub3);
 			        
 			        CKEDITOR.instances.content.setData(json[0].content);
-// 			        $('#content').html(json[0].content);
+
 			        $('#sub').val(json[0].sub);
 			        $('#sub1').val(json[0].sub1);
 			        $('#sub2').val(json[0].sub2);
 			        $('#sub3').val(json[0].sub3);
-// 			        CKEDITOR.replace('content');
+
 			        },
 			        error: function(a, b) {
-			            alert("Request: " + JSON.stringify(a));
-			            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			           // alert("Request: " + JSON.stringify(a));
+			           // alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			        }
 			   
 			});
-		
-		
-		
-		
-	});
+	});	
+	
+	
+	
+	$.ajax({
+        url: "surveyChart", //"testAjax.jsp", 
+        type: "POST",
+        success: function(msg) { //데이터 받는 부분.response
+        var json=JSON.parse(msg);
+        $('#container').highcharts({
+	        chart: {
+	            type: 'column'
+	        },
+	        title: {
+	            text: '설문 조사'
+	        },
+	        xAxis: {
+	            categories: ['동물등록제', '멸종위기동물', '캣맘', 'TNR']
+	        },
+	        yAxis: {
+	            min: 0,
+	            title: {
+	                text: 'total num'
+	            },
+	            stackLabels: {
+	                enabled: true,
+	                style: {
+	                    fontWeight: 'bold',
+	                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+	                }
+	            }
+	        },
+	        legend: {
+	            align: 'right',
+	            x: -30,
+	            verticalAlign: 'top',
+	            y: 25,
+	            floating: true,
+	            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+	            borderColor: '#CCC',
+	            borderWidth: 1,
+	            shadow: false
+	        },
+	        tooltip: {
+	            headerFormat: '<b>{point.x}</b><br/>',
+	            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+	        },
+	        plotOptions: {
+	            column: {
+	                stacking: 'normal',
+	                dataLabels: {
+	                    enabled: true,
+	                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+	                    style: {
+	                        textShadow: '0 0 3px black'
+	                    }
+	                }
+	            }
+	        },
+	        series: json
+	    });
+	
+        
+        },
+        error: function(a, b) {
+           // alert("Request: " + JSON.stringify(a));
+           // alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+   	
 });
-		
-		
+	 
+	
+	
+	
+});
+
 
 </script>
 
 <style>
- #sub, #sub1, #sub2, #sub3 { width: 500px }
+ #sub, #sub1, #sub2, #sub3 {
+  width: 400px; 
+}
+ #survey{
+ width:100%;
+ }
+ #form{
+ width:50%;
+ }
+ #container{
+ width:45%;
+ margin-left: 50px;
+ }
 </style>
 
-<div>
-<form action="updateSurvey" method="post">
+<div id="survey" class="form-inline">
+
 		<!--content -->
+		<div id="form" class="form-group">
+		<form action="updateSurvey" method="post">
 		<input type="hidden" id="num" name="num">
 		<textarea id="content" class="ckeditor" name="content"></textarea>
 		<table>
@@ -96,7 +169,11 @@ $(function() {
 			<td><input type="submit" value="수정 완료!"></td>
 			</tr>
 		</table>
-</form>	
+		</form>	
+		</div>
+
+	   <div id="container" class="form-group"></div>
+	</div>  
 	   
 	   <table class="table table-striped">
 	   		<thead class="table table-striped">
@@ -120,4 +197,3 @@ $(function() {
 	   
 	   
 	
-</div>

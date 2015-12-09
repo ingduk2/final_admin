@@ -12,7 +12,7 @@
 	  font: normal 14px Roboto,arial,sans-serif;
 	}
 	.form-login {
-	    background-color: #EDEDED;
+	    background-color: #FFCCCE;
 	    padding-top: 10px;
 	    padding-bottom: 20px;
 	    padding-left: 20px;
@@ -21,6 +21,7 @@
 	    border-color:#d2d2d2;
 	    border-width: 5px;
 	    box-shadow:0 1px 0 #cfcfcf;
+	    margin-bottom: 200px
 	}
 	
 	h1 { 
@@ -36,9 +37,12 @@
 	
 	.wrapper {
 	    text-align: center;
+	    
 	}
 	.form-login{
-		background-color: #90ee90;
+
+		background-color: #FFCCCE;
+
 		
 	}
 	
@@ -47,7 +51,9 @@
 		width: 600px
 	}
 	.modal-content{
-		background-color:#CCFFCC
+
+		background-color:#FFCCCE
+
 	}
 	
 	.col-md-offset-4 {
@@ -193,17 +199,17 @@ function closereset2(){
         <div class="wrapper">
          <span class="group-btn">     
 <!--              <a href="#" class="btn btn-success btn-lg btn-block">login <i class="fa fa-sign-in"></i></a> -->
-			<input type="submit" class="btn btn-success btn-lg btn-block" value="로그인">
+			<input type="submit" class="btn btn-danger btn-lg btn-block" value="로그인">
          </span>
         </div>
          
         <hr>
          <!-- autocomplete: HTML5 속성, 자동완성 꺼주는 기능 -->
-        <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#findIdModal" autocomplete="off">
+        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#findIdModal" autocomplete="off">
         	<span class="glyphicon glyphicon-tag"> 아이디찾기&nbsp;</span>
         </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
-        <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#findPwdModal" autocomplete="off">
+        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#findPwdModal" autocomplete="off">
         	<span class="glyphicon glyphicon-tags"> 비밀번호찾기&nbsp;</span>
         </button>
        </div>
@@ -227,13 +233,13 @@ function closereset2(){
         	<input type="text" id="midmtel" class="form-control input-xs chat-input" placeholder="가입하신 전화번호를 입력하세요" /><br/>
         </p>
 <!--         <button id="findmid" type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo">찾　　　기</button><p> -->
-        <button id="findmid" type="button" class="btn btn-success">찾　　　기</button><p><p>
+        <button id="findmid" type="button" class="btn btn-danger">찾　　　기</button><p><p>
 <!--         <div id="demo" class="collapse alert alert-success"> -->
         <div id="demo">
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="close2" class="btn btn-success input-sm" data-dismiss="modal">Close</button>
+        <button type="button" id="close2" class="btn btn-danger input-sm" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -254,17 +260,17 @@ function closereset2(){
        	<input type="text" id="mpwdmid" class="form-control input-xs chat-input" placeholder="가입하신 아이디를 입력하세요" /></br>
        	<input type="text" id="mpwdmemail" class="form-control input-xs chat-input" placeholder="가입하신 메일주소를 입력하세요" /></br>
        	
-       	<button type="button" class="btn btn-success" id="findmpwdkey">입　　　력</button>
+       	<button type="button" class="btn btn-danger" id="findmpwdkey">입　　　력</button>
        	
        	<div style="text-align: left; color: #006600;">
        		<!-- 비밀번호 찾기 질문은 이곳에 나와야 합니당.  -->
         		<span>&nbsp;&nbsp;비밀번호 찾기 질문 : <span id="mpwdkey"></span></span>
         	</div>
         	<input type="text" id="mpwdmpwdval" class="form-control input-xs chat-input" placeholder="질문에 답을 입력하세요" /></br>
-        <button type="button" class="btn btn-success" id="findmpwd">찾　　　기</button>
+        <button type="button" class="btn btn-danger" id="findmpwd">찾　　　기</button>
       </div>
       <div class="modal-footer">
-        <button type="button" id="close4" class="btn btn-success input-sm" data-dismiss="modal">Close</button>
+        <button type="button" id="close4" class="btn btn-danger input-sm" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

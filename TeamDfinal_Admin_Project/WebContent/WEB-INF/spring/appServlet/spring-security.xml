@@ -63,6 +63,17 @@
 <!-- 		<intercept-url pattern="/formReply" access="User, Admin" /> 답글 쓰기 폼 -->
 <!-- 		<intercept-url pattern="/insertComm" access="User, Admin" /> 댓글 등록 -->
 	 	
+			<intercept-url pattern="/formMember" access="Admin"/>
+			<intercept-url pattern="/formBoard" access="Admin"/>
+			<intercept-url pattern="/selectallAdopt" access="Admin"/>
+			<intercept-url pattern="/formCal" access="Admin"/>
+			<intercept-url pattern="/formCenter" access="Admin"/>
+			<intercept-url pattern="/testani" access="Admin"/>
+			<intercept-url pattern="/formEmployee" access="Admin"/>
+			<intercept-url pattern="/formSurvey" access="Admin"/>
+			<intercept-url pattern="/selectallanimalmanage" access="Admin, Employee"/>
+   			
+	 	
 	 	<!-- login 처리 -->
 	 	<form-login
 	 		login-page="/login" authentication-failure-url="/denied"

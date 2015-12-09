@@ -9,9 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.teamd.mvc.dao.ChartDao;
+import kosta.teamd.vo.AnimalPayVO;
+import kosta.teamd.vo.ChartAdoptScore;
+import kosta.teamd.vo.ChartAnimalManage;
 import kosta.teamd.vo.ChartMemAgeVO;
 import kosta.teamd.vo.ChartMemberVO;
+import kosta.teamd.vo.ChartSurveyVO;
 import kosta.teamd.vo.ChartVO;
+import kosta.teamd.vo.SurveyVO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -85,6 +90,25 @@ public class ChartController {
 		return mav;
 	}
 	
+	@RequestMapping(value="addrChart")
+	public ModelAndView addrChart(){
+		ModelAndView mav= new ModelAndView("/chart/memberchart");
+		List<ChartMemberVO> list=cdao.selectallchartaddr();
+		
+		JSONArray arr= new JSONArray();
+		JSONArray ja= null;
+		for(ChartMemberVO e : list){
+			ja=new JSONArray();
+			ja.add(e.getCity());
+			ja.add(e.getCity_count());
+			arr.add(ja);
+		}
+		System.out.println(arr);
+		
+		mav.addObject("member",arr);
+		return mav;
+	}
+	
 	//멤버 연령대 별 뽑는 ajax
 	@RequestMapping(value="memberAge")
 	public ModelAndView memberAge(){
@@ -126,6 +150,155 @@ public class ChartController {
 		System.out.println(arr);
 		
 		mav.addObject("memage",arr);
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="adoptScore")
+	public ModelAndView adoptScore(){
+		ModelAndView mav= new ModelAndView("/adopt/adoptchart");
+		//ChartMemAgeVO cmavo= cdao.selectallMemAge();
+		ChartAdoptScore casvo=cdao.selectallscore();
+		
+		JSONArray arr= new JSONArray();
+		
+		JSONObject jo= new JSONObject();
+		jo.put("name", "1~10");
+		jo.put("y", casvo.getC10());
+		arr.add(jo);
+		
+		jo= new JSONObject();
+		jo.put("name", "11~20");
+		jo.put("y", casvo.getC20());
+		arr.add(jo);
+		
+		jo= new JSONObject();
+		jo.put("name", "21~30");
+		jo.put("y", casvo.getC30());
+		arr.add(jo);
+		
+		jo= new JSONObject();
+		jo.put("name", "31~40");
+		jo.put("y", casvo.getC40());
+		arr.add(jo);
+		
+		
+		System.out.println(arr);
+		
+		mav.addObject("json",arr);
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="selectallam")
+	public ModelAndView selectallam(){
+		ModelAndView mav= new ModelAndView("/chart/chartdata");
+		List<ChartAnimalManage> list=cdao.selectallam();
+		
+		JSONArray ja= new JSONArray();
+		JSONObject jo= null;
+		for(ChartAnimalManage e : list){
+			jo=new JSONObject();
+			jo.put("name", e.getMid());
+			jo.put("y", e.getCnt());
+			ja.add(jo);
+		}
+		System.out.println(ja);
+		mav.addObject("chdata",ja);
+		return mav;
+	}
+	
+	@RequestMapping(value="surveyChart")
+	public ModelAndView surveyChart(){
+		ModelAndView mav= new ModelAndView("/survey/surveyupdate");
+		/*
+		 * [{
+	            name: '보기1',
+	            data: [5, 3, 4, 7]
+	        }, {
+	            name: '보기2',
+	            data: [2, 2, 3, 2]
+	        }, {
+	            name: '보기3',
+	            data: [3, 4, 4, 2]
+	        }]
+		 */
+		List<SurveyVO> list=cdao.selectallsurvey();
+		
+		
+		JSONArray ja= new JSONArray(); // [    ]
+		
+		JSONObject j1=new JSONObject();
+		JSONObject j2=new JSONObject();
+		JSONObject j3=new JSONObject();
+		j1.put("name", "보기1");
+		j2.put("name", "보기2");
+		j3.put("name", "보기2");
+		
+		JSONArray a1=new JSONArray();
+		JSONArray a2=new JSONArray();
+		JSONArray a3=new JSONArray();
+		
+		int size=list.size();
+		for(int i=0; i<size; i++){
+			
+				a1.add(list.get(i).getSub1cnt());
+				a2.add(list.get(i).getSub2cnt());
+				a3.add(list.get(i).getSub3cnt());
+			
+		}
+		j1.put("data", a1);
+		j2.put("data", a2);
+		j3.put("data", a3);
+		ja.add(j1);
+		ja.add(j2);
+		ja.add(j3);
+		System.out.println(ja);
+		mav.addObject("survey",ja);
+		return mav;
+	}
+	
+	@RequestMapping(value="selectanimalpay")
+	public ModelAndView selectanimalpay(){
+		ModelAndView mav= new ModelAndView("/chart/chartdata");
+		AnimalPayVO vo=cdao.selectanimalpay();
+		
+		/*
+		 * [
+                ['Firefox',   10.38],
+                ['IE',       56.33],
+                ['Chrome', 24.03],
+                ['Safari',    4.77],
+                ['Opera',     0.91],
+                {
+                    name: 'Proprietary or Undetectable',
+                    y: 0.2,
+                    dataLabels: {
+                        enabled: false
+                    }
+                }
+            ]
+		 */
+		
+		JSONArray ja= new JSONArray();
+		
+		JSONArray ja1=new JSONArray();
+		ja1.add("식비");
+		ja1.add(vo.getSum_amrice());
+		ja.add(ja1);
+		
+		ja1=new JSONArray();
+		ja1.add("목욕비");
+		ja1.add(vo.getSum_ambath());
+		ja.add(ja1);
+		
+		ja1=new JSONArray();
+		ja1.add("운동비");
+		ja1.add(vo.getSum_amspo());
+		ja.add(ja1);
+		
+		System.out.println(ja);
+		mav.addObject("chdata",ja);
 		return mav;
 	}
 }

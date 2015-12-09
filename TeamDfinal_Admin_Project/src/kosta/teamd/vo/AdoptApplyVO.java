@@ -3,12 +3,15 @@ package kosta.teamd.vo;
 public class AdoptApplyVO {
 
 	// 신청자 아이디, 신청 동물 번호, 담당자 사원 아이디
-	private int adoptno;
-	public int getAdoptno() {
-		return adoptno;
+	private int adopno;
+	
+	
+
+	public int getAdopno() {
+		return adopno;
 	}
-	public void setAdoptno(int adoptno) {
-		this.adoptno = adoptno;
+	public void setAdopno(int adopno) {
+		this.adopno = adopno;
 	}
 
 	private String mid;

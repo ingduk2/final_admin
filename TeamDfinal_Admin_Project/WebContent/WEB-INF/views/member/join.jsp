@@ -59,9 +59,32 @@
 		color: red;
 	}
 	*/
+
 	.ui-datepicker{z-index: 99 !important};
 	
+
+	
+	
+	#wrap_join{
+		margin: auto;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		width: auto;
+		margin-left: 30%;
+		margin-top: 20px;
+		margin-bottom: 20px
+	}
+	#formtable>tbody th{
+		font-weight: bold;
+		color: black;
+		background-color: #FFCCCE;
+		font: bold;
+		text-align: center;
+		border-bottom: 1px solid white;
+		width: 150px;
+	}
 </style>
+
 
 <script>
 	// 다음 주소 찾기 api
@@ -295,13 +318,18 @@
 	
 </script>
 
+<style>
+	#wrap_join{
+		width:40%;
+		margin:auto;
+	}
+</style>
 
 
-<form onsubmit="return checksubmit()" name="joinform" action="insertMember" method="post">
-	<div id="wrap_join">
+	<div id="wrap_join" class="center-block">
 		<!-- 공간 띄우기 용 -->
 <!-- 		<table><tr height="50px"><td></td></tr></table> -->
-		
+		<form onsubmit="return checksubmit()" name="joinform" action="insertMember" method="post">
 		<table id="formtable">
 			
 			<tr>
@@ -419,10 +447,16 @@
 		</table> 
 
 		<table><tr height="30px"><td></td></tr></table>
-		<button type="button" class="btn btn-success btn-sm" onclick="goUrl('index')">　취　　소　</button>
+
+		<div style="text-align: left; margin-left: 10%">
+		<button type="button" class="btn btn-danger btn-sm" onclick="goUrl('index')">　취　　소　</button>
+
 		
 	
-		<button type="submit" class="btn btn-success btn-sm" >　가　　입　</button>
-		
+
+		<button type="submit" class="btn btn-danger btn-sm" >　가　　입　</button>
+		</div>
+
+	</form>		
+
 	</div>
-</form>

@@ -7,7 +7,7 @@ $(function () {
 	//승인
 	//0->1
 	$("[id='btnn']").click(function() {
-		alert($(this).val());
+		//alert($(this).val());
 		
 			$.ajax({
 		        url: "updateyesEmployee", //"testAjax.jsp", 
@@ -17,13 +17,13 @@ $(function () {
 		        },
 		        success: function(msg) { //데이터 받는 부분.response
 		        //yes
-		        alert(msg);
+		        //alert(msg);
 		        	
 		        	
 		        },
 		        error: function(a, b) {
-		            alert("Request: " + JSON.stringify(a));
-		            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		           // alert("Request: " + JSON.stringify(a));
+		            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		        }
 		   
 		});
@@ -32,7 +32,7 @@ $(function () {
 	//탈퇴
 	//1->0
 	$("[id='btny']").click(function() {
-		alert($(this).val());
+		//alert($(this).val());
 		
 		$.ajax({
 	        url: "updatenoEmployee", //"testAjax.jsp", 
@@ -42,12 +42,12 @@ $(function () {
 	        },
 	        success: function(msg) { //데이터 받는 부분.response
 	        //no
-	        alert(msg);
+	        //alert(msg);
 	        	
 	        },
 	        error: function(a, b) {
-	            alert("Request: " + JSON.stringify(a));
-	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	            //alert("Request: " + JSON.stringify(a));
+	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	        }
 	   
 	});
@@ -93,7 +93,7 @@ $(function() {
             
             //승인을 눌러서 퇴사로 0->1
             $("#memberTable tr>td:last>button[id='no']").on('click', function(){
-               	alert($(this).val());
+               //	alert($(this).val());
                	
                	$.ajax({
     		        url: "updateyesEmployee", //"testAjax.jsp", 
@@ -103,13 +103,13 @@ $(function() {
     		        },
     		        success: function(msg) { //데이터 받는 부분.response
     		        //yes
-    		        alert(msg);
+    		        //alert(msg);
     		        	
     		        	
     		        },
     		        error: function(a, b) {
-    		            alert("Request: " + JSON.stringify(a));
-    		            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		            //alert("Request: " + JSON.stringify(a));
+    		            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
     		        }
     		   
     		});
@@ -120,7 +120,7 @@ $(function() {
              // clone
                 $.trClone = $(this).parent().parent().clone().html();
 //                 alert($.trClone);
-                alert($.trClone);
+              //  alert($.trClone);
                 $.newTr = $("<tr>"+$.trClone+"</tr>");
                 //$.newTr = $("<tr><td>1</td><td>2</td><td>3</td><td></td></tr>");
 
@@ -150,8 +150,8 @@ $(function() {
         	
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
-            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            //alert("Request: " + JSON.stringify(a));
+            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
 });
 	
@@ -202,7 +202,7 @@ $(function() {
 
     	//퇴사를 눌러서 승인으로 yes-> no
     	 $("#memberTable1 tr>td:last>button[id='yes']").on('click', function(){
-    		 alert($(this).val());
+    		// alert($(this).val());
     		 $.ajax({
     		        url: "updatenoEmployee", //"testAjax.jsp", 
     		        type: "POST",
@@ -211,12 +211,12 @@ $(function() {
     		        },
     		        success: function(msg) { //데이터 받는 부분.response
     		        //no
-    		        alert(msg);
+    		       // alert(msg);
     		        	
     		        },
     		        error: function(a, b) {
-    		            alert("Request: " + JSON.stringify(a));
-    		            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		            //alert("Request: " + JSON.stringify(a));
+    		            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
     		        }
     		   
     		});
@@ -229,7 +229,7 @@ $(function() {
              	$.trClone= $(this).parent().parent().clone().html();
                 //$.trClone = $("#memberTable1 tr:last").clone().html();
 //                 alert($.trClone);
-                alert($.trClone);
+               // alert($.trClone);
                 $.newTr = $("<tr>"+$.trClone+"</tr>");
                 //$.newTr = $("<tr><td>1</td><td>2</td><td>3</td><td></td></tr>");
 
@@ -264,8 +264,8 @@ $(function() {
         });
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
-            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            //alert("Request: " + JSON.stringify(a));
+            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
         
         
@@ -276,8 +276,8 @@ $(function() {
 	
 $(function () {
 	$('#btnAddRow').click(function() {
-		alert($('#memberTable').html());
-		alert($('#memberTable1').html());
+		//alert($('#memberTable').html());
+		//alert($('#memberTable1').html());
 	});
 
 });
@@ -289,16 +289,14 @@ $(function () {
 
 <style>
 #employee_wrap{
-	
+	width:100%;
 }
 
-/*얘내 퍼센트로 하면 안늘어나 ㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
-#memberTable{
-	width:400px;
+#table1{
+	width:45%;
 }
-
-#memberTable1{
-	width:400px;
+#table2{
+	width: 45%;
 }
 
 
@@ -307,65 +305,8 @@ $(function () {
 
 
 <div class="form-inline" id="employee_wrap">
-<!-- 	<div class="form-group"> -->
-<!-- 	<table class="table table-striped"> -->
-<!-- 		<thead class="table table-striped"> -->
-<!-- 			<tr><td><h1>비승인 직원</h1></td></tr> -->
-<!-- 		</thead> -->
-			
-<!-- 		<tbody id="no"> -->
-<%-- 			<c:forEach var="listnv" items="${listn }"> --%>
-<!-- 				<tr> -->
-<%-- 					<td>${listnv.mid }</td> --%>
-<%-- 					<td>${listnv.memail }</td> --%>
-<%-- <%-- 					<td><input type="button"  id="btnn" value="${listnv.mid }" ></td> --%> 
-<%-- 					<td><button id="btnn" value="${listnv.mid }">승인..</button></td> --%>
-<!-- 				</tr> -->
-<%-- 			</c:forEach> --%>
-<!-- 		</tbody> -->
-		
-<!-- 		<tfoot> -->
-<!-- 		</tfoot> -->
-<!-- 	</table> -->
-<!-- 	</div> -->
-	
-<!-- 	<div class="form-group"> -->
-<!-- 	<table class="table table-striped"> -->
-<!-- 		<thead class="table table-striped"> -->
-<!-- 			<tr><td><h1>승인 직원</h1></td></tr> -->
-<!-- 		</thead> -->
-		
-		
-<!-- 		<!-- select m.mid mid, m.mname mname, m.memail memail, e.emzic emzic, e.emsalary emsalary --> 
-<!-- 		<tbody id="yes"> -->
-<%-- 			<c:forEach var="listyv" items="${listy }"> --%>
-			
-<!-- 				<tr> -->
-<%-- 					<td>${listyv.mid }</td> --%>
-<%-- 					<td>${listyv.mname }</td> --%>
-					
-					
-<%-- 				<td><input type="button" id="btny" value="${listyv.mid }"><td> --%> 
-<%-- 					<td><button id="btny" value="${listyv.mid }">탈퇴..</button></td> --%>
-					
-					
-<!-- 				</tr> -->
-			
-<%-- 			</c:forEach> --%>
-<!-- 		</tbody> -->
-		
-<!-- 		<tfoot> -->
-<!-- 		</tfoot> -->
-<!-- 	</table> -->
-<!-- 	</div> -->
 
-<!-- 테스트용.. -->	
-<!-- <div style="width:500px;text-align:right;"> -->
-<!--     <input type="button" value="행추가"  id="btnAddRow" /> -->
-<!--     <input type="button" value="reset" id="tableReset"/> -->
-<!-- </div> -->
- 
-<div class="form-group">
+<div class="form-group" id="table1">
 <form method="post" id="frmTest">
 <table class="table table-striped" id="memberTable" >
    <thead class="table table-striped">
@@ -383,10 +324,10 @@ $(function () {
 </form>
 </div>
 	
-	
+
 
  
-<div class="form-group"> 
+<div class="form-group" id="table2"> 
 <form method="post" id="frmTest1">
 <table class="table table-striped" id="memberTable1" >
    <thead class="table table-striped">

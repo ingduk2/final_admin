@@ -88,7 +88,7 @@ public class AnimalChart {
 	System.out.println(arr2);
 	StringBuffer json = new StringBuffer();
 	json.append(arr.toString()).append("/").append(arr2.toString());
-	System.out.println("json" + json.toString() );
+	System.out.println("json : " + json.toString() );
 	mav.addObject("aniscnt", json.toString());
 	return mav;
 	}
@@ -100,12 +100,15 @@ public class AnimalChart {
 	public ModelAndView formaniChart(){
 		System.out.println("test aniani");
 		//게시글지워져서 동물수는0ㅢㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ
-		List<AniBoardVO> list = anidao.getImgList();
+		//List<AniBoardVO> list = anidao.getImgList();
+		List<AniBoardVO> list= anidao.getlist1();
+		List<AniBoardVO> list2=anidao.getlist2();
 		List<AnimalsVO> anisvo  = anisdao.selectallCnt();
 		System.out.println(list.size());
 		System.out.println(anisvo.size());
 		ModelAndView mav = new ModelAndView("animaltest/testanimal");
 		mav.addObject("ablilst",list);
+		mav.addObject("ablilst2",list2);
 		mav.addObject("anisvo", anisvo);
 		
 		for(AnimalsVO e : anisvo){

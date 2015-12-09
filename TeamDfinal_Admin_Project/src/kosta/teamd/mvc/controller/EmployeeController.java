@@ -38,8 +38,8 @@ public class EmployeeController {
 			//mav.addObject("list",list);
 		}
 		
-		JSONArray ja= new JSONArray();
-		JSONObject jo= null;
+		JSONArray ja= new JSONArray(); //[ ]
+		JSONObject jo= null; // { }
 		for(MemberVO e : list){
 			jo=new JSONObject();
 			jo.put("mid", e.getMid());

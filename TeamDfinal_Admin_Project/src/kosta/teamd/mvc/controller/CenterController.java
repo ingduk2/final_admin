@@ -85,4 +85,14 @@ public class CenterController {
 		return mav;
 	}
 	
+	@RequestMapping(value="deleteCenter")
+	public ModelAndView deleteCenter(int cnum){
+		
+//		ModelAndView mav = new ModelAndView("/center/jsonmap");
+		ModelAndView mav= new ModelAndView("center/admincenter");
+		cdao.deleteCenter(cnum);
+		//mav.addObject("json","success");
+		return mav;
+	}
+	
 }

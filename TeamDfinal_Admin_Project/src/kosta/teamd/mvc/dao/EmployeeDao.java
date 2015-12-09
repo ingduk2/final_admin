@@ -32,6 +32,10 @@ public class EmployeeDao {
 		template.update("member.updatenoEmployee",mid);
 	}
 	
+	public List<MemberVO> selectMainEmployee(){
+		return template.selectList("member.selectMainEmployee");
+	}
+	
 //	<insert id="insertemployee" parameterType="emvo">
 //	insert into employee values(employee_seq.next_val,#{mid},#{emzic},#{emsalary})
 //</insert>

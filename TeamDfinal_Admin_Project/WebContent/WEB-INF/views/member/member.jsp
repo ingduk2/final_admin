@@ -10,30 +10,6 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 
-<style>
-
-#wrap_mem{
-	float:right;
-	
-}
-
-.member_chart{
-	width:30%;
-	height: 50%;
-} 
-/* #member_chart_age{ */
-	
-	
-/* } */
-#member_list{
-	margin-left : 40px;
-	width:70%;
-}
-
-/* #member_chart2{ */
-	
-/* } */
-</style>
 
 <script>
 $(function () {
@@ -180,12 +156,29 @@ $(function() {
 
 </script>
 
-<div id=wrap_mem>
-<table>
+
+<style>
+	#wrap_mem{
+		width:100%;
+	}
+	.member_chart{
+		width:45%;
+	}
+	#member_chart2{
+		margin-left: 60px;
+	}
+	#member_chart_age{
+		margin-left: 40px;
+	}
+</style>
+
+<div id=wrap_mem class="form-inline">
+
 <!-- 1번 째 줄 -->
-<tr>
-<td><div class="member_chart" id="member_chart_age" ></div></td>
-<td><!-- <div id="member_list"> -->
+
+<div class="member_chart form-group" id="member_chart_age" ></div>
+<div class="member_chart form-group"  id="member_chart2" ></div>
+</div>
 	<table id="member_list" class="table table-striped">
 		<thead class="table table-striped">
 			<tr>
@@ -223,14 +216,14 @@ $(function() {
 		
 		<tfoot>
 		</tfoot>
-	</table></td>
-	</tr>
+	</table>
+	
 <!-- </div> -->
 
 <!-- 2번째 줄 -->
-	<tr>
-	<td><div class="member_chart"  id="member_chart2" ></div></td>
-	</tr>
-</table>
-</div>
+	
+	
+	
+
+
 

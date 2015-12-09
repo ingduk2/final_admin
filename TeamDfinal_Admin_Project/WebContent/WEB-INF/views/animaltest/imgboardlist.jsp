@@ -8,7 +8,7 @@
 <script>
 	$(function() {
 		$('#sel1').change(function() {
-			alert($(this).val());
+			//alert($(this).val());
 		});
 	});
 </script>
@@ -24,12 +24,14 @@
 	border: 1px solid #000;
 	width: 50px;
 	
+	
 }
 
 /* .form-group{ */
 /* 	width:10%; */
 /* } */
 #drag_wrap{
+	margin-left:50px;
 	width: 20%;
 	
 }
@@ -41,6 +43,19 @@
 .aniimg{
 	width:160px;
 	height:160px;
+}
+
+.am{
+	width:40px;
+	height:40px;
+}
+
+#wrapwrap{
+	width:70%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
 }
 </style>
 
@@ -62,14 +77,14 @@
 		//$("[id='bath']")
 		
 		//$("[id='spo']")
-		alert(id);
-		alert(data);//rice
-		alert(id2);//trice
+		//alert(id);
+		//alert(data);//rice
+		//alert(id2);//trice
 		
 		var len=id2.length;
 		var anino=document.getElementById(data).getAttribute("name");
 		var mid=$('#mid').val();
-		alert(mid);
+		//alert(mid);
 		if (data  == id2.substring(1,len)) {
 			
 			$.ajax({
@@ -82,18 +97,19 @@
 		        },
 		        success: function(msg) { //µ¥ÀÌÅÍ ¹Þ´Â ºÎºÐ.response
 		        //yes
-		        alert(msg);
+		        //alert(msg);
 		        	
 		        	
 		        },
 		        error: function(a, b) {
-		            alert("Request: " + JSON.stringify(a));
-		            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		            //alert("Request: " + JSON.stringify(a));
+		            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		        }
 		   
 		});
-			
-			alert("anino : "+anino);
+// 			$('#item-id').draggable( "disable" )
+// 			$('#id').draggable('disable');
+			//alert("anino : "+anino);
 			target.appendChild(document.getElementById(id));
 			//food.dataTransfer.clearData("Text"); 
 		}
@@ -115,6 +131,7 @@
 </script>
 
 
+<div id="wrapwrap">
 	<c:if test="${size != 0}">
 		<c:set var="doneLoop" value="false" />
 		
@@ -127,18 +144,18 @@
 <div class="form-inline" ondragover="return false;" ondragenter="return false;"
 	ondrop="drop(this, event);">
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="rice+${i}" alt="¹ä" name="${listjoin[i].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood1.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="rice+${i}" alt="¹ä" name="${listjoin[i].anino}"
+		src="img/dogfood.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="bath+${i}" alt="¸ñ¿å" name="${listjoin[i].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood2.jpg"
+	<img  class="am" ondragstart="drag(this, event)" id="bath+${i}" alt="¸ñ¿å" name="${listjoin[i].anino}"
+		src="img/shampoo.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="spo+${i}" alt="¿îµ¿" name="${listjoin[i].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood3.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="spo+${i}" alt="¿îµ¿" name="${listjoin[i].anino}"
+		src="img/doglead.png"
 		draggable="true">
 	</div>
 </div>
@@ -205,18 +222,18 @@
 <div class="form-inline" ondragover="return false;" ondragenter="return false;"
 	ondrop="drop(this, event);">
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="rice+${i+1}" alt="¹ä" name="${listjoin[i+1].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood1.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="rice+${i+1}" alt="¹ä" name="${listjoin[i+1].anino}"
+		src="img/dogfood.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="bath+${i+1}" alt="¸ñ¿å" name="${listjoin[i+1].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood2.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="bath+${i+1}" alt="¸ñ¿å" name="${listjoin[i+1].anino}"
+		src="img/shampoo.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="spo+${i+1}" alt="¿îµ¿" name="${listjoin[i+1].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood3.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="spo+${i+1}" alt="¿îµ¿" name="${listjoin[i+1].anino}"
+		src="img/doglead.png"
 		draggable="true">
 	</div>
 </div>
@@ -279,18 +296,18 @@
 <div class="form-inline" ondragover="return false;" ondragenter="return false;"
 	ondrop="drop(this, event);">
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="rice+${i+2}" alt="¹ä" name="${listjoin[i+2].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood1.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="rice+${i+2}" alt="¹ä" name="${listjoin[i+2].anino}"
+		src="img/dogfood.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="bath+${i+2}" alt="¸ñ¿å" name="${listjoin[i+2].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood2.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="bath+${i+2}" alt="¸ñ¿å" name="${listjoin[i+2].anino}"
+		src="img/shampoo.png"
 		draggable="true"> 
 	</div>
 	<div class="img form-group">
-	<img ondragstart="drag(this, event)" id="spo+${i+2}" alt="¿îµ¿" name="${listjoin[i+2].anino}"
-		src="http://biew.co.kr/script/powerEditor/pages/img/krfood3.jpg"
+	<img class="am" ondragstart="drag(this, event)" id="spo+${i+2}" alt="¿îµ¿" name="${listjoin[i+2].anino}"
+		src="img/doglead.png"
 		draggable="true">
 	</div>
 </div>
@@ -351,6 +368,6 @@
 		</c:forEach>
 	</c:if>
 
-
+</div>
 
 

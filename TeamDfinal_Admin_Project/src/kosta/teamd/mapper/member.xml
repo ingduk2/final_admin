@@ -115,6 +115,14 @@
     		select * from member where enabled=1 and mstatus=2 and mid!='admin'
     		
     	</select>
+    	
+    	<select id="selectMainEmployee" resultType="mvo">		
+    		select * from (select rownum r_num, a.* from (
+		select * from member where enabled=0 and mstatus=2 and mid!='admin' order by mfreetime desc
+		) a
+		)where <![CDATA[rownum<=5]]>
+    	</select>
+    
     
     	<!-- update 0->1 -->
     	<update id="updateyesEmployee">

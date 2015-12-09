@@ -94,20 +94,20 @@ li { list-style: none}
    <a href="formMember">회원 관리</a>
   </h4>
 
-  <div class="subtabmenu">
-  	 <a href="formMember">강제 탈퇴</a><br /> 
-  </div>
+<!--   <div class="subtabmenu"> -->
+<!--   	 <a href="formMember">강제 탈퇴</a><br />  -->
+<!--   </div> -->
 
 
   <h4>
-   <a href="#none">게시물 관리</a>
+   <a href="formBoard">게시물 관리</a>
   </h4>
-    <div class="subtabmenu">
-	  	 <a href="">블록 게시물</a><br />
-	  	 <a href="">게시물 복구</a><br /> 
-	  	 <a href="">강제 삭제</a><br /> 
-	  	 <a href="">강제 이동</a><br /> 
- 	 </div>
+<!--     <div class="subtabmenu"> -->
+<!-- 	  	 <a href="">블록 게시물</a><br /> -->
+<!-- 	  	 <a href="">게시물 복구</a><br />  -->
+<!-- 	  	 <a href="">강제 삭제</a><br />  -->
+<!-- 	  	 <a href="">강제 이동</a><br />  -->
+<!--  	 </div> -->
   
   <h4>
    <a href="selectallAdopt">입양 신청 관리</a>
@@ -137,13 +137,7 @@ li { list-style: none}
 <!--   	 <a href="">센터 수정</a><br /> -->
 <!--   	 <a href="">센터 삭제</a><br />   -->
 <!--   </div> -->
-  
-   <h4>
-   <a href="#">밥 주기</a>
-  </h4>
-<!--     <div> -->
-<!--   	 <a href="drag">밥 주장</a><br />   -->
-<!--   </div> -->
+
 
 
 	<h4>
@@ -178,7 +172,12 @@ li { list-style: none}
 </c:if>
 					
 <c:if test="${pageContext.request.userPrincipal.name != null}">
+<c:if test="${pageContext.request.userPrincipal.name=='admin'}">
+<a href="selectallAdminam">동물관리 현황</a>
+</c:if>
+<c:if test="${pageContext.request.userPrincipal.name!='admin'}">
 <a href="selectallanimalmanage?mid=${pageContext.request.userPrincipal.name }">동물관리 현황</a>
+</c:if>
 </c:if>
    
   </h4>

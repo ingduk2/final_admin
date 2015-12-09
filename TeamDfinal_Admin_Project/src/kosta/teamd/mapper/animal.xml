@@ -16,14 +16,29 @@
 
 
     
-    <select id="imglist" resultType="abvo" >
-     select a.anino anino, a.aniimg aniimg, a.anispecies anispecies, 
-     a.anibreed anibreed, a.aniname aniname, a.aniage aniage, a.anisex anisex,
-     a.aniregion aniregion, to_char(a.anidate,'yy-mm-dd') anidate, a.anireward anireward, a.anistate anistate,
-     b.btitle btitle,  b.bno bno, b.mid mid, b.bhit bhit, b.bdate bdate  from animal a, board b where a.anino = b.anino and a.anino!=0
-     order by anino desc
-     <!-- 다이나믹 쿼리 ... -->  
-    </select>
+<!--     <select id="imglist" resultType="abvo" > -->
+<!--      select a.anino anino, a.aniimg aniimg, a.anispecies anispecies,  -->
+<!--      a.anibreed anibreed, a.aniname aniname, a.aniage aniage, a.anisex anisex, -->
+<!--      a.aniregion aniregion, to_char(a.anidate,'yy-mm-dd') anidate, a.anireward anireward, a.anistate anistate, -->
+<!--      b.btitle btitle,  b.bno bno, b.mid mid, b.bhit bhit, b.bdate bdate  from animal a, board b where a.anino = b.anino and a.anino!=0 -->
+<!--      order by anino desc -->
+<!--     </select> -->
+	<select id="imglist" resultType="abvo">
+		select * from animal where anino!=0 order by anino desc
+	</select>
+    
+    
+    <!-- select * from animal where anino!=0 and anistate between 0 and 2 order by anino desc;
+
+select * from animal where anino!=0 and anistate between 3 and 5 order by anino desc; -->
+
+	<select id="imglist1" resultType="abvo">
+		select * from animal where anino!=0 and anistate between 0 and 2 order by anino desc
+	</select>
+	
+	<select id="imglist2" resultType="abvo">
+		select * from animal where anino!=0 and anistate between 3 and 5 order by anino desc
+	</select>
     
     
     <select id="imgdetail" resultType="abvo" parameterType="int">
@@ -81,6 +96,15 @@
      	 a.anistate anistate,
      	 am.amno amno, am.mid mid, am.amrice amrice, am.amspo amspo, am.ambath ambath
     	 from animal a, animalmanage am where a.anino=am.anino and mid=#{mid}
+    </select>
+    
+    <select id="getAdminjoinanimalmanage" parameterType="String" resultType="amjoinvo">
+    	select a.anino anino, a.anispecies anispecies, a.anibreed anibreed,
+    	a.aniname aniname, a.aniage aniage , a.anisex anisex,
+     	a.aniregion aniregion, to_char(a.anidate,'yy-mm-dd') anidate, a.anireward anireward,
+     	 a.anistate anistate,
+     	 am.amno amno, am.mid mid, am.amrice amrice, am.amspo amspo, am.ambath ambath
+    	 from animal a, animalmanage am where a.anino=am.anino
     </select>
     
     <update id="updateAnimalManage" parameterType="amvo">

@@ -6,10 +6,15 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kosta.teamd.vo.AnimalPayVO;
+import kosta.teamd.vo.ChartAdoptScore;
 import kosta.teamd.vo.ChartAniBreedVO;
+import kosta.teamd.vo.ChartAnimalManage;
 import kosta.teamd.vo.ChartMemAgeVO;
 import kosta.teamd.vo.ChartMemberVO;
+import kosta.teamd.vo.ChartSurveyVO;
 import kosta.teamd.vo.ChartVO;
+import kosta.teamd.vo.SurveyVO;
 
 @Repository
 public class ChartDao {
@@ -25,11 +30,32 @@ public class ChartDao {
 		return template.selectList("chart.selectallchartmember");
 	}
 	
+	//돌려막기임 ㅜㅜ
+	public List<ChartMemberVO> selectallchartaddr(){
+		return template.selectList("chart.selectallchartaddr");
+	}
+	
 	public ChartMemAgeVO selectallMemAge(){
 		return template.selectOne("chart.selectallmemage");
 	}
 	
 	public List<ChartAniBreedVO> selectallanibreed(){
 		return template.selectList("chart.selectallanibreed");
+	}
+	
+	public List<SurveyVO> selectallsurvey(){
+		return template.selectList("chart.selectallsurvey");
+	}
+	
+	public ChartAdoptScore selectallscore(){
+		return template.selectOne("chart.selectallscore");
+	}
+	
+	public List<ChartAnimalManage> selectallam(){
+		return template.selectList("chart.selectallam");
+	}
+	
+	public AnimalPayVO selectanimalpay(){
+		return template.selectOne("chart.selectanimalpay");
 	}
 }

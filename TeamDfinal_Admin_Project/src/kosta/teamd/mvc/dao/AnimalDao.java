@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kosta.teamd.vo.AniBoardVO;
+import kosta.teamd.vo.AnimalManageJoinVO;
 import kosta.teamd.vo.AnimalManageVO;
 import kosta.teamd.vo.AnimalVO;
 import kosta.teamd.vo.BoardVO;
@@ -73,8 +74,22 @@ public class AnimalDao{
 			return ss.selectList("animal.animalmanagejoin", mid);
 		}
 		
+		
+		public List<AnimalManageJoinVO> getAdminjoinanimalmanage(String mid){
+			return ss.selectList("animal.getAdminjoinanimalmanage",mid);
+		}
+		
 		//동물 밥주기 업데이트!
 		public void updateAnimalManage(AnimalManageVO amvo){
 			ss.update("animal.updateAnimalManage",amvo);
+		}
+		
+		
+		public List<AniBoardVO> getlist1(){
+			return ss.selectList("animal.imglist1");
+		}
+		
+		public List<AniBoardVO> getlist2(){
+			return ss.selectList("animal.imglist2");
 		}
 }
