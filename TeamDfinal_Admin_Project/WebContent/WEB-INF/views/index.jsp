@@ -15,7 +15,7 @@
 <script
 	src='http://fullcalendar.io/js/fullcalendar-2.3.1/fullcalendar.min.js'></script>
 <script src='http://fullcalendar.io/js/fullcalendar-2.3.1/lang-all.js'></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
+<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <style>
