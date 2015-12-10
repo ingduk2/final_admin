@@ -8,6 +8,18 @@
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 
 <style>
+
+
+
+
+
+
+
+
+
+
+
+
 li { list-style: none}
 .faq {
  width: 80%;
@@ -50,7 +62,7 @@ li { list-style: none}
 }
 
 #clock{
-	background-color: black;
+	
 }
 /*.on{ background: pink}*/
 </style>
@@ -124,7 +136,7 @@ li { list-style: none}
 
  	        chart: {
  	            type: 'gauge',
- 	            plotBackgroundColor: null,
+ 	            plotBackgroundColor: 'black',
  	            plotBackgroundImage: null,
  	            plotBorderWidth: 0,
  	            plotShadow: false,
@@ -141,7 +153,7 @@ li { list-style: none}
 
  	        pane: {
  	            background: [{
- 	                // default background
+ 	            	
  	            }, {
  	                // reflex for supported browsers
  	                backgroundColor: Highcharts.svg ? {
@@ -352,7 +364,9 @@ li { list-style: none}
    <a href="formSurvey">설문조사 관리</a>
   </h4>
 
-
+		<h4>
+   <a href="mailsend">전체 메일 보내기</a>
+  </h4>
   
   	<h4>
   	

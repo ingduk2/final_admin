@@ -1,24 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <script src="https://code.jquery.com/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+<!--     <script src="https://code.jquery.com/jquery.min.js"></script> -->
+<!--     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
 
     <!-- 플러그인 참조 -->
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
     <script src="http://cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
-    <style type="text/css">
-      @media (min-width: 980px) {
-        body {
-          padding-top: 60px;
-          padding-bottom: 40px;
-        }
-      }
-    </style>
-    <script type="text/javascript">
+   
+    <script>
 //       $(function() {
 //         // submit 될 때, 유효성 검사 기능 수행
 //         $("#join_form").validate({
@@ -50,18 +42,20 @@
       
     </script>
  
+  <style>
+     
+      #email_wrap{
+      	width: 70%;
+      }
+   </style>
+ 
+ <div id="email_wrap">
     <!-- 상단 고정메뉴 (검정) -->
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="#" class="navbar-brand">JSP Email 발송 연습</a>
-        </div>
-      </div>
-    </div>
+   
     <!--// 상단 고정메뉴 (검정) -->
 
     <!-- 내용영역 시작 -->
-    <div class="container">
+<!--     <div class="container"> -->
 
       <form class="form-horizontal" method="post" action="send">
         <fieldset>
@@ -107,6 +101,8 @@
         </fieldset>
       </form>
 
+<!--     </div> -->
+    
     </div>
     <!--// 내용영역 끝 -->
  
