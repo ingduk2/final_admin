@@ -26,6 +26,13 @@
     	delete board where bno=#{bno}
     </delete>
     
+      <!-- 게시글 삭제 시 해당 글에 달린 댓글 모두 삭제 _ FK 처리 -->
+    	<delete id="deleteAllComm" parameterType="int">
+    		delete commboard where bno=#{bno}
+    	</delete>
+    <!-- 게시글 삭제 시 해당 글에 달린 댓글 모두 삭제 _ FK 처리 -->
+    
+    
     <update id="updateBoard" parameterType="bvo">
     	update board set bcode=#{boricode} where bno=#{bno}
     </update>

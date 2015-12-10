@@ -21,6 +21,10 @@ public class AdminBoard {
 		template.delete("adminboard.deleteBoard", bvo);
 	}
 	
+	public void deleteAllComm(int bno){
+		template.delete("adminboard.deleteAllComm", bno);
+	}
+	
 	public void updateBoard(BoardVO bvo){
 		template.update("adminboard.updateBoard",bvo);
 	}

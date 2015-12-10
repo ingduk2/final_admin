@@ -3,10 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-
-
-   
-
 <link rel="stylesheet" 
 href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
 <script type="text/javascript" 
@@ -15,9 +11,6 @@ src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 
  
 <script>
-
-
-
 
 
 $(document).ready(function(){
@@ -39,14 +32,20 @@ function popup(){
 <style>
 #adminboard_wrap{
 	width:100%;
+	
 }
 
 #t1, #t2, #t3, #t4{
 	width:45%;
+	
 	margin-left: 50px;
 }
 
-#t3, t4{
+#t2{
+	
+}
+
+#t3, #t4{
 	margin-top: 50px;
 }
 
@@ -109,6 +108,11 @@ function popup(){
     </tbody>
 </table>
 </div>
+</div>
+
+
+
+<div class="form-inline">
 
 <div id="t3" class="form-group">
 <h2>질문 게시판</h2>

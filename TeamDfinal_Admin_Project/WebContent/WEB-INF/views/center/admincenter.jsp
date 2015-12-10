@@ -3,8 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -17,7 +17,7 @@
 #center_list{
 	float: left;
 	margin-left: 30px;
-	width : 60%;
+	width : 70%;
 }
 </style>
 <script>
@@ -236,7 +236,7 @@ function sample5_execDaumPostcode() {
 	<table class="table table-striped">
 		<thead class="table table-striped">
 			<tr>
-				<th colspan="5">List</th>
+				<th colspan="5">센터 정보</th>
 			</tr>
 			<tr>
 				<td>번호</td>

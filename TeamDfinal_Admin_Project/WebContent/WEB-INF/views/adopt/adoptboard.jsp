@@ -9,9 +9,9 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -36,14 +36,14 @@
 	        	            text: '회원 점수대별'
 	        	        },
 	        	        subtitle: {
-	        	            text: 'Click the columns to view versions. Source: <a href="http://netmarketshare.com">netmarketshare.com</a>.'
+	        	            text: ''
 	        	        },
 	        	        xAxis: {
 	        	            type: 'category'
 	        	        },
 	        	        yAxis: {
 	        	            title: {
-	        	                text: 'Total percent'
+	        	                text: 'Total count'
 	        	            }
 
 	        	        },
@@ -55,7 +55,7 @@
 	        	                borderWidth: 0,
 	        	                dataLabels: {
 	        	                    enabled: true,
-	        	                    format: '{point.y:.1f}%'
+	        	                    
 	        	                }
 	        	            }
 	        	        },
@@ -227,10 +227,23 @@
 				<th colspan="19">입양 신청자 !</th>
 			</tr>
 			<tr>
-				<td></td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
+				<td>ID</td>
+				<td>Anino</td>
+				<td>Age</td>
+				<td>Score</td>
+				<td>q1</td>
+				<td>q1-1</td>
+				<td>q2</td>
+				<td>q2-1</td>
+				<td>q3</td>
+				<td>q4</td>
+				<td>q5</td>
+				<td>q6</td>
+				<td>q6-1</td>
+				<td>q7</td>
+				<td>q8</td>
+				<td>q9</td>
+				<td>q10</td>
 			</tr>
 		</thead>
 
@@ -238,10 +251,10 @@
 		<tbody>
 			<c:forEach var="listv" items="${list }">
 				<tr>
-					<td>${listv.adopno }</td>
+<%-- 					<td>${listv.adopno }</td> --%>
 					<td>${listv.mid }</td>
 					<td>${listv.anino }</td>
-					<td>${listv.eid }</td>
+<%-- 					<td>${listv.eid }</td> --%>
 					<td id="adov1">${listv.memage }</td>
 					<td id="adov2">${listv.score }</td>
 					<td id="adov3">${listv.qus1 }</td>
