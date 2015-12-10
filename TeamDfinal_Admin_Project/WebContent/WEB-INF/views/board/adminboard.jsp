@@ -32,7 +32,7 @@ function popup(){
 <style>
 #adminboard_wrap{
 	width:100%;
-	height: 500px;
+	
 }
 
 #t1, #t2, #t3, #t4{

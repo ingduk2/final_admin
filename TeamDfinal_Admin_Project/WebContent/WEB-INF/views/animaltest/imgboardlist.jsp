@@ -181,9 +181,9 @@
 							<span class="label label-warning">${listjoin[i].anistate }</span>
 						</h5>
 					
-						<a href="selectoneAnimal?anino=${listjoin[i].anino }" >
+<%-- 						<a href="selectoneAnimal?anino=${listjoin[i].anino }" > --%>
 							<img src="img/${listjoin[i].aniimg}" class="aniimg">
-						</a>
+<!-- 						</a> -->
 						
 						<table class="container">
 							<tr>
