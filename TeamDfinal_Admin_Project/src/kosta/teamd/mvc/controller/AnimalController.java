@@ -1,6 +1,11 @@
 package kosta.teamd.mvc.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -149,6 +154,32 @@ public class AnimalController {
 			catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
+			StringBuffer inspath = new StringBuffer();
+			//폴더 경로 보고 바꿔주어야 함.
+			///Users/ingduk2/git/final/TeamDfinal
+			//선생님이랑 얘기를 해봐야할듯.. 파일이름겹치면 날라가버리고 사진 다 바뀌게 됨.
+						//C:\dev\sts\test\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\TeadDfinal_User\\img\
+			inspath.append("C:\\dev\\sts\\test\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\TeadDfinal_User\\img\\").append(oriFn);
+			
+		     try {
+		    	 FileInputStream fis = new FileInputStream(path.toString()); 
+		    	 FileOutputStream fos = new FileOutputStream(inspath.toString()); 
+		    	 BufferedInputStream bis = new BufferedInputStream(fis); 
+		    	 BufferedOutputStream bos = new BufferedOutputStream(fos);
+		            int res = 0;
+		            while((res = bis.read()) != -1){
+		            bos.write(res);
+		        }
+		         if(bis != null)   bis.close();
+		         if(bos != null)   bos.close();
+		         if(fis != null)   fis.close();
+		         if(fos != null)   fos.close();
+		        } catch (FileNotFoundException ex) {
+		            ex.printStackTrace();  
+		        } catch(IOException ex){
+		            ex.printStackTrace();  
+		        }
+		     
 			
 			anivo.setAniimg(oriFn);
 		}
@@ -167,7 +198,9 @@ public class AnimalController {
 //			
 //		}
 		
-		ibinsert.imgBoardInsert(bvo, anivo);
+		ibinsert.imgBoardInsert(bvo, anivo);	
+
+		
 		
 		return new ModelAndView("redirect:/testani");
 	}

@@ -93,7 +93,7 @@ select * from animal where anino!=0 and anistate between 3 and 5 order by anino 
     	 select a.anino anino, a.anispecies anispecies, a.anibreed anibreed,
     	a.aniname aniname, a.aniage aniage , a.anisex anisex,
      	a.aniregion aniregion, to_char(a.anidate,'yy-mm-dd') anidate, a.anireward anireward,
-     	 a.anistate anistate,
+     	 a.anistate anistate, a.aniimg aniimg,
      	 am.amno amno, am.mid mid, am.amrice amrice, am.amspo amspo, am.ambath ambath
     	 from animal a, animalmanage am where a.anino=am.anino and mid=#{mid}
     </select>
