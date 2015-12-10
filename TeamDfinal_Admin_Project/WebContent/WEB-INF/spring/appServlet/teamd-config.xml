@@ -34,7 +34,7 @@
 		
  	<!-- 포이 사용을 위한  -->
 	  	<bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
-  		<property name="order" value="1"/>
+  		<property name="order" value="0"/>
   		<property name="basename" value="views"/>
   	</bean>
 	
@@ -97,7 +97,7 @@
 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
 <!-- 		 ViewResolver보다 먼저 수행되도록 value 0으로 준다 -->
-		<property name="order" value="0" />
+		<property name="order" value="1" />
 	</bean>
 	
 <!-- 	Transactional -->

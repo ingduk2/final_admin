@@ -58,6 +58,7 @@ public class AdoptController {
 		AdoptApplyVO adavo= adadao.selectoneAdopt(adopno);
 			
 		ExcelVO exvo=new ExcelVO();
+		exvo.setMid(adavo.getMid());
 		exvo.setCel0_0("");exvo.setCel0_1("Age");exvo.setCel0_2(adavo.getMemage());
 		exvo.setCel1_0("");exvo.setCel1_1("Score");exvo.setCel1_2(Integer.toString(adavo.getScore()));
 		exvo.setCel2_0("Q1");exvo.setCel2_1(advo.getQ1());exvo.setCel2_2(adavo.getQus1());

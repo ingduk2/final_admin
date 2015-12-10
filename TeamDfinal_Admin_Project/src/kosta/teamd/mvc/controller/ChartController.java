@@ -297,7 +297,7 @@ public class ChartController {
 		ja1.add(vo.getSum_amspo());
 		ja.add(ja1);
 		
-		int total=vo.getSum_ambath()*5000+vo.getSum_amrice()*4000+vo.getSum_amspo()*3000;
+		int total=vo.getSum_amrice()*5000+vo.getSum_amspo()*4000+vo.getSum_ambath()*3000;
 		System.out.println(total);
 		StringBuffer sb= new StringBuffer();
 		sb.append(ja.toString()).append("/").append(total);
