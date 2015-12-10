@@ -73,6 +73,7 @@ public class BoardController {
 	@RequestMapping(value="/deleteBoard")
 	public ModelAndView deleteBoard(BoardVO bvo){ //bno 필요\
 		ModelAndView mav= new ModelAndView("redirect:/formBoard");
+		abdao.deleteAllComm(bvo.getAnino());
 		abdao.deleteBoard(bvo);
 		return mav;
 	}

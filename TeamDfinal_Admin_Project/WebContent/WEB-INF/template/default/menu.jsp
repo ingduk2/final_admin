@@ -62,7 +62,10 @@ li { list-style: none}
 }
 
 #clock{
-	
+	height: 170px;
+	margin-top: 50px;
+	border: 5px solid black;
+	background-color: black;
 }
 /*.on{ background: pink}*/
 </style>
@@ -169,7 +172,10 @@ li { list-style: none}
  	                } : null
  	            }]
  	        },
-
+			
+ 	        legend :{
+ 	        	backgroundColor: '#000000'
+ 	        },
  	        yAxis: {
  	            labels: {
  	                distance: -20
@@ -288,7 +294,7 @@ li { list-style: none}
  	
 </script>
 
-<div id="clock"></div>
+<!-- <div id="clock"></div> -->
  <div class="faq">
 
   <h4>

@@ -39,11 +39,17 @@ function popup(){
 <style>
 #adminboard_wrap{
 	width:100%;
+	height: 500px;
 }
 
 #t1, #t2, #t3, #t4{
 	width:45%;
+	
 	margin-left: 50px;
+}
+
+#t2{
+	
 }
 
 #t3, t4{
@@ -109,6 +115,11 @@ function popup(){
     </tbody>
 </table>
 </div>
+</div>
+
+
+
+<div class="form-inline">
 
 <div id="t3" class="form-group">
 <h2>질문 게시판</h2>

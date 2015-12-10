@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -29,14 +29,14 @@ $(function () {
         	            text: '회원 연령대별'
         	        },
         	        subtitle: {
-        	            text: 'Click the columns to view versions. Source: <a href="http://netmarketshare.com">netmarketshare.com</a>.'
+        	            text: ''
         	        },
         	        xAxis: {
         	            type: 'category'
         	        },
         	        yAxis: {
         	            title: {
-        	                text: 'Total percent'
+        	                text: 'Total count'
         	            }
 
         	        },
@@ -48,14 +48,14 @@ $(function () {
         	                borderWidth: 0,
         	                dataLabels: {
         	                    enabled: true,
-        	                    format: '{point.y:.1f}%'
+        	                    //format: '{point.y:.1f}'
         	                }
         	            }
         	        },
 
         	        tooltip: {
         	            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        	            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        	            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> of total<br/>'
         	        },
 
         	        series: [{
