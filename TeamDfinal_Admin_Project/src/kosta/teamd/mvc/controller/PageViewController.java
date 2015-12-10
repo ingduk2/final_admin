@@ -74,27 +74,36 @@ public class PageViewController {
 		int locate = 0;
 		if (a.size() != 0) {
 			for (MonthVO e : a) {
+				if(!e.getAnidate().equals("1")){
 				locate = Integer.parseInt(e.getAnidate().split("-")[1])-1;
 				a_[locate] = e.getCnt();
+				}
 			}
 		}
 		if (b.size() != 0) {
 			for (MonthVO e : b) {
+				//System.out.println(e.getAnidate());
+				if(!e.getAnidate().equals("1")){
 				locate = Integer.parseInt(e.getAnidate().split("-")[1])-1;
 				b_[locate] = e.getCnt();
-				System.out.println("-0-0- : " +b_[locate]);
+				//System.out.println("-0-0- : " +b_[locate]);
+				}
 			}
 		}
 		if (c.size() != 0) {
 			for (MonthVO e : c) {
+				if(!e.getAnidate().equals("1")){
 				locate = Integer.parseInt(e.getAnidate().split("-")[1])-1;
 				c_[locate] = e.getCnt();
+				}
 			}
 		}
 		if (d.size() != 0) {
 			for (MonthVO e : d) {
+				if(!e.getAnidate().equals("1")){
 				locate = Integer.parseInt(e.getAnidate().split("-")[1])-1;
 				d_[locate] = e.getCnt();
+				}
 			}
 		}
 

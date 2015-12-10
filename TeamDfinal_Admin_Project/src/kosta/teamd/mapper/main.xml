@@ -27,22 +27,22 @@ having anistate=4 order by 3 asc;
 select count(*) ,anistate, to_char(anidate,'yyyy-mm') from animal where anino!=0 group by anistate, to_char(anidate,'yyyy-mm') 
 having anistate=5 order by 3 asc; -->
     <select id="month0" resultType="monthvo">
-    	select count(*) cnt ,anistate, to_char(anidate,'yyyy-mm') anidate from animal where anino!=0 group by anistate, to_char(anidate,'yyyy-mm') 
+    	select count(*) cnt ,anistate, nvl(to_char(anidate,'yyyy-mm'),'1') anidate from animal where anino!=0 group by anistate, to_char(anidate,'yyyy-mm') 
 having anistate=0 order by 3 asc
     </select>
     
     <select id="month3" resultType="monthvo">
-    select count(*) cnt, anistate, to_char(anidate,'yyyy-mm') anidate from animal where anino!=0 group by anistate, to_char(anidate,'yyyy-mm') 
+    select count(*) cnt, anistate, nvl(to_char(anidate,'yyyy-mm'),'1') anidate from animal where anino!=0 group by anistate, to_char(anidate,'yyyy-mm') 
 having anistate=3 order by 3 asc
     </select>
     
     <select id="month4" resultType="monthvo">
-    select count(*) cnt, anistate, to_char(anidate,'yyyy-mm') anidate from animal where anino!=0 group by anistate, to_char(anidate,'yyyy-mm') 
+    select count(*) cnt, anistate, nvl(to_char(anidate,'yyyy-mm'),'1') from animal where anino!=0 group by anistate, to_char(anidate,'yyyy-mm') 
 having anistate=4 order by 3 asc
     </select>
     
     <select id="month5" resultType="monthvo">
-    select count(*) cnt, anistate, to_char(anidate,'yyyy-mm') anidate from animal where anino!=0 group by anistate, to_char(anidate,'yyyy-mm') 
+    select count(*) cnt, anistate, nvl(to_char(anidate,'yyyy-mm'),'1') from animal where anino!=0 group by anistate, to_char(anidate,'yyyy-mm') 
 having anistate=5 order by 3 asc
     </select>
     
