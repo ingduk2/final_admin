@@ -15,6 +15,14 @@ public class AniBoardVO {
 	private String aniregion;   // (실종, 발견)지역
 	private String anidate;     // (실종, 발견)날짜
 	
+	
+	private int assign;
+	public int getAssign() {
+		return assign;
+	}
+	public void setAssign(int assign) {
+		this.assign = assign;
+	}
 	//추가
 	private int anireward; 
 	private int anistate;

@@ -60,5 +60,7 @@
 		<!-- survey -->
 		<typeAlias type="kosta.teamd.vo.SurveyVO" alias="surVO"/>
 
+		<typeAlias type="kosta.teamd.vo.SaveVO" alias="savevo"/>
+
   	</typeAliases>
   </configuration>

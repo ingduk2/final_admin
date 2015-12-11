@@ -371,7 +371,7 @@ li { list-style: none}
   </h4>
 
 		<h4>
-   <a href="mailsend">전체 메일 보내기</a>
+   <a href="mailsend?sc=0">전체 메일 보내기</a>
   </h4>
   
   	<h4>

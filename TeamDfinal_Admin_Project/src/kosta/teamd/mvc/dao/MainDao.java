@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kosta.teamd.vo.MonthVO;
+import kosta.teamd.vo.SaveVO;
 
 @Repository
 public class MainDao {
@@ -26,6 +27,17 @@ public class MainDao {
 		return template.selectOne("main.mainanimalcnt");
 	}
 
+	
+	//updatesave selectsave
+	
+	public void updatesave(SaveVO svo){
+		template.update("main.updatesave",svo);
+	}
+	public SaveVO selectsave(){
+		return template.selectOne("main.selectsave");
+	}
+	
+	
 	public List<MonthVO> month0() {
 		return template.selectList("main.month0");
 	}

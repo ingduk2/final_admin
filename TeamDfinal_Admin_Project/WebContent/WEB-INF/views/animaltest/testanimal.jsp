@@ -149,6 +149,7 @@ $(function() {
 	        },
 	        success: function(msg) { //데이터 받는 부분.response
 	        //yes
+	        
 	        alert("배정되었습니다.");
 	        	
 	        	
@@ -260,12 +261,14 @@ function popup(){
 		
 	</td>
 	<td>
+	
 		<select id="mid" name="mid">
 			<option>--선택--</option>
 			<c:forEach var="listyv" items="${listy }">
 			<option value="${listyv.mid}/${anilist.anino}">${listyv.mid}</option>
 			</c:forEach>
 		</select>
+	
 	</td>
 	<!-- 기타 등등 -->
 </tr>

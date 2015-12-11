@@ -37,7 +37,7 @@ public class MailTestController {
 		List<MemberVO> list = mdao.selectallMember();
 		ModelAndView mav = new ModelAndView("email/mailsend");
 		mav.addObject("list", list);
-		
+		mav.addObject("sc", sc);
 		
 		return mav;
 	}

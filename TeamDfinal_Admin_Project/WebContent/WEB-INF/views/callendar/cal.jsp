@@ -88,10 +88,10 @@ function callendar(){
 						if(username=='admin'){
 							
 							
-							var r = confirm("Delete " + calEvent.title + ":"
-									+ calEvent._id);//삭제 안내말
+// 							var r = confirm("Delete " + calEvent.title + ":"
+// 									+ calEvent._id);//삭제 안내말
 							
-							
+							var r = confirm(calEvent.title + " 를 삭제하시겠습니까?");//삭제 안내말
 							
 							if (r === true) {//확인 버튼
 								
@@ -208,7 +208,7 @@ function callendar(){
 				          });
 						
 						
-				        if (!confirm("Are you sure about this change?")) {
+				        if (!confirm("변경 하시겠습니까?")) {
 				            revertFunc();
 				        }
 
@@ -240,7 +240,7 @@ function callendar(){
 					
 						var name= $('#name').val();
 						if(name=='admin'){
-						var title = prompt('Event Title:'); //값 입력.
+						var title = prompt('봉사 입력:'); //값 입력.
 						var eventData;
 // 						alert("selected from: " + start.format() + ", to: "
 // 								+ end.format()); 

@@ -38,11 +38,12 @@
     	}
     		
     	
-    	$("form").submit(function() {
-      	  alert("성공 하였습니다.");
-  		return false
-  	});
-    	
+    	if($('#sc').val()==1){
+    		alert("메일 보내기 성공");
+    		$('#sc').val(0);
+    	}else{
+    		
+    	}
       });
       
       
@@ -63,7 +64,7 @@
 
     <!-- 내용영역 시작 -->
 <!--     <div class="container"> -->
-
+<input type="hidden" value="${sc }" id="sc">
       <form class="form-horizontal" method="post" action="send" name="mail" id="mail">
         <fieldset>
           <legend>
