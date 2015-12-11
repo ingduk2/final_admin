@@ -33,10 +33,12 @@ public class MailTestController {
 	private MemberDao mdao; 
 	
 	@RequestMapping(value="mailsend")
-	public ModelAndView mailSend(){
+	public ModelAndView mailSend(String sc){
 		List<MemberVO> list = mdao.selectallMember();
 		ModelAndView mav = new ModelAndView("email/mailsend");
 		mav.addObject("list", list);
+		
+		
 		return mav;
 	}
 	
@@ -68,7 +70,7 @@ public class MailTestController {
 		message.setSubject(mvo.getSubject());
 		message.setText(mvo.getText(),"utf-8","html");
 		mailSender.send(message);
-		return new ModelAndView("redirect:success");
+		return new ModelAndView("redirect:/mailsend?sc=1");
 	}
 	
 	@RequestMapping(value="/success")

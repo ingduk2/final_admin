@@ -38,7 +38,14 @@
     	}
     		
     	
+    	$("form").submit(function() {
+      	  alert("성공 하였습니다.");
+  		return false
+  	});
+    	
       });
+      
+      
       
     </script>
  
@@ -57,7 +64,7 @@
     <!-- 내용영역 시작 -->
 <!--     <div class="container"> -->
 
-      <form class="form-horizontal" method="post" action="send">
+      <form class="form-horizontal" method="post" action="send" name="mail" id="mail">
         <fieldset>
           <legend>
             <strong>메일작성</strong>
