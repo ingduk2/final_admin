@@ -89,7 +89,7 @@ public class CenterController {
 	public ModelAndView deleteCenter(int cnum){
 		
 //		ModelAndView mav = new ModelAndView("/center/jsonmap");
-		ModelAndView mav= new ModelAndView("center/admincenter");
+		ModelAndView mav= new ModelAndView("redirect:/formCenter");
 		cdao.deleteCenter(cnum);
 		//mav.addObject("json","success");
 		return mav;
