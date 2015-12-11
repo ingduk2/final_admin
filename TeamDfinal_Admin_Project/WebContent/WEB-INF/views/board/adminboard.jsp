@@ -112,7 +112,7 @@ function popup(){
 
 
 
-<div class="form-inline">
+<div class="form-inline" style="margin-bottom: 10px">
 
 <div id="t3" class="form-group">
 <h2>질문 게시판</h2>

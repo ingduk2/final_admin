@@ -179,10 +179,10 @@ $(function() {
 <div class="member_chart form-group" id="member_chart_age" ></div>
 <div class="member_chart form-group"  id="member_chart2" ></div>
 </div>
-	<table id="member_list" class="table table-striped">
+	<table id="member_list" class="table table-striped" style="padding-left: 5px; padding-right: 5px;">
 		<thead class="table table-striped">
 			<tr>
-				<th colspan="8">회원 정보</th>
+				<th colspan="9">회원 정보</th>
 			</tr>
 			<tr>
 				<td>ID</td>
@@ -193,6 +193,7 @@ $(function() {
 				<td>TEL</td>
 				<td>ADDR</td>
 				<td>SINGO</td>
+				<td></td>
 			</tr>
 			
 		</thead>
