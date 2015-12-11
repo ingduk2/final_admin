@@ -182,7 +182,7 @@ $(function() {
 	<table id="member_list" class="table table-striped" style="padding-left: 5px; padding-right: 5px;">
 		<thead class="table table-striped">
 			<tr>
-				<th colspan="9">회원 정보</th>
+				<th colspan="8">회원 정보</th>
 			</tr>
 			<tr>
 				<td>ID</td>
