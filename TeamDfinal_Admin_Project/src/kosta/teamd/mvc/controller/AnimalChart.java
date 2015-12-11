@@ -15,12 +15,14 @@ import kosta.teamd.mvc.dao.AnimalDao;
 import kosta.teamd.mvc.dao.AnimalsDao;
 import kosta.teamd.mvc.dao.ChartDao;
 import kosta.teamd.mvc.dao.EmployeeDao;
+import kosta.teamd.mvc.dao.MainDao;
 import kosta.teamd.vo.AniBoardVO;
 import kosta.teamd.vo.AnimalManageJoinVO;
 import kosta.teamd.vo.AnimalsVO;
 import kosta.teamd.vo.ChartAniBreedVO;
 import kosta.teamd.vo.EmployeeJoinVO;
 import kosta.teamd.vo.MemberVO;
+import kosta.teamd.vo.SaveVO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -39,6 +41,9 @@ public class AnimalChart {
 	
 	@Autowired
 	private EmployeeDao edao;
+	
+	@Autowired
+	private MainDao maindao;
 	
 	// 아작스 
 	@RequestMapping(value="animalcnt")
@@ -125,6 +130,19 @@ public class AnimalChart {
 		
 		//option 채우기 위함. 가능한 직원들로!
 		mav.addObject("listy",listy);
+		
+		
+		SaveVO svo= maindao.selectsave();
+		int mainanimalcnt = maindao.mainAniamlrCnt();
+		SaveVO save= new SaveVO();
+		save.setMemcnt(svo.getMemcnt());
+		save.setBoardcnt(svo.getBoardcnt());
+		save.setAnimalcnt(svo.getAnimalcnt());
+		save.setAnimalcnt(mainanimalcnt);
+		maindao.updatesave(save);
+		
+		
+		
 		return mav;
 	}
 }

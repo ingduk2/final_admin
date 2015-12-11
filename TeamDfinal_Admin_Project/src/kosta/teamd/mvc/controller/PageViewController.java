@@ -15,6 +15,7 @@ import kosta.teamd.vo.BoardVO;
 import kosta.teamd.vo.EmployeeVO;
 import kosta.teamd.vo.MemberVO;
 import kosta.teamd.vo.MonthVO;
+import kosta.teamd.vo.SaveMVO;
 import kosta.teamd.vo.SaveVO;
 import kosta.teamd.vo.SurveyVO;
 import net.sf.json.JSONArray;
@@ -35,48 +36,48 @@ public class PageViewController {
 	private MainDao maindao;
 
 	@RequestMapping(value = { "/", "index" })
-	public ModelAndView a() {
+	public ModelAndView a(SaveMVO smvo) {
 		ModelAndView mav = new ModelAndView("index");
 		List<MemberVO> list = edao.selectMainEmployee();
 
-		
+		//smvo에 확인값이 들어옴.
 		//전체 카운트.
 		int mainmembercnt = maindao.mainMemberCnt();
 		int mainboardcnt = maindao.mainBoardCnt();
 		int mainanimalcnt = maindao.mainAniamlrCnt();
 		
 		SaveVO svo= maindao.selectsave();
-		int resmem=0;
-		int resbo=0;
-		int resani=0;
-		//다를 떄 업데이트
-		if(mainanimalcnt!=svo.getAnimalcnt()||
-				mainboardcnt!=svo.getBoardcnt()||
-				mainmembercnt!=svo.getMemcnt()){
-			
-			
-			resmem=mainmembercnt-svo.getMemcnt();
-			resbo=mainboardcnt-svo.getBoardcnt();
-			resani=mainanimalcnt-svo.getAnimalcnt();
-			
-			SaveVO save= new SaveVO();
-			save.setAnimalcnt(mainanimalcnt);
-			save.setBoardcnt(mainboardcnt);
+		
+		
+		
+		SaveVO save= new SaveVO();
+//		save.setAnimalcnt(mainanimalcnt);
+//		save.setBoardcnt(mainboardcnt);
+//		save.setMemcnt(mainmembercnt);
+//		maindao.updatesave(save);
+		//1이면 확인한거임..
+		if(smvo.getM()==1){
 			save.setMemcnt(mainmembercnt);
 			maindao.updatesave(save);
+		}else if(smvo.getB()==1){
+			save.setBoardcnt(mainboardcnt);
+			maindao.updatesave(save);
+		}else if(smvo.getA()==1){
+			save.setAnimalcnt(mainanimalcnt);
+			maindao.updatesave(save);
 		}
-		
-		
-		
-		
+
 		//저장한 세이브임
 		
+//		resmem=mainmembercnt-svo.getMemcnt();
+//		resbo=mainboardcnt-svo.getBoardcnt();
+//		resani=mainanimalcnt-svo.getAnimalcnt();
 		
 		
 		mav.addObject("list",list);
-		mav.addObject("mainmembercnt", resmem);
-		mav.addObject("mainboardcnt", resbo);
-		mav.addObject("mainanimalcnt", resani);
+		mav.addObject("mainmembercnt", mainmembercnt-svo.getMemcnt());
+		mav.addObject("mainboardcnt", mainboardcnt-svo.getBoardcnt());
+		mav.addObject("mainanimalcnt", mainanimalcnt-svo.getAnimalcnt());
 
 		return mav;
 	}

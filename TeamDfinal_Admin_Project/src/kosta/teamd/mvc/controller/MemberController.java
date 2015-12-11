@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kosta.teamd.mvc.dao.MainDao;
 import kosta.teamd.mvc.dao.MemberDao;
 import kosta.teamd.mvc.inter.MemberDeleteInter;
 import kosta.teamd.mvc.inter.MemberInsertInter;
@@ -22,6 +23,7 @@ import kosta.teamd.mvc.inter.MemberUpdateInter;
 import kosta.teamd.vo.BoardVO;
 import kosta.teamd.vo.MemRolesVO;
 import kosta.teamd.vo.MemberVO;
+import kosta.teamd.vo.SaveVO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -30,12 +32,25 @@ public class MemberController {
 
 	@Autowired
 	private MemberDao mdao;
-	//관리자 멤버 불러오깅..
+	
+	@Autowired
+	private MainDao maindao;
+	//유저 불러오깅!
 	@RequestMapping(value="formMember")
 	public ModelAndView formMember(){
 		ModelAndView mav= new ModelAndView("member/member");
 		List<MemberVO> list= mdao.selectallMember();
 		mav.addObject("list", list);
+		
+		SaveVO svo= maindao.selectsave();
+		int mainmembercnt = maindao.mainMemberCnt();
+		SaveVO save= new SaveVO();
+		save.setMemcnt(svo.getMemcnt());
+		save.setBoardcnt(svo.getBoardcnt());
+		save.setAnimalcnt(svo.getAnimalcnt());
+		save.setMemcnt(mainmembercnt);
+		maindao.updatesave(save);
+		
 		return mav;
 	}
 	

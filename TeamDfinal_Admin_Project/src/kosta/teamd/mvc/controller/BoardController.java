@@ -16,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import kosta.teamd.mvc.dao.AdminBoard;
+import kosta.teamd.mvc.dao.MainDao;
 import kosta.teamd.vo.BoardVO;
+import kosta.teamd.vo.SaveVO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -25,6 +27,9 @@ public class BoardController {
 	
 	@Autowired
 	private AdminBoard abdao;
+	
+	@Autowired
+	private MainDao maindao;
 	
 	@RequestMapping(value="formBoard")
 	public ModelAndView formBoard(){
@@ -42,6 +47,18 @@ public class BoardController {
 		bvo.setBcode(10);
 		List<BoardVO> list10=abdao.selectallboard2(bvo);
 		mav.addObject("list10",list10);
+		
+		
+		
+		SaveVO svo= maindao.selectsave();
+		int mainboardcnt = maindao.mainBoardCnt();
+		SaveVO save= new SaveVO();
+		save.setMemcnt(svo.getMemcnt());
+		save.setBoardcnt(svo.getBoardcnt());
+		save.setAnimalcnt(svo.getAnimalcnt());
+		save.setBoardcnt(mainboardcnt);
+		maindao.updatesave(save);
+		
 		return mav;
 		
 	}
