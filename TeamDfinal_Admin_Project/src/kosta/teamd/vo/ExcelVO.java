@@ -1,6 +1,13 @@
 package kosta.teamd.vo;
 
 public class ExcelVO {
+	private String mid;
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
 	private String cel0_0,cel0_1,cel0_2;
 	private String cel1_0,cel1_1,cel1_2;
 	private String cel2_0,cel2_1,cel2_2;

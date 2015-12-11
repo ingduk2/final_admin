@@ -14,6 +14,10 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
+
+
+
+
 import kosta.teamd.vo.ExcelVO;
 import oracle.net.aso.s;
 
@@ -116,9 +120,14 @@ public class ExcelBuilder extends AbstractExcelView{
 			aRow.createCell(2).setCellValue(listBooks.getCel14_2());
 			aRow=sheet.createRow(rowCount++);
 		//}
+			
+			
+		
 		//응답객체로부터 다운로드 받을 타입과 파일 이름을 설정한다.
 		response.setContentType("Application/Msexcel");
-		response.setHeader("Content-Disposition", "attachment; filename=adopt_excel.xls");
+		//response.setContentType("application/pdf");
+		response.setHeader("Content-Disposition", "attachment; filename="+listBooks.getMid()+"_adopt.xls");
+		//response.addHeader("Content-Disposition", "attachment; filename=" + pdfFileName);
 	}
 	
 }

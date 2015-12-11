@@ -70,8 +70,8 @@ $(function () {
         	
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
-            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            //alert("Request: " + JSON.stringify(a));
+            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
     });
     // Create the chart
@@ -116,8 +116,8 @@ function memberchart(){
         	
         },
         error: function(a, b) {
-            alert("Request: " + JSON.stringify(a));
-            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            //alert("Request: " + JSON.stringify(a));
+            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
     });
 	
@@ -147,7 +147,7 @@ $(function() {
 	
 	
 	$('[id="membtn"]').click(function() {
-		alert($(this).val());
+		//alert($(this).val());
 		var mid=$(this).val();
 		location.href='deleteforceMem?mid='+mid;
 		

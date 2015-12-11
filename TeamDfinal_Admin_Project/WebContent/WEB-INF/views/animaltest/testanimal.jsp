@@ -53,27 +53,27 @@
     		    		            series: {
     		    		                dataLabels: {
     		    		                    enabled: true,
-    		    		                    format: '{point.name}: {point.y:.1f}%'
+    		    		                    format: '{point.name}: {point.y:.0f}'
     		    		                },
     		    		                cursor: 'pointer',
-    		    		                events:{
-    		    		                	click: function (event, i){
-    		    		                		var print="";
-    		    		                		//alert(event.point.name);	
-    		    		                		$.each(anibreed,function(idx,item){
-    	    		    	                    	if(item.name==event.point.name){
+//     		    		                events:{
+//     		    		                	click: function (event, i){
+//     		    		                		var print="";
+//     		    		                		//alert(event.point.name);	
+//     		    		                		$.each(anibreed,function(idx,item){
+//     	    		    	                    	if(item.name==event.point.name){
     	    		    	                    
-    	    		    	             			print +="<h1>["+item.name+"]</h1></br><table><thead><tr><th>품종</th><th>수량</th></tr></thead><tbody>";
-    	    		    	             			$.each(item.data, function(key, state){
-    	    		    	             				//alert('key : '+key+'----'+state[0]+'----'+state[1]);
-    	    		    	             				print += "<tr><td>"+state[0]+"</td><td align=\"right\">"+state[1]+"</td></tr>";
-    	    		    	             			});
-    	    		    	             			print += "</tbody></table>";
-    	    		    	                    	 }
-    	    		    	             		});
-    	    		    	                    	 $('#print').html(print);
-    		    		                	},
-    		    		                }      
+//     	    		    	             			print +="<h1>["+item.name+"]</h1></br><table><thead><tr><th>품종</th><th>수량</th></tr></thead><tbody>";
+//     	    		    	             			$.each(item.data, function(key, state){
+//     	    		    	             				//alert('key : '+key+'----'+state[0]+'----'+state[1]);
+//     	    		    	             				print += "<tr><td>"+state[0]+"</td><td align=\"right\">"+state[1]+"</td></tr>";
+//     	    		    	             			});
+//     	    		    	             			print += "</tbody></table>";
+//     	    		    	                    	 }
+//     	    		    	             		});
+//     	    		    	                    	 $('#print').html(print);
+//     		    		                	},
+//     		    		                }      
     		    		            }   
     		    		                
     		    		        },
@@ -83,7 +83,7 @@
     		    		  
     		    		        tooltip: {
     		    		        	 headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-    		    		            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    		    		            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b> of total<br/>'
     		    		        },
     		    		        series: [{
     		    		            name: 'Brands',
@@ -123,7 +123,7 @@ $(function () {
 	        success: function(msg) { //데이터 받는 부분.response
 	        //yes
 	       // alert(msg);
-	        	
+	        	window.location.reload();
 	        	
 	        },
 	        error: function(a, b) {
@@ -149,7 +149,7 @@ $(function() {
 	        },
 	        success: function(msg) { //데이터 받는 부분.response
 	        //yes
-	       // alert(msg);
+	        alert("배정되었습니다.");
 	        	
 	        	
 	        },
@@ -182,13 +182,15 @@ function popup(){
 	
 	#animal_table{
 		width:40%;
-		
+		margin-top: 30px;
 		
 	}
 	#animal_table2{
 		margin-left : 200px;
 		width:40%;
+		margin-top: 30px;
 	}
+	
 	#print{
 		
 	}
@@ -200,18 +202,17 @@ function popup(){
 <body onLoad="opener.location.href=opener.location.href; window.close();">
 <div id="container"  ></div>
 <div id="print"></div>
-
+<input type="button" value="센터 동물 글쓰기" onclick="popup()">
 <div id="table_wrap" class="form-inline">
 
 <div id="animal_table" class="form-group">
-<input type="button" value="센터 동물 글쓰기" onclick="popup()">
+
 <table id='cal_table' class="table table-striped">
 	<thead class="table table-striped">
 <tr>
 <th colspan="11">센터 동물</th>
 </tr>
 <tr>
-<td>count</td>
 <td>no</td>
 <td>species</td>
 <td>breed</td>
@@ -219,6 +220,8 @@ function popup(){
 <td>age</td>
 <td>sex</td>
 <td>state</td>
+<td>change</td>
+<td>assign</td>
 </tr>
 </thead>
 
@@ -227,7 +230,7 @@ function popup(){
 <c:forEach items="${ablilst }" var="anilist"  varStatus="i">
 <input type="hidden" id="anino+${i.count}" value="${anilist.anino }"/>
 <tr>
-	<td>${i.count }</td>
+<%-- 	<td>${i.count }</td> --%>
 	<td>${anilist.anino }</td> 
 	<td>${anilist.anispecies }</td>
 	<td>${anilist.anibreed }</td>
@@ -289,7 +292,6 @@ function popup(){
 <th colspan="11">유저 동물</th>
 </tr>
 <tr>
-<td>count</td>
 <td>no</td>
 <td>species</td>
 <td>breed</td>
@@ -311,7 +313,7 @@ function popup(){
 <c:forEach items="${ablilst2 }" var="anilist2"  varStatus="i">
 <input type="hidden" id="anino+${i.count}" value="${anilist.anino }"/>
 <tr>
-	<td>${i.count }</td>
+<%-- 	<td>${i.count }</td> --%>
 	<td>${anilist2.anino }</td> 
 	<td>${anilist2.anispecies }</td>
 	<td>${anilist2.anibreed }</td>
