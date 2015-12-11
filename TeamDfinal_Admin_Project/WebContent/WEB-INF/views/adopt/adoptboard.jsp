@@ -77,8 +77,8 @@
 	        	
 	        },
 	        error: function(a, b) {
-	            alert("Request: " + JSON.stringify(a));
-	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	           // alert("Request: " + JSON.stringify(a));
+	           // alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	        }
 	    });
 	});
@@ -86,7 +86,7 @@
 
 	$(function() {
 		$('[id="adoptbtn"]').click(function() {
-			alert($(this).val());
+			//alert($(this).val());
 			$('#down').prop('href', 'downloadExcel?adopno='+$(this).val());
 			//버튼 클릭하면 위의 양식으로 옮겨주기!
 			//ado1, adov1
@@ -94,7 +94,7 @@
 			console.log($(this).parent().parent().html());
 			//alert($(this).parent().parent().find("td").eq(5).html());
 			for(var i=0; i<15; i++){
-				$('#ado'+i).html($(this).parent().parent().find("td").eq(i+4).html());
+				$('#ado'+i).html($(this).parent().parent().find("td").eq(i+2).html());
 			}
 		});
 	});

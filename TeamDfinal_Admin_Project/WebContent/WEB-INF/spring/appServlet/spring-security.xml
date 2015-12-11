@@ -71,6 +71,8 @@
 			<intercept-url pattern="/testani" access="Admin"/>
 			<intercept-url pattern="/formEmployee" access="Admin"/>
 			<intercept-url pattern="/formSurvey" access="Admin"/>
+			<intercept-url pattern="/mailsend" access="Admin"/>
+			
 			<intercept-url pattern="/selectallanimalmanage" access="Admin, Employee"/>
    			
 	 	
