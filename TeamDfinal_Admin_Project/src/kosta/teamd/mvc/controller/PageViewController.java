@@ -15,6 +15,7 @@ import kosta.teamd.vo.BoardVO;
 import kosta.teamd.vo.EmployeeVO;
 import kosta.teamd.vo.MemberVO;
 import kosta.teamd.vo.MonthVO;
+import kosta.teamd.vo.SaveVO;
 import kosta.teamd.vo.SurveyVO;
 import net.sf.json.JSONArray;
 
@@ -38,14 +39,44 @@ public class PageViewController {
 		ModelAndView mav = new ModelAndView("index");
 		List<MemberVO> list = edao.selectMainEmployee();
 
+		
+		//전체 카운트.
 		int mainmembercnt = maindao.mainMemberCnt();
 		int mainboardcnt = maindao.mainBoardCnt();
 		int mainanimalcnt = maindao.mainAniamlrCnt();
 		
+		SaveVO svo= maindao.selectsave();
+		int resmem=0;
+		int resbo=0;
+		int resani=0;
+		//다를 떄 업데이트
+		if(mainanimalcnt!=svo.getAnimalcnt()||
+				mainboardcnt!=svo.getBoardcnt()||
+				mainmembercnt!=svo.getMemcnt()){
+			
+			
+			resmem=mainmembercnt-svo.getMemcnt();
+			resbo=mainboardcnt-svo.getBoardcnt();
+			resani=mainanimalcnt-svo.getAnimalcnt();
+			
+			SaveVO save= new SaveVO();
+			save.setAnimalcnt(mainanimalcnt);
+			save.setBoardcnt(mainboardcnt);
+			save.setMemcnt(mainmembercnt);
+			maindao.updatesave(save);
+		}
+		
+		
+		
+		
+		//저장한 세이브임
+		
+		
+		
 		mav.addObject("list",list);
-		mav.addObject("mainmembercnt", mainmembercnt);
-		mav.addObject("mainboardcnt", mainboardcnt);
-		mav.addObject("mainanimalcnt", mainanimalcnt);
+		mav.addObject("mainmembercnt", resmem);
+		mav.addObject("mainboardcnt", resbo);
+		mav.addObject("mainanimalcnt", resani);
 
 		return mav;
 	}

@@ -11,11 +11,19 @@
 	</select>
 	<select id="mainboardcnt" resultType="int">
 		select count(bno) from
-		board
+		board where bcode BETWEEN 1 and 3
 	</select>
 	<select id="mainanimalcnt" resultType="int">
-		select count(anino) from
-		animal
+		select count(*) from
+		board where bcode BETWEEN 4 and 6
+	</select>
+
+	<update id="updatesave" parameterType="savevo">
+		update save set memcnt=#{memcnt} , boardcnt=#{boardcnt} , animalcnt=#{animalcnt} 
+	</update>
+	
+	<select id="selectsave" resultType="savevo">
+		select * from save
 	</select>
 
 	<!-- select count(*) ,anistate, to_char(anidate,'yyyy-mm') from animal where 

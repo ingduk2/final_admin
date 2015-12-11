@@ -16,6 +16,7 @@ import kosta.teamd.mvc.dao.AnimalsDao;
 import kosta.teamd.mvc.dao.ChartDao;
 import kosta.teamd.mvc.dao.EmployeeDao;
 import kosta.teamd.vo.AniBoardVO;
+import kosta.teamd.vo.AnimalManageJoinVO;
 import kosta.teamd.vo.AnimalsVO;
 import kosta.teamd.vo.ChartAniBreedVO;
 import kosta.teamd.vo.EmployeeJoinVO;
@@ -104,6 +105,10 @@ public class AnimalChart {
 		List<AniBoardVO> list= anidao.getlist1();
 		List<AniBoardVO> list2=anidao.getlist2();
 		List<AnimalsVO> anisvo  = anisdao.selectallCnt();
+//		List<AnimalManageJoinVO> join =anidao.getAdminjoinanimalmanage("admin");
+//		for(AniBoardVO e: list){
+//			e.setAssign(assign);
+//		}
 		System.out.println(list.size());
 		System.out.println(anisvo.size());
 		ModelAndView mav = new ModelAndView("animaltest/testanimal");

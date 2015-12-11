@@ -320,15 +320,15 @@ function callendar(){
 		<div style="width: 50%; float: left;">
 			<div style="width: 100%; margin:auto;" class="form-inline">
 				<div id="animated-example" class="form-group animated fadeInUp">
-					<img src="img/alrams.png" width="170px"><p>
+					<a href="formMember"><img src="img/alrams.png" width="170px"></a><p>
 					<span class="label label-danger">New!</span>&nbsp;${mainmembercnt}
 				</div>
 				<div id="animated-example" class="form-group animated fadeInUp">
-					<img src="img/newcontents.png" width="170px"><p>
+					<a href="formBoard"><img src="img/newcontents.png" width="170px"></a><p>
 					<span class="label label-danger">New!</span>&nbsp;${mainboardcnt}
 				</div>
 				<div id="animated-example" class="form-group animated fadeInUp">
-					<img src="img/newmember.png" width="170px"><p>
+					<a href="testani"><img src="img/newmember.png" width="170px"></a><p>
 					<span class="label label-danger">New!</span>&nbsp;${mainanimalcnt}
 				</div>
 			</div>
