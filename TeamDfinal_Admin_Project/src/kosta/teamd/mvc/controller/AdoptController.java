@@ -52,10 +52,10 @@ public class AdoptController {
 	
 	
 	@RequestMapping(value="downloadExcel")
-	public ModelAndView downloadExcel(int adopno){
+	public ModelAndView downloadExcel(int adoptno){
 		
 		AdoptVO advo= getExcel();
-		AdoptApplyVO adavo= adadao.selectoneAdopt(adopno);
+		AdoptApplyVO adavo= adadao.selectoneAdopt(adoptno);
 			
 		ExcelVO exvo=new ExcelVO();
 		exvo.setMid(adavo.getMid());

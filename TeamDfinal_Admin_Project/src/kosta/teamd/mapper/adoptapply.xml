@@ -15,7 +15,7 @@
     </select>
     	
     <select id="selectoneadopt" parameterType="int" resultType="adavo">
-    select * from adoptapply where adopno=#{adopno}
+    select * from adoptapply where adoptno=#{adoptno}
     </select>
     
     

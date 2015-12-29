@@ -87,7 +87,7 @@
 	$(function() {
 		$('[id="adoptbtn"]').click(function() {
 			//alert($(this).val());
-			$('#down').prop('href', 'downloadExcel?adopno='+$(this).val());
+			$('#down').prop('href', 'downloadExcel?adoptno='+$(this).val());
 			//버튼 클릭하면 위의 양식으로 옮겨주기!
 			//ado1, adov1
 			//alert($(this).parent().parent().html());
@@ -270,7 +270,7 @@
 					<td id="adov13">${listv.qus8 }</td>
 					<td id="adov14">${listv.qus9 }</td>
 					<td id="adov15">${listv.qus10 }</td>
-					<td><button type="button" id="adoptbtn" value="${listv.adopno }">불러오기</button>
+					<td><button type="button" id="adoptbtn" value="${listv.adoptno }">불러오기</button>
 				</tr>
 			</c:forEach>
 

@@ -137,7 +137,7 @@ $(function () {
 
 $(function() {
 	$("[id='mid']").change(function() {
-		//alert($(this).val());
+// 		alert($(this).val());
 		var vv=$(this).val();
 		var datavv=vv.split("/");
 		$.ajax({
